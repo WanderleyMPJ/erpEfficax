@@ -79,15 +79,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Efficax Soluções Empresariais
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="http://www.efficaxsoluoces.com.br/">Efficax Soluções em Informática</a>
+                    <a href="http://www.efficaxcontabilidade.com.br/">Efficax Contabilidade</a>
+                    <a href="http://www.efficaxadministradora.com.br/">Efficax Administradora</a>
+                    <a href="https://efficaxcontabilidade.plataformasage.com.br/">Efficax Plataforma SAGE</a>
                 </div>
             </div>
         </div>

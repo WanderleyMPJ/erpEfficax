@@ -71,5 +71,6 @@
             @yield('content')
         </main>
     </div>
+    @extends('layouts._rodape')
 </body>
 </html>
