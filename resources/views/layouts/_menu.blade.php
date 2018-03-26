@@ -10,8 +10,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
-        <link rel="stylesheet" href="css/uniform.css" />
-        <link rel="stylesheet" href="css/select2.css" />
         <link rel="stylesheet" href="css/fullcalendar.css" />
         <link rel="stylesheet" href="css/matrix-style.css" />
         <link rel="stylesheet" href="css/matrix-media.css" />
@@ -108,10 +106,10 @@
 
                     </ul>
                 </div>
-                <!--End-Action boxes-->
+                <!--End-Action boxes-->    
 
                 @yield('content')
-
+                
                 
             </div>
         </div>
@@ -119,4 +117,7 @@
         <!--end-main-container-part-->
 
         <!--Footer-part-->
-        @yield('rodape')
+
+@extends('layouts._rodape')
+    </body>
+</html>
