@@ -6,15 +6,13 @@
 
 </div>
 @endsection
-
 @section('content')
-
 <div class="widget-box">
     <div class="widget-title"> <span class="icon"><input type="checkbox" id="title-checkbox" name="title-checkbox"></span>
         <h5>Listagem Pessoas</h5>
     </div>
     <div class="widget-content nopadding">
-    <table class="table table-bordered data-table table-striped with-check">
+    <table class="table table-bordered data-table with-check">
         <thead>
             <tr>
                 <th><i class="icon-resize-vertical"></i></th>
@@ -22,6 +20,7 @@
                 <th>CNPJ ou CPF</th>
                 <th>RG ou Insc Estadual</th>
                 <th>Ativo</th>
+                <th>Ações</th>
             </tr>
         </thead>
         <tbody>
@@ -37,6 +36,7 @@
                 @elseif($pessoa->ativo == 0)
                 <td><input type="checkbox" disabled/></td>
                 @endif
+                <td><input type="button" class="btn-success" placeholder="Editar"> <button class="btn-info">Detalhes</button></td>
             </tr>
             @empty
             <p>Nenhuma Pessoa Encontrada...</p>
@@ -45,4 +45,5 @@
     </table>
 </div>
 </div>
+
 @endsection
