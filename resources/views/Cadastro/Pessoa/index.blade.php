@@ -28,7 +28,7 @@
             @forelse($pessoas as $pessoa)
             
             <tr>
-                <td><input id="check" type="checkbox" /></td>
+                <td><input type="checkbox" /></td>
                 <td>{{$pessoa->nome}}</td>
                 <td>{{$pessoa->cnpj_cpf}}</td>
                 <td>{{$pessoa->rg_inscest}}</td>
@@ -45,13 +45,4 @@
     </table>
 </div>
 </div>
-{{--<script src="js/jquery.min.js"></script>
-<script src="js/jquery.ui.custom.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.uniform.js"></script>
-<script src="js/select2.min.js"></script>
-<script src="js/jquery.dataTables.min.js"></script>
-<script src="js/matrix.js"></script>
-<script src="js/matrix.tables.js"></script>--}}
 @endsection
-@extends('layouts._rodape')
