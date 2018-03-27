@@ -109,7 +109,7 @@
                 <!--End-Action boxes-->    
 
                 @yield('content')
-                
+   
                 
             </div>
         </div>
