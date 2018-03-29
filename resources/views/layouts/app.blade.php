@@ -70,7 +70,8 @@
         <main class="py-4">
             @yield('content')
         </main>
+       {{-- @extends('layouts._rodape')--}}
     </div>
-    @extends('layouts._rodape')
+
 </body>
 </html>

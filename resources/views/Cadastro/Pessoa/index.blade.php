@@ -2,11 +2,10 @@
 @section('menutop')
 <div id="content-header">
     <div id="breadcrumb"> <a href="{{ route('home') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoa') }}" class="current">Pessoa</a> </div>
-
-
 </div>
 @endsection
 @section('content')
+    <span class="label label-success"><a  href="{{route('pcadastro')}}">Adicionar</a></span>
 <div class="widget-box">
     <div class="widget-title"> <span class="icon"><input type="checkbox" id="title-checkbox" name="title-checkbox"></span>
         <h5>Listagem Pessoas</h5>
@@ -20,7 +19,7 @@
                 <th>CNPJ ou CPF</th>
                 <th>RG ou Insc Estadual</th>
                 <th>Ativo</th>
-                <th>Ações</th>
+               <th></th>
             </tr>
         </thead>
         <tbody>
@@ -36,7 +35,12 @@
                 @elseif($pessoa->ativo == 0)
                 <td><input type="checkbox" disabled/></td>
                 @endif
-                <td><input type="button" class="btn-success" placeholder="Editar"> <button class="btn-info">Detalhes</button></td>
+                <td>
+                    <div class="pull-left">
+                        <a href="#" title="Edit Task"><i class="icon-pencil">Editar</i></a>
+                    {{--    <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a>--}}
+                    </div>
+                {{--<button type="button" class="btn-success">Editar</button> <button class="btn-info">Detalhes</button>--}}</td>
             </tr>
             @empty
             <p>Nenhuma Pessoa Encontrada...</p>
@@ -45,5 +49,4 @@
     </table>
 </div>
 </div>
-
 @endsection

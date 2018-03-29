@@ -28,7 +28,12 @@ class PessoaController extends Controller
      */
     public function create(Pessoa $pessoa)
     {
+        $pessoas =$pessoa->find($pessoa->id);
 
+        if (Gate::denies('pessoa_create', $pessoas) )
+            abort(403,'Usuário Não autotizado');
+
+        return view('cadastro.pessoa.detalhes', compact('pessoa'));
     }
 
     /**
