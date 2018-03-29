@@ -5,10 +5,11 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\User;
-use App\Permission;
+use App\Model\Cadastro\Permission;
+use App\Funcoes;
 
-class AuthServiceProvider extends ServiceProvider
-{
+class AuthServiceProvider extends ServiceProvider {
+
     /**
      * The policy mappings for the application.
      *
@@ -23,23 +24,26 @@ class AuthServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
-    {
+    public function boot() {
         $this->registerPolicies();
+              
+        
+     //   if (App\Funcoes\funcoes::verificaTabela('permissions')) {
+            $permissions = Permission::with('perfils')->get();
 
-        $permissions = Permission::with('roles')->get();
+            foreach ($permissions as $permission) {
 
-        foreach ($permissions as $permission) {
+                Gate::define($permission->nome, function(User $user)
+                        use ($permission) {
+                    return $user->hasPermission($permission);
+                });
+            }
 
-            Gate::define($permission->name, function(User $user)
-            use ($permission) {
-                return $user->hasPermission($permission);
+            Gate::before(function(User $user, $hability) {
+                if ($user->hasAnyPerfils('Admin'))
+                    return true;
             });
         }
+  //  }
 
-        Gate::before(function(User $user, $hability) {
-            if ($user->hasAnyroles('Admin'))
-                return true;
-        });
-    }
 }
