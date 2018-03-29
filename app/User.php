@@ -26,24 +26,24 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
-    public function Roles()
+    public function Perfils()
     {
-        return $this->belongsToMany(\App\Role::class);
+        return $this->belongsToMany(\App\Model\Cadastro\Perfil::class);
     }
-
+    
     public function hasPermission(Permission $permission)
     {
 
-        return $this->hasAnyRoles($permission->roles);
+        return $this->hasAnyPerfils($permission->perfils);
     }
 
-    public function hasAnyRoles($roles)
+    public function hasAnyPerfils($perfils)
     {
-        if (is_array($roles) || is_object($roles))
+        if (is_array($perfils) || is_object($perfils))
         {
-            return !! $roles->intersect($this->roles)->count();
+            return !! $perfils->intersect($this->perfils)->count();
         }
-        return $this->roles->contains('name', $roles);
+        return $this->perfils->contains('nome', $perfils);
 
     }
 }

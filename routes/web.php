@@ -20,6 +20,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/pessoa', 'Cadastro\PessoaController@index')->name('pessoa');
 Route::get('/pessoa_cadastro', 'Cadastro\PessoaController@create')->name('pcadastro');
+Route::get('/user', 'Cadastro\UserController@index')->name('user');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
 Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil');
 Route::get('naoautorizado', function(){

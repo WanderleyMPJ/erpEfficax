@@ -71,6 +71,7 @@
                 <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cadastros</span> <span class="label label-important">3</span></a>
                     <ul>
                         <li><a href="{{ route('pessoa') }}">Pessoas</a></li>
+                        <li><a href="{{ route('user') }}">Usuários</a></li>
                         <li><a href="form-validation.html">Produtos</a></li>
                         <li><a href="form-wizard.html">Serviços</a></li>
                     </ul>
@@ -113,7 +114,7 @@
                 <!--End-Action boxes-->    
 
                 @yield('content')
-                
+   
                 
             </div>
         </div>
