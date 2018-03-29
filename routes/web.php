@@ -29,3 +29,4 @@ Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil
 Route::get('naoautorizado', function(){
     view('error.naoautorizado');
 });
+Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil');
