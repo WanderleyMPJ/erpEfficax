@@ -47,7 +47,5 @@ class AuthServiceProvider extends ServiceProvider {
                 if ($user->hasAnyPerfils('Admin'))
                     return true;
             });
-        }
-    
-
+    }
 }
