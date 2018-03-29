@@ -29,13 +29,18 @@
                     <td><input type="checkbox" /></td>
                     <td>{{$user->name}}</td>
                     <td>{{$user->email}}</td>
-                    <td>{{$user->Perfils}}</td>
+                    <td>{{$user->Perfils->first()->nome}}</td>
                     @if($user->ativo == 1)
                     <td><input type="checkbox"  checked="checked" disabled/></td>
                     @elseif($user->ativo == 0)
                     <td><input type="checkbox" disabled/></td>
                     @endif
-                    <td><input type="button" class="btn-secondary" placeholder="Editar"> <button class="btn-info">Editar</button></td>
+                    <td>
+                        <div class="pull-left">
+                            <a href="#" title="Edit Task"><i class="icon-pencil">Editar</i></a>
+                        </div>
+
+                    </td>
                 </tr>
                 @empty
             <p>Nenhum Usuário Encontrado...</p>
