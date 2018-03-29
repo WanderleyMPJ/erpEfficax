@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/teste', function () {return special_ucwords('WANDERLEY MACEDO DE PINHEIRO JÚNIOR');});
+Route::get('/teste2', function () {return verificaTabela('permissions');});
+
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/pessoa', 'Cadastro\PessoaController@index')->name('pessoa');
 Route::get('/pessoa_cadastro', 'Cadastro\PessoaController@create')->name('pcadastro');
