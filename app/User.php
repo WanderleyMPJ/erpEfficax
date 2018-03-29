@@ -28,7 +28,7 @@ class User extends Authenticatable
     ];
     public function Perfils()
     {
-        return $this->belongsToMany(\App\Model\Cadastro\Perfil::class);
+        return $this->belongsToMany(\App\Cadastro\Perfil::class);
     }
     
     public function hasPermission(Permission $permission)

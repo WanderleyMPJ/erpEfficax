@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Model\Cadastro;
+namespace App\Cadastro;
 
 use Illuminate\Database\Eloquent\Model;
 

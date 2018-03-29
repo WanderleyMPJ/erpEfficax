@@ -5,7 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use App\User;
-use App\Model\Cadastro\Permission;
+use App\Cadastro\Permission;
 use App\Funcoes;
 
 class AuthServiceProvider extends ServiceProvider {
