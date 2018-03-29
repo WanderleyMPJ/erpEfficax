@@ -4,19 +4,21 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Efficax00') }}</title>
+        <title>{{ config('app.name', 'Efficax') }}</title>
 
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+        <link rel="stylesheet" href="css/bootstrap-wysihtml5.css" />
         <link rel="stylesheet" href="css/fullcalendar.css" />
         <link rel="stylesheet" href="css/matrix-style.css" />
         <link rel="stylesheet" href="css/matrix-media.css" />
-        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" href="css/jquery.gritter.css" />
         <link rel="stylesheet" href="css/uniform.css" />
         <link rel="stylesheet" href="css/select2.css" />
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -65,7 +67,7 @@
         <!--sidebar-menu-->
         <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
             <ul>
-                <li class="active"><a href="index.html"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
+                <li class="active"><a href="{{ route('home') }}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
                 <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cadastros</span> <span class="label label-important">3</span></a>
                     <ul>
                         <li><a href="{{ route('pessoa') }}">Pessoas</a></li>
