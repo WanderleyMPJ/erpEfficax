@@ -7,7 +7,6 @@
     </div>
 @endsection
 @section('content')
-
     <div class="row-fluid">
             <div class="widget-content">
                 <div class="widget-box">

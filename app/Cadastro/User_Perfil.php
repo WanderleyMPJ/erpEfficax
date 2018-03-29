@@ -12,6 +12,12 @@ class User_Perfil extends Model {
 
     public function Perfils() {
         return $this->belongsToMany(\App\Cadastro\Perfil::class);
+
+    }
+    public function Perfilnome() {
+        $perfil = $this->Perfils();
+
+        return $perfil ;
     }
 
     public function hasPermission(Permission $permission) {
