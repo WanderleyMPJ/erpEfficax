@@ -64,7 +64,7 @@ class AddUserSeeder extends Seeder {
 
         DB::table('perfil_user')->insert([
             'user_id' => 2,
-            'perfil_id' => 2,
+            'perfil_id' => 1,
         ]);
 
         DB::table('perfil_permission')->insert([
