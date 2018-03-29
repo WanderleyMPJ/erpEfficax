@@ -25,7 +25,7 @@ class AuthServiceProvider extends ServiceProvider {
      * @return void
      */
     public function boot() {
-       /* $this->registerPolicies();
+        $this->registerPolicies();
               
         
      //   if (App\Funcoes\funcoes::verificaTabela('permissions')) {
@@ -47,7 +47,7 @@ class AuthServiceProvider extends ServiceProvider {
                 if ($user->hasAnyPerfils('Admin'))
                     return true;
             });
-        }*/
+
     }
 
 }

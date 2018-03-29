@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Cadastro;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Model\Cadastro\Pessoa;
+use App\Cadastro\Pessoa;
 use Gate;
 
 class PessoaController extends Controller
