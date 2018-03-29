@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Model\Cadastro;
+namespace App\Cadastro;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Perfil extends Model {
 
     public function permissions() {
-        return $this->belongsToMany(\App\Model\Cadastro\Permission::class);
+        return $this->belongsToMany(\App\Cadastro\Permission::class);
     }
 
 }
