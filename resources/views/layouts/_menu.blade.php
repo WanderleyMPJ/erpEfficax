@@ -35,7 +35,7 @@
             <ul class="nav">
                 <li  class="dropdown" id="profile-messages" ><a title="" href="#" data-toggle="dropdown" data-target="#profile-messages" class="dropdown-toggle"><i class="icon icon-user"></i>  <span class="text">Bem Vindo {{ Auth::user()->name }}</span><b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="{{Route('perfil')}}"><i class="icon-user"></i> Meu Perfil</a></li>
+                        <li><a href="{{Route('userpermissions')}}"><i class="icon-user"></i> Meu Perfil</a></li>
                         <li class="divider"></li>
                         <li><a href="#"><i class="icon-check"></i> Minhas Tarefas</a></li>
                         <li class="divider"></li>
