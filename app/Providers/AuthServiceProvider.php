@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider {
      //   if (App\Funcoes\funcoes::verificaTabela('permissions')) {
         // IF (function () {return verificaTabela('permissions'); }) {
             //   if (App\Funcoes\funcoes::verificaTabela('permissions')) {
-/*            $permissions = Permission::with('perfils')->get();
+           $permissions = Permission::with('perfils')->get();
 
             foreach ($permissions as $permission) {
 
@@ -45,5 +45,5 @@ class AuthServiceProvider extends ServiceProvider {
                 if ($user->hasAnyPerfils('Admin'))
                     return true;
             });
-  */  }
+    }
 }
