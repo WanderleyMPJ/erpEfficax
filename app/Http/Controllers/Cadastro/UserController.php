@@ -18,7 +18,7 @@ class UserController extends Controller
         if ( Gate::denies('user_view', $users) )
             abort(403, 'Usuário não autorizado');
 
-        return view('auth.index',compact('users'));
+        return view('auth.index', compact('users'));
     }
     
         public function userpermissions() {
