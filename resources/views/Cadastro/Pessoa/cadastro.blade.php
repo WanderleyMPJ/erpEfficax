@@ -1,7 +1,7 @@
 @extends('layouts._menu')
 @section('menutop')
 <div id="content-header">
-    <div id="breadcrumb"> <a href="{{ route('home') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoacadastro') }}" class="current">Cadastrar Pessoa</a> </div>
+    <div id="breadcrumb"> <a href="{{ route('home') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pcadastro') }}" class="current">Cadastrar Pessoa</a> </div>
 </div>
 @endsection
 @section('content')

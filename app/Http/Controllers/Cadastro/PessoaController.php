@@ -33,7 +33,7 @@ class PessoaController extends Controller
         if (Gate::denies('Pessoa_Cadastrar', $pessoas) )
             abort(403,'Usuário Não autotizado');
 
-        return view('cadastro.pessoa.cadastro', compact('pessoa'));
+        return view('cadastro.pessoa.detalhes', compact('pessoa'));
     }
 
     /**
