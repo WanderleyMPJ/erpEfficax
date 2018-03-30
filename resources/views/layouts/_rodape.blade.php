@@ -4,6 +4,13 @@
 </div>
 
 <!--end-Footer-part-->
+<script src="js/bootstrap-colorpicker.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.toggle.buttons.js"></script>
+<script src="js/masked.js"></script>
+<script src="js/matrix.form_common.js"></script>
+<script src="js/wysihtml5-0.3.0.js"></script>
+<script src="js/bootstrap-wysihtml5.js"></script>
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery.ui.custom.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -27,9 +34,6 @@
 <script src="js/matrix.popover.js"></script>
 <script src="js/jquery.dataTables.min.js"></script>
 <script src="js/matrix.tables.js"></script>
-
-
-
 <script type="text/javascript">
     // This function is called from the pop-up menus to transfer to
     // a different page. Ignore if the value returned is a null string:
@@ -53,4 +57,7 @@
     function resetMenu() {
         document.gomenu.selector.selectedIndex = 2;
     }
+</script>
+<script>
+    $('.textarea_editor').wysihtml5();
 </script>

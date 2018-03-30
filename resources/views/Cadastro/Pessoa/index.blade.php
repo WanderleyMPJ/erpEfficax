@@ -5,7 +5,12 @@
 </div>
 @endsection
 @section('content')
-    <span class="label label-success"><a  href="{{route('pcadastro')}}">Adicionar</a></span>
+
+    <div class="quick-actions_homepage">
+        <ul class="quick-actions">
+            <li class="bg_lb"> <a href="{{ route('pcadastro') }}"> <i class="icon-plus"></i> Adicionar </a> </li>
+        </ul>
+    </div>
 <div class="widget-box">
     <div class="widget-title"> <span class="icon"><input type="checkbox" id="title-checkbox" name="title-checkbox"></span>
         <h5>Listagem Pessoas</h5>
