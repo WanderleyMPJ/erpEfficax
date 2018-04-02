@@ -43,6 +43,6 @@ class CreatePessoaGruposTable extends Migration
     public function down()
     {
         Schema::dropIfExists('pessoaXgrupos');
-        Schema::dropIfExists('pessoa__grupos');
+        Schema::dropIfExists('pessoa_grupos');
     }
 }

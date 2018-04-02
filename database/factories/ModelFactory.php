@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(App\Cadastro\Pessoa_Grupo::class, function (Faker $faker) 
+$factory->define(App\Cadastro\PessoaGrupo::class, function (Faker $faker) 
 {
     return 
     [
@@ -58,7 +58,11 @@ $factory->define(App\Cadastro\PessoaEndereco::class, function (Faker $faker) {
         'descricao' => $faker->company,
         'logradouro' => $faker->address,
         'uf'=> 'RO',
-        'Cidade' => 'Porto Velho'
+        'Cidade' => $faker->city,
+        'Bairro' => 'Bairro '||$faker->city,
+        'Cep' => $faker->postcode,
+        'complemento' => 'sala a',
+        'referencia' => 'Perto do shopping',
  /*       ,
         'pessoa_id' => function () {
             return factory(App\Model\Cadastro\Pessoa::class)->create()->id;}

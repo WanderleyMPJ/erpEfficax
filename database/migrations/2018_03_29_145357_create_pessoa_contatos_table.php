@@ -24,6 +24,11 @@ class CreatePessoaContatosTable extends Migration
             $table->index('telefone');
             $table->index('email');
 
+            
+        });
+        
+        Schema::table('pessoa_contatos', function (Blueprint $table)
+        {
             $table->foreign('pessoa_id')->references('id')->on('pessoas');
         });
     }

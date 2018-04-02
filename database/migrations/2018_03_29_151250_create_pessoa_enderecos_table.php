@@ -16,12 +16,14 @@ class CreatePessoaEnderecosTable extends Migration
         Schema::create('pessoa_enderecos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pessoa_id')->unsigned();
-            $table->string('descricao', 60);
-            $table->string('cep', 10);
-            $table->string('rua', 50);
-            $table->string('bairro', 50);
-            $table->string('cidade', 25);
-            $table->string('estado', 2);
+            $table->string('descricao', 60)->nullable();
+            $table->string('cep', 10)->nullable();
+            $table->string('logradouro', 120)->nullable();
+            $table->string('bairro', 50)->nullable();
+            $table->string('cidade', 25)->nullable();
+            $table->string('uf', 2)->nullable();
+            $table->string('complemento', 120)->nullable();
+            $table->string('referencia', 160)->nullable();
             $table->timestamps();
 
             $table->index('descricao');
