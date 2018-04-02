@@ -32,7 +32,7 @@ class PessoaController extends Controller
     {
         $tipo = '1';
         $pessoas =$pessoa->find($pessoa->id);
-        $grupo = \App\Cadastro\Grupo::all();
+        $grupo = \App\Cadastro\PessoaGrupo::all();
 
 
         if (Gate::denies('Pessoa_Cadastrar', $pessoas) )

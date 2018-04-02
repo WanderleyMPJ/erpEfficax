@@ -1,7 +1,7 @@
 @extends('layouts._menu')
 @section('menutop')
     <div id="content-header">
-        <div id="breadcrumb"> <a href="{{ route('home') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoa.index') }}" class="tip-bottom">Pessoa</a> <a href="{{ route('pessoa.cadastro') }}" class="current">Cadastro</a></div>
+        <div id="breadcrumb"> <a href="{{ route('home') }}" title="Ir Para Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoa.index') }}" class="tip-bottom">Pessoa</a> <a href="{{ route('pessoa.cadastro') }}" class="current">Cadastro</a></div>
     </div>
 @endsection
 @section('content')
@@ -58,7 +58,7 @@
                                 <div class="controls">
                                     <select multiple name="grupo[]" >
                                         @forelse($grupo as $grupo)
-                                        <option  value="{{$grupo->id}}">{{$grupo->nome}}</option>
+                                        <option  value="{{$grupo->id}}">{{$grupo->Descricao}}</option>
                                         @empty
                                         @endforelse
                                     </select>
