@@ -4,7 +4,7 @@ namespace App\Cadastro;
 
 use Illuminate\Database\Eloquent\Model;
 
-<<<<<<< HEAD
+
 class Pessoa extends Model {
 
     protected $fillable = ['id', 'pessoa_id', 'nome', 'cnpj_cpf', 'rg_inscest', 'fantasia', 'ativo', 
@@ -18,25 +18,9 @@ class Pessoa extends Model {
         return $this->hasMany('App\Cadastro\PessoaEndereco');
     }
     
-    public function grupos() {
-        return $this->hasMany('App\Cadastro\PessoaXGrupo');
-=======
-class Pessoa extends Model
-{
-    protected $fillable = ['nome','rg_inscest','cnpj_cpf','tipo_pessoa','fantasia','ativo','user_id'];
-
-
-    public function contatos()
-    {
-        return $this->hasMany('App\Cadastro\Pessoa_Contato');
-    }
     public function grupos()
     {
         return $this->belongsToMany('App\Cadastro\Grupos');
-    }
-    public function enderecos()
-    {
-        return $this->hasMany('App\Cadastro\Pessoa_Endereco');
     }
 
     public function addContatos(Pessoa_Contato $cont)
@@ -64,7 +48,6 @@ class Pessoa extends Model
         }
 
         return true;
->>>>>>> Pedro
     }
 
 }
