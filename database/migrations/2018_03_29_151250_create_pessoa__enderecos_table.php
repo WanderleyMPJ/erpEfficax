@@ -30,11 +30,7 @@ class CreatePessoaEnderecosTable extends Migration
             $table->index('descricao');
             $table->index('cep');
 
-<<<<<<< HEAD
-            $table->foreign('pessoa_id')->references('id')->on('pessoas')->ondelete('cascade');
-=======
-            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');;
->>>>>>> Wanderley
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
         });
     }
 
