@@ -13,7 +13,7 @@ class CreatePessoaContatosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa__contatos', function (Blueprint $table) {
+        Schema::create('pessoa_contatos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pessoa_id')->unsigned();
             $table->string('descricao', 60);
@@ -29,7 +29,7 @@ class CreatePessoaContatosTable extends Migration
         
         Schema::table('pessoa_contatos', function (Blueprint $table)
         {
-            $table->foreign('pessoa_id')->references('id')->on('pessoas');
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')->ONDELETE('CASCADE');
         });
     }
 
@@ -40,6 +40,6 @@ class CreatePessoaContatosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoa__contatos');
+        Schema::dropIfExists('pessoa_contatos');
     }
 }
