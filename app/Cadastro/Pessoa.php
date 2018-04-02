@@ -16,5 +16,9 @@ class Pessoa extends Model {
     public function enderecos() {
         return $this->hasMany('App\Cadastro\PessoaEndereco');
     }
+    
+    public function grupos() {
+        return $this->hasMany('App\Cadastro\PessoaXGrupo');
+    }
 
 }
