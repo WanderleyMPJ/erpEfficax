@@ -32,10 +32,11 @@ class PessoaController extends Controller
     {
         $tipo = '1';
         $pessoas =$pessoa->find($pessoa->id);
-
         $grupo = \App\Cadastro\Grupo::all();
 
-        if (Gate::denies('pessoa_create', $pessoas) )
+
+        if (Gate::denies('Pessoa_Cadastrar', $pessoas) )
+
             abort(403,'Usuário Não autotizado');
 
         return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));

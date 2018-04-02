@@ -22,11 +22,13 @@ Route::get('/teste2', function () {return verificaTabela('permissions');});
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/user', 'Cadastro\UserController@index')->name('user');
+Route::get('/userpermissions', 'Cadastro\UserController@userpermissions')->name('userpermissions');
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil');
+
 Route::get('naoautorizado', function(){
     view('error.naoautorizado');
 });
+
 Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil');
 /*Pessoas*/
 Route::get('/pessoa', 'Cadastro\PessoaController@index')->name('pessoa.index');
@@ -37,3 +39,4 @@ Route::get('/pessoa/salvar', ['uses'=>'Cadastro\PessoaController@novaPessoa','as
 /*Telefones*/
 Route::post('/telefone/salvar/{id}',['uses'=>'Cadastro\PessoaContato@salvar','as'=>'telefone.salvar']);
 /*End Telefones*/
+

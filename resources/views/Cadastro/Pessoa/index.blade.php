@@ -5,7 +5,7 @@
 </div>
 @endsection
 @section('content')
-
+    <span class="label label-success"><a  href="{{route('pcadastro')}}">Adicionar</a></span>
     <div class="quick-actions_homepage">
         <ul class="quick-actions">
             <li class="bg_lb"> <a href="{{ route('pessoa.cadastro') }}"> <i class="icon-plus"></i> Adicionar </a> </li>
