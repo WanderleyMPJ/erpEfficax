@@ -7,9 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pessoa extends Model
 {
     protected $fillable = ['nome','rg_inscest','cnpj_cpf','tipo_pessoa','fantasia','ativo','user_id'];
+
+
     public function contatos()
     {
         return $this->hasMany('App\Cadastro\Pessoa_Contato');
+    }
+    public function grupos()
+    {
+        return $this->belongsToMany('App\Cadastro\Grupos');
     }
     public function enderecos()
     {
@@ -42,8 +48,5 @@ class Pessoa extends Model
 
         return true;
     }
-
-
-
 
 }

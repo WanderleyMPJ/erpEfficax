@@ -32,7 +32,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="nm_rs">Nome | Razão Social:</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Razão Social" name="nome" id="nm_rs" />
+                                    <input type="text" class="span11" placeholder="Razão Social" name="nome" id="nm_rs"/>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -56,9 +56,9 @@
                             <div class="control-group">
                                 <label class="control-label">Grupo</label>
                                 <div class="controls">
-                                    <select multiple >
+                                    <select multiple name="grupo[]" >
                                         @forelse($grupo as $grupo)
-                                        <option>{{$grupo->nome}}</option>
+                                        <option  value="{{$grupo->id}}">{{$grupo->nome}}</option>
                                         @empty
                                         @endforelse
                                     </select>

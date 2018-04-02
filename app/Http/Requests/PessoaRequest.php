@@ -50,6 +50,7 @@ class PessoaRequest extends FormRequest
             'tipo_pessoa'=>'required',
             'fantasia'=>'required',
             'ativo',
+            'grupo[]',
             'c_descricao'=>'required|max:255',
             'c_telefone'=>'required',
             'c_email',
@@ -59,7 +60,7 @@ class PessoaRequest extends FormRequest
             'e_cidade',
             'e_bairro',
             'e_rua',
-            'e_num'
+            'e_num',
 
         ];
 

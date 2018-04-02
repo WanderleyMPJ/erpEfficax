@@ -17,7 +17,7 @@ class PessoaController extends Controller
         //  $pessoas = $pessoa->where('user_id', auth()->user()->id)->get();
 
 
-        if ( Gate::denies('Pessoa_view', $pessoas) )
+        if ( Gate::denies('pessoa_view', $pessoas) )
             abort(403, 'Usuário não autorizado');
 
         return view('cadastro.pessoa.index',compact('pessoas'));
@@ -30,14 +30,15 @@ class PessoaController extends Controller
      */
     public function create(Pessoa $pessoa)
     {
+        $tipo = '1';
         $pessoas =$pessoa->find($pessoa->id);
 
-        $grupo = \App\Cadastro\Pessoa_Grupo::all();
+        $grupo = \App\Cadastro\Grupo::all();
 
-        if (Gate::denies('Pessoa_create', $pessoas) )
+        if (Gate::denies('pessoa_create', $pessoas) )
             abort(403,'Usuário Não autotizado');
 
-        return view('cadastro.pessoa.add', compact('pessoa','grupo'));
+        return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));
     }
 
     /**
@@ -70,8 +71,9 @@ class PessoaController extends Controller
      */
     public function detalhe($id)
     {
-        $cliente = \App\Cadastro\Pessoa::find($id);
-        return view('Cadastro.Pessoa.add',compact('pessoa'));
+        $tipo = '0';
+        $pessoa = \App\Cadastro\Pessoa::find($id);
+        return view('Cadastro.Pessoa.add',compact('pessoa','tipo'));
     }
 
     /**
@@ -98,6 +100,8 @@ class PessoaController extends Controller
     }
 
     public function novaPessoa(\App\Http\Requests\PessoaRequest $request){
+       dd($request->all());
+
         try{
             \DB::transaction(function() use($request){
 
@@ -121,13 +125,18 @@ class PessoaController extends Controller
                $endereco['pessoa_id'] = $pessoa->id;
                $endereco['descricao'] = $request->input('e_desc');
                $endereco['cep'] = $request->input('e_cep');
-               $endereco['rua'] = $request->input('e_estado');
-               $endereco['bairro'] = $request->input('e_cidade');
-               $endereco['cidade'] = $request->input('e_bairro');
-               $endereco['estado'] = $request->input('e_rua');
-               $endereco['estado'] = $request->input('e_num');
+               $endereco['rua'] = $request->input('e_rua');
+               $endereco['num'] = $request->input('e_num');
+               $endereco['bairro'] = $request->input('e_bairro');
+               $endereco['cidade'] = $request->input('e_cidade');
+               $endereco['estado'] = $request->input('e_estado');
 
                 \App\Cadastro\Pessoa_Endereco::create($endereco);
+
+                $grupo['pessoa_id'] = $pessoa->id;
+                $grupo['grupo_id'] = $request->input('grupo');
+
+                \App\Cadastro\Pessoa_Grupo::create($grupo);
 
             });
             return redirect()->route('pessoa.index');
