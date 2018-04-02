@@ -29,7 +29,11 @@ class CreatePessoaContatosTable extends Migration
         
         Schema::table('pessoa_contatos', function (Blueprint $table)
         {
+<<<<<<< HEAD
             $table->foreign('pessoa_id')->references('id')->on('pessoas')->ondelete('cascade');
+=======
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')->ONDELETE('CASCADE');
+>>>>>>> Wanderley
         });
     }
 
