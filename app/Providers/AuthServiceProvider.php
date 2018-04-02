@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider {
     public function boot() {
         $this->registerPolicies();
               
-        
+       /*
      //   if (App\Funcoes\funcoes::verificaTabela('permissions')) {
         $this->registerPolicies();
 
@@ -46,7 +46,7 @@ class AuthServiceProvider extends ServiceProvider {
             Gate::before(function(User $user, $hability) {
                 if ($user->hasAnyPerfils('Admin'))
                     return true;
-            });
+            });*/
 
     }
 

@@ -4,6 +4,7 @@
 </div>
 
 <!--end-Footer-part-->
+<script src="js/custom.js"></script>
 <script src="js/bootstrap-colorpicker.js"></script>
 <script src="js/bootstrap-datepicker.js"></script>
 <script src="js/jquery.toggle.buttons.js"></script>
