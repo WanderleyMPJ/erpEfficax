@@ -21,7 +21,7 @@ class AddUserSeeder extends Seeder {
         ]);
         DB::table('users')->insert([
             'name' => 'Pedro',
-            'email' => 'pedro.efficax@gmail.com',
+            'email' => 'efficax.pedro@gmail.com',
             'password' => bcrypt( '123456'), // secret
             'remember_token' => str_random(10),
             'ativo'=> 1,
@@ -66,7 +66,14 @@ class AddUserSeeder extends Seeder {
             'nome' => 'User_Deletar',
             'descricao' => 'Deletar Usuarios',
         ]);
-
+        DB::table('permissions')->insert([
+            'nome' => 'Pessoa_view',
+            'descricao' => 'Ver Pessoa',
+        ]);
+        DB::table('permissions')->insert([
+            'nome' => 'Pessoa_create',
+            'descricao' => 'Inserir Pessoa',
+        ]);
 // Pessoa
         DB::table('permissions')->insert([
             'nome' => 'Pessoa_Cadastrar',

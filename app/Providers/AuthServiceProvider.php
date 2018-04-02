@@ -27,7 +27,7 @@ class AuthServiceProvider extends ServiceProvider {
     public function boot() {
         $this->registerPolicies();
               
-        
+
      //   if (App\Funcoes\funcoes::verificaTabela('permissions')) {
         // IF (function () {return verificaTabela('permissions'); }) {
             //   if (App\Funcoes\funcoes::verificaTabela('permissions')) {

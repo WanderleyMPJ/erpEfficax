@@ -13,7 +13,7 @@ class CreatePessoaContatosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa_contatos', function (Blueprint $table) {
+        Schema::create('pessoa__contatos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pessoa_id')->unsigned();
             $table->string('descricao', 60);
@@ -40,6 +40,6 @@ class CreatePessoaContatosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoa_contatos');
+        Schema::dropIfExists('pessoa__contatos');
     }
 }

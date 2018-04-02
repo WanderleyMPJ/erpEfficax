@@ -8,6 +8,7 @@
 
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="css/custom.css" />
         <link rel="stylesheet" href="css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
         <link rel="stylesheet" href="css/fullcalendar.css" />
@@ -71,9 +72,9 @@
         <div id="sidebar"><a href="#" class="visible-phone"><i class="icon icon-home"></i> Dashboard</a>
             <ul>
                 <li class="active"><a href="{{ route('home') }}"><i class="icon icon-home"></i> <span>Dashboard</span></a> </li>
-                <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cadastros</span> <span class="label label-important">3</span></a>
+                <li class="submenu"> <a href="#"><i class="icon icon-th-list"></i> <span>Cadastros</span></a>
                     <ul>
-                        <li><a href="{{ route('pessoa') }}">Pessoas</a></li>
+                        <li><a href="{{ route('pessoa.index') }}">Pessoas</a></li>
                         <li><a href="{{ route('user') }}">Usuários</a></li>
                         <li><a href="form-validation.html">Produtos</a></li>
                         <li><a href="form-wizard.html">Serviços</a></li>
@@ -81,7 +82,7 @@
                 </li>
                 
                 <li> <a href="charts.html"><i class="icon icon-signal"></i> <span>Gráficos</span></a> </li>
-                <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Addons</span> <span class="label label-important">5</span></a>
+                <li class="submenu"> <a href="#"><i class="icon icon-file"></i> <span>Addons</span></a>
                     <ul>
                         <li><a href="index2.html">Dashboard2</a></li>
                         <li><a href="gallery.html">Gallery</a></li>

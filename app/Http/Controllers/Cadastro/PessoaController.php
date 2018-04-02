@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Cadastro;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Cadastro\Pessoa;
 use Gate;
+
 
 class PessoaController extends Controller
 {
@@ -28,12 +30,16 @@ class PessoaController extends Controller
      */
     public function create(Pessoa $pessoa)
     {
+        $tipo = '1';
         $pessoas =$pessoa->find($pessoa->id);
+        $grupo = \App\Cadastro\Grupo::all();
+
 
         if (Gate::denies('Pessoa_Cadastrar', $pessoas) )
+
             abort(403,'Usuário Não autotizado');
 
-        return view('cadastro.pessoa.detalhes', compact('pessoa'));
+        return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));
     }
 
     /**
@@ -64,9 +70,11 @@ class PessoaController extends Controller
      * @param  \App\Model\Cadastro\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Pessoa $pessoa)
+    public function detalhe($id)
     {
-        //
+        $tipo = '0';
+        $pessoa = \App\Cadastro\Pessoa::find($id);
+        return view('Cadastro.Pessoa.add',compact('pessoa','tipo'));
     }
 
     /**
@@ -90,5 +98,53 @@ class PessoaController extends Controller
     public function destroy(Pessoa $pessoa)
     {
         //
+    }
+
+    public function novaPessoa(\App\Http\Requests\PessoaRequest $request){
+       dd($request->all());
+
+        try{
+            \DB::transaction(function() use($request){
+
+                $campos = $request->only([
+                    'nome',
+                    'rg_inscest',
+                    'cnpj_cpf',
+                    'tipo_pessoa',
+                    'fantasia',
+                    'ativo',
+                ]);
+                $pessoa = \App\Cadastro\Pessoa::create($campos);
+
+                $contato['pessoa_id'] =  $pessoa->id;
+                $contato['descricao'] = $request->input('c_descricao');
+                $contato['telefone'] = $request->input('c_telefone');
+                $contato['email'] = $request->input( 'c_email');
+
+                \App\Cadastro\Pessoa_Contato::create($contato);
+
+               $endereco['pessoa_id'] = $pessoa->id;
+               $endereco['descricao'] = $request->input('e_desc');
+               $endereco['cep'] = $request->input('e_cep');
+               $endereco['rua'] = $request->input('e_rua');
+               $endereco['num'] = $request->input('e_num');
+               $endereco['bairro'] = $request->input('e_bairro');
+               $endereco['cidade'] = $request->input('e_cidade');
+               $endereco['estado'] = $request->input('e_estado');
+
+                \App\Cadastro\Pessoa_Endereco::create($endereco);
+
+                $grupo['pessoa_id'] = $pessoa->id;
+                $grupo['grupo_id'] = $request->input('grupo');
+
+                \App\Cadastro\Pessoa_Grupo::create($grupo);
+
+            });
+            return redirect()->route('pessoa.index');
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
     }
 }

@@ -1,14 +1,14 @@
 @extends('layouts._menu')
 @section('menutop')
 <div id="content-header">
-    <div id="breadcrumb"> <a href="{{ route('home') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoa') }}" class="current">Pessoa</a> </div>
+    <div id="breadcrumb"> <a href="{{ route('home') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoa.index') }}" class="current">Pessoa</a> </div>
 </div>
 @endsection
 @section('content')
     <span class="label label-success"><a  href="{{route('pcadastro')}}">Adicionar</a></span>
     <div class="quick-actions_homepage">
         <ul class="quick-actions">
-            <li class="bg_lb"> <a href="{{ route('pcadastro') }}"> <i class="icon-plus"></i> Adicionar </a> </li>
+            <li class="bg_lb"> <a href="{{ route('pessoa.cadastro') }}"> <i class="icon-plus"></i> Adicionar </a> </li>
         </ul>
     </div>
 <div class="widget-box">
