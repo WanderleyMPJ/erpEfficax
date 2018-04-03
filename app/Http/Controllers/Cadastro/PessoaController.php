@@ -100,9 +100,7 @@ class PessoaController extends Controller
     }
 
     public function novaPessoa(\App\Http\Requests\PessoaRequest $request){
-       dd($request->all());
-
-        try{
+       try{
             \DB::transaction(function() use($request){
 
                 $campos = $request->only([
