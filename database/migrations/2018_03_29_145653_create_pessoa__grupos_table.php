@@ -23,6 +23,7 @@ class CreatePessoaGruposTable extends Migration
             $table->increments('id');
             $table->integer('pessoa_id')->unsigned();
             $table->integer('pessoagrupo_id')->unsigned();
+            $table->timestamps();
 
            
             $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');

@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class PessoaEndereco extends Model
 {
-    protected $fillable = ['pessoa_id','descricao','cep','rua','bairro','cidade','estado', 'num'];
+    protected $fillable = ['pessoa_id','descricao','cep','logradouro','bairro','cidade','uf','complemento','referencia'];
     public function pessoa()
     {
-        return $this->belongsTo('App\Cadastro\Pessoa');
+        return $this->belongsToMany('App\Cadastro\Pessoa');
     }
 }

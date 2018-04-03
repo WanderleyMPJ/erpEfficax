@@ -30,14 +30,14 @@ class PessoaRequest extends FormRequest
             'rq_inscest.required'=>'Preencha um RG ou Inscrição Estadual',
             'rg_inscest.max'=>'RG ou incrição estadual deve ter até 20 caracteres',
             'rg_inscest.min'=>'RG ou incrição estadual deve ter no mínimo 5 caracteres',
-            'cnpj_cpf.required'>'Preencha o CPF ou CNPJ',
-            'cnpj_cpf.max'>'CPF ou CNPJ deve ter até 30 caracteres',
-            'cnpj_cpf.min'>'CPF ou CNPJ deve ter no mínimo 5 caracteres',
+            'cnpj_cpf.required'=>'Preencha o CPF ou CNPJ',
+            'cnpj_cpf.max'=>'CPF ou CNPJ deve ter até 30 caracteres',
+            'cnpj_cpf.min'=>'CPF ou CNPJ deve ter no mínimo 5 caracteres',
             'tipo_pessoa.required'=>'Escolha o Tipo de Pessoa',
             'fantasia.required'=>'Preencha o Nome Fantasia',
             'c_descricao.required'=>'Preencha um Título',
             'c_descricao.max'=>'Título deve ter até 255 caracteres',
-            'c_telefone.required'=>'Preencha um Número de Telefone'
+            'c_telefone.required'=>'Preencha um Número de Telefone',
 
         ];
     }
@@ -50,17 +50,18 @@ class PessoaRequest extends FormRequest
             'tipo_pessoa'=>'required',
             'fantasia'=>'required',
             'ativo',
-            'grupo[]',
+            'grupo',
             'c_descricao'=>'required|max:255',
             'c_telefone'=>'required',
             'c_email',
-            'e_desc',
+            'e_descricao',
             'e_cep',
-            'e_estado',
+            'e_uf',
             'e_cidade',
             'e_bairro',
-            'e_rua',
-            'e_num',
+            'e_logradouro',
+            'e_complemento',
+            'e_referencia',
 
         ];
 

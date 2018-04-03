@@ -38,7 +38,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="ap_nf">Apelido | Nome Fantasia:</label>
                                 <div class="controls">
-                                    <input type="text" class="span11" placeholder="Nome Fantasia" name="fantasia" id="ap_nf" />
+                                    <input type="text" class="span11" placeholder="Nome Fantasia" name="fantasia" id="ap_nf"/>
                                 </div>
                             </div>
                             <div class="control-group">
@@ -56,9 +56,9 @@
                             <div class="control-group">
                                 <label class="control-label">Grupo</label>
                                 <div class="controls">
-                                    <select multiple name="grupo[]" >
+                                    <select multiple name="grupo" >
                                         @forelse($grupo as $grupo)
-                                        <option  value="{{$grupo->id}}">{{$grupo->Descricao}}</option>
+                                        <option  value="{{$grupo->id}}" >{{$grupo->Descricao}}</option>
                                         @empty
                                         @endforelse
                                     </select>
@@ -76,7 +76,7 @@
             </div>
         </div>
     </div>
-    <div class="row-fluid">
+   <div class="row-fluid">
         <div class="widget-content">
            <div class="widget-box">
                <div class="widget-title"> <span class="icon"> <i class="icon-plus"></i> </span>
@@ -87,19 +87,19 @@
                            <div class="control-group">
                                <label class="control-label" for="c_desc">Descrição:</label>
                                <div class="controls">
-                                   <input type="text" class="span11" placeholder="Descrição" name="c_descricao" id="c_desc" />
+                                   <input type="text" class="span11" placeholder="Descrição" name="c_descricao" id="c_desc" value="Pessoal"/>
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="c_telefone">Telefone:</label>
                                <div class="controls">
-                                   <input type="text" class="span8 mask text" placeholder="Telefone" name="c_telefone" id="mask-phone" />
+                                   <input type="text" class="span8 mask text" placeholder="Telefone" name="c_telefone" id="mask-phone" value="69993836480"/>
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="c_mail">E-mail:</label>
                                <div class="controls">
-                                   <input type="text"  class="span11" placeholder="E-mail"  name="c_email" id="c_mail" />
+                                   <input type="text"  class="span11" placeholder="E-mail"  name="c_email" id="c_mail" value="efficax.pedrogmail.com"/>
                                </div>
                            </div>
                        </div>
@@ -120,43 +120,49 @@
                            <div class="control-group">
                                <label class="control-label" for="e_desc">Descrição:</label>
                                <div class="controls">
-                                   <input type="text" class="span11" placeholder="Descrição" name="e_desc" id="e_desc" />
+                                   <input type="text" class="span11" placeholder="Descrição" name="e_descricao" id="e_desc" value="Casa"/>
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_cep">CEP:</label>
                                <div class="controls">
-                                   <input type="text" class="span11" placeholder="CEP" name="e_cep" id="e_cep" />
+                                   <input type="text" class="span11" placeholder="CEP" name="e_cep" id="e_cep" value="76808209"/>
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_estado">Estado:</label>
                                <div class="controls">
-                                   <input type="text"  class="span11" placeholder="Estado"  name="e_estado" id="e_estado" />
+                                   <input type="text"  class="span11" placeholder="Estado"  name="e_uf" id="e_estado" value="RO"/>
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_cidade">Cidade:</label>
                                <div class="controls">
-                                   <input type="text"  class="span11" placeholder="Cidade"  name="e_cidade" id="e_cidade" />
+                                   <input type="text"  class="span11" placeholder="Cidade"  name="e_cidade" id="e_cidade" value="Porto Velho"/>
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_bairro">Bairro:</label>
                                <div class="controls">
-                                   <input type="text"  class="span11" placeholder="Bairro"  name="e_bairro" id="e_bairro" />
+                                   <input type="text"  class="span11" placeholder="Bairro"  name="e_bairro" id="e_bairro" value="Conceição"/>
                                </div>
                            </div>
                            <div class="control-group">
-                               <label class="control-label" for="e_desc">Rua:</label>
+                               <label class="control-label" for="e_logr">Loradouro:</label>
                                <div class="controls">
-                                   <input type="text" class="span11" placeholder="Rua" name="e_rua" id="e_rua" />
+                                   <input type="text" class="span11" placeholder="Rua, Número" name="e_logradouro" id="e_logr" value="Magnólia, 3784"/>
                                </div>
                            </div>
                            <div class="control-group">
-                               <label class="control-label" for="e_desc">Nº:</label>
+                               <label class="control-label" for="e_comp">Complemento:</label>
                                <div class="controls">
-                                   <input type="text" class="span2" placeholder="Número" name="e_num" id="e_num" />
+                                   <input type="text" class="span11" placeholder="Complemento" name="e_complemento" id="e_comp" value="Casa"/>
+                               </div>
+                           </div>
+                           <div class="control-group">
+                               <label class="control-label" for="e_ref">Referência:</label>
+                               <div class="controls">
+                                   <input type="text" class="span11" placeholder="Referência" name="e_referencia" id="e_ref" value="Perto Do Shopping"/>
                                </div>
                            </div>
                        </div>

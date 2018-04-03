@@ -7,10 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pessoa extends Model {
 
-    protected $fillable = ['id', 'pessoa_id', 'nome', 'cnpj_cpf', 'rg_inscest', 'fantasia', 'ativo', 
-        'tipopessoa'];
+    protected $fillable = ['nome',  'rg_inscest','cnpj_cpf', 'tipo_pessoa', 'fantasia', 'ativo','user_id'];
 
-    public function Contatos() {
+    public function contatos() {
         return $this->hasMany('App\Cadastro\PessoaContato');
     }
 
@@ -23,12 +22,12 @@ class Pessoa extends Model {
         return $this->belongsToMany('App\Cadastro\PessoaGrupo');
     }
 
-    public function addContatos(Pessoa_Contato $cont)
+    public function addContatos(PessoaContato $cont)
     {
         return $this->contatos()->save($cont);
     }
 
-    public function deletarTelefones()
+    public function deletarContato()
     {
         foreach ($this->contatos() as $cont) {
             $cont->delete();
@@ -36,7 +35,7 @@ class Pessoa extends Model {
 
         return true;
     }
-    public function addEnderecos(Pessoa_Endereco $end)
+    public function addEnderecos(PessoaEndereco $end)
     {
         return $this->enderecos()->save($end);
     }

@@ -101,8 +101,6 @@ class PessoaController extends Controller
     }
 
     public function novaPessoa(\App\Http\Requests\PessoaRequest $request){
-       dd($request->all());
-
         try{
             \DB::transaction(function() use($request){
 
@@ -121,23 +119,24 @@ class PessoaController extends Controller
                 $contato['telefone'] = $request->input('c_telefone');
                 $contato['email'] = $request->input( 'c_email');
 
-                \App\Cadastro\Pessoa_Contato::create($contato);
+                \App\Cadastro\PessoaContato::create($contato);
 
                $endereco['pessoa_id'] = $pessoa->id;
                $endereco['descricao'] = $request->input('e_desc');
                $endereco['cep'] = $request->input('e_cep');
-               $endereco['rua'] = $request->input('e_rua');
-               $endereco['num'] = $request->input('e_num');
+               $endereco['logradouro'] = $request->input('e_logradouro');
                $endereco['bairro'] = $request->input('e_bairro');
                $endereco['cidade'] = $request->input('e_cidade');
-               $endereco['estado'] = $request->input('e_estado');
+               $endereco['uf'] = $request->input('e_uf');
+               $endereco['complemento'] = $request->input('e_complemento');
+               $endereco['referencia'] = $request->input('e_referencia');
 
-                \App\Cadastro\Pessoa_Endereco::create($endereco);
+                \App\Cadastro\PessoaEndereco::create($endereco);
 
                 $grupo['pessoa_id'] = $pessoa->id;
-                $grupo['grupo_id'] = $request->input('grupo');
+                $grupo['pessoagrupo_id'] = $request->input('grupo');
 
-                \App\Cadastro\Pessoa_Grupo::create($grupo);
+                \App\Cadastro\PessoaXGrupo::create($grupo);
 
             });
             return redirect()->route('pessoa.index');
