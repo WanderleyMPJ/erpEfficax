@@ -4,11 +4,9 @@ namespace App\Cadastro;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pessoa_Grupo extends Model
+class PessoaXGrupo extends Model
 {
-    protected $fillable = [
-        'pessoa_id', 'grupo_id',
-    ];
+protected $fillable = ['pessoa_id', 'pessoagrupo_id'];
 
     public function Pessoas() {
         return $this->belongsToMany(\App\Cadastro\Pessoa::class);
@@ -20,7 +18,7 @@ class Pessoa_Grupo extends Model
         return $pessoa ;
     }
 
-    public function hasGrupo(\App\Cadastro\Grupo $grupo) {
+   public function hasGrupo(\App\Cadastro\PessoaGrupo $grupo) {
 
         return $this->hasAnyGrupos($grupo->Pessoas());
     }
@@ -31,5 +29,4 @@ class Pessoa_Grupo extends Model
         }
         return $this->Pessoas->contains('nome', $grupos);
     }
-
 }

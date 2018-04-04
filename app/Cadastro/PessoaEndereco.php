@@ -4,9 +4,10 @@ namespace App\Cadastro;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pessoa_Endereco extends Model
+class PessoaEndereco extends Model
 {
-    protected $fillable = ['pessoa_id','descricao','cep','rua','bairro','cidade','estado', 'num'];
+    protected $fillable = ['id','pessoa_id','descricao','cep','logradouro','bairro','cidade','uf','complemento','referencia'];
+
     public function pessoa()
     {
         return $this->belongsTo('App\Cadastro\Pessoa');

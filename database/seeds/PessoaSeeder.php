@@ -10,37 +10,23 @@ class PessoaSeeder extends Seeder
      * @return void
      */
     public function run()
-       {
-            factory('App\Model\Cadastro\PessoaGrupo',3)->create();
+      {
+            factory('App\Cadastro\PessoaGrupo',3)->create();
 
-            factory(App\Model\Cadastro\Pessoa::class, 10)->create()
+            factory(App\Cadastro\Pessoa::class, 10)->create()
                 ->each(
-                    function ($u){$u->enderecos()->save(factory(App\Model\Cadastro\PessoaEndereco::class)->make());
+                    function ($u){$u->enderecos()->save(factory(App\Cadastro\PessoaEndereco::class)->make());
 
 
 
             });
 
-   factory(App\Model\Cadastro\Pessoa::class, 10)->create()
+   factory(App\Cadastro\Pessoa::class, 10)->create()
                 ->each(
-                    function ($u){$u->contatos()->save(factory(App\Model\Cadastro\PessoaContato::class)->make());
+                    function ($u){$u->contatos()->save(factory(App\Cadastro\PessoaContato::class)->make());
 
 
 
             });
-
-        
-//                    function ($u){$u->contatos()->save(factory(App\Model\Cadastro\PessoaContato::class)->make());}
-
-
-
-
-/*            factory('App\Cliente',10)->create()->each(function($u){
-            $u->telefones()->save(factory('App\Telefone')->make());
-        });
-*/
-
-
-        }
-
+    }
 }

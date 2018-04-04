@@ -1,12 +1,12 @@
 @extends('layouts._menu')
 @section('menutop')
     <div id="content-header">
-        <div id="breadcrumb"> <a href="{{ route('home') }}" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoa.index') }}" class="tip-bottom">Pessoa</a> <a href="{{ route('pessoa.cadastro') }}" class="current">Cadastro</a></div>
+        <div id="breadcrumb"> <a href="{{ route('home') }}" title="Ir Para Home" class="tip-bottom"><i class="icon-home"></i> Home</a> <a href="{{ route('pessoa.index') }}" class="tip-bottom">Pessoa</a> <a href="{{ route('pessoa.cadastro') }}" class="current">Cadastro</a></div>
     </div>
 @endsection
 @section('content')
 <div class="widget-box">
-    <form action="{{ route('pessoa.salvar') }}" method="get" class="form-horizontal">
+    <form @if($tipo=='0') action="{{route('pessoa.atualizar', $pessoa->id)}}" @else action="{{ route('pessoa.salvar') }}" @endif method="get" class="form-horizontal">
     <div class="widget-title"> <span class="icon"> <i class="icon-plus"></i> </span>
        <h5>Cadastro de Pessoas</h5>
     </div>
@@ -24,33 +24,45 @@
                                 <div class="controls">
                                     <div data-toggle="buttons-radio" class="btn-group">
 
-                                        <button class="btn btn-primary" onclick="pessoa(0)" type="button"><i class="icon-user"></i> Física</button>
-                                        <button class="btn btn-primary active" onclick="pessoa(1)" type="button"><i class="icon-legal"></i> Jurídica</button>
+                                        <button @if($tipo=='0' && $pessoa->tipo_pessoa == 'fisica') class="btn btn-primary active" @else class="btn btn-primary" @endif  onclick="pessoa(0)" type="button"><i class="icon-user"></i> Física</button>
+                                        <button @if($tipo=='0' && $pessoa->tipo_pessoa == 'juridica') class="btn btn-primary active" @else @if($tipo=='1') class="btn btn-primary active" @else class="btn btn-primary" @endif @endif onclick="pessoa(1)" type="button"><i class="icon-legal"></i> Jurídica</button>
                                     </div>
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="nm_rs">Nome | Razão Social:</label>
                                 <div class="controls">
+<<<<<<< HEAD
                                     <input type="text" class="span11" placeholder="Razão Social" name="nome" id="nm_rs" value="Efficax"/>
+=======
+                                    <input type="text" class="span11" placeholder="Razão Social" name="nome" id="nm_rs" @if($tipo=='0') value="{{$pessoa->nome}}" @else value="Efficax Soluções" @endif/>
+>>>>>>> Pedro
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="ap_nf">Apelido | Nome Fantasia:</label>
                                 <div class="controls">
+<<<<<<< HEAD
                                     <input type="text" class="span11" placeholder="Nome Fantasia" name="fantasia" id="ap_nf" value="Efficax" />
+=======
+                                    <input type="text" class="span11" placeholder="Nome Fantasia" name="fantasia" id="ap_nf" @if($tipo=='0') value="{{$pessoa->fantasia}}" @else value="Efficax" @endif/>
+>>>>>>> Pedro
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="cp_cn">CPF | CNPJ:</label>
                                 <div class="controls">
-                                    <input type="text"  class="span11" placeholder="CNPJ"  name="cnpj_cpf" id="cp_cn" />
+                                    <input type="text"  class="span11" placeholder="CNPJ"  name="cnpj_cpf" id="cp_cn" @if($tipo=='0') value="{{$pessoa->cnpj_cpf}}" @endif />
                                 </div>
                             </div>
                             <div class="control-group">
                                 <label class="control-label" for="rg_inscest">RG | Inscrição Estadual:</label>
                                 <div class="controls">
+<<<<<<< HEAD
                                     <input type="text" class="span11" placeholder="Inscrição Estadual" name="rg_inscest" id="rg_inscest" value="000"/>
+=======
+                                    <input type="text" class="span11" placeholder="Inscrição Estadual" name="rg_inscest" id="rg_inscest" @if($tipo=='0') value="{{$pessoa->rg_inscest}}" @else value="000" @endif />
+>>>>>>> Pedro
                                 </div>
                             </div>
                             <div class="control-group">
@@ -58,8 +70,19 @@
                                 <div class="controls">
                                     <select multiple name="grupo" >
                                         @forelse($grupo as $grupo)
-                                        <option  value="{{$grupo->id}}">{{$grupo->nome}}</option>
-                                        @empty
+                                        <option @if($tipo=='0')
+                                                    @foreach($pessoa->grupos as $pgrupos)
+                                                        @if($pgrupos->pessoagrupo_id == $grupo->id)
+                                                        selected
+                                                        @else
+
+                                                        @endif
+                                                    @endforeach
+                                                @else
+
+                                                @endif
+                                                value="{{$grupo->id}}">{{$grupo->Descricao}}</option>
+                                            @empty
                                         @endforelse
                                     </select>
                                 </div>
@@ -67,7 +90,7 @@
                             <div class="control-group">
                                 <label class="control-label" for="ativo">Inativo</label>
                                 <div class="controls">
-                                    <input id="ativo" type="checkbox" name="ativo" value="0" />
+                                    <input id="ativo" type="checkbox" name="ativo" value="0"  @if($tipo==0 && $pessoa->ativo == 0) checked @endif/>
                                 </div>
                             </div>
                         </div>
@@ -76,7 +99,7 @@
             </div>
         </div>
     </div>
-    <div class="row-fluid">
+   <div class="row-fluid">
         <div class="widget-content">
            <div class="widget-box">
                <div class="widget-title"> <span class="icon"> <i class="icon-plus"></i> </span>
@@ -87,19 +110,31 @@
                            <div class="control-group">
                                <label class="control-label" for="c_desc">Descrição:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text" class="span11" placeholder="Descrição" name="c_descricao" id="c_desc" value="Casa" />
+=======
+                                   <input type="text" class="span11" placeholder="Descrição" name="c_descricao" id="c_desc" @if($tipo=='0' && $pessoa->contatos <> '[]') value="{{$pessoa->contatos[0]->descricao}}" @elseif($tipo=='0' && $pessoa->contatos = '[]') value="" @else value="Pessoal" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="c_telefone">Telefone:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text" class="span8 mask text" placeholder="Telefone" name="c_telefone" id="mask-phone" value="222"/>
+=======
+                                   <input type="text" class="span8 mask text" placeholder="Telefone" name="c_telefone" id="mask-phone" @if($tipo=='0' && $pessoa->contatos <> '[]') value="{{$pessoa->contatos[0]->telefone}}" @elseif($tipo=='0' && $pessoa->contatos = '[]') value="" @else value="69993836480" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="c_mail">E-mail:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text"  class="span11" placeholder="E-mail"  name="c_email" id="c_mail" value="fulano@gmail.com"/>
+=======
+                                   <input type="text"  class="span11" placeholder="E-mail"  name="c_email" id="c_mail" @if($tipo=='0' && $pessoa->contatos <> '[]') value="{{$pessoa->contatos[0]->email}}" @elseif($tipo=='0' && $pessoa->contatos = '[]') value="" @else value="efficax.pedrogmail.com" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                        </div>
@@ -120,43 +155,77 @@
                            <div class="control-group">
                                <label class="control-label" for="e_desc">Descrição:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text" class="span11" placeholder="Descrição" name="e_desc" id="e_desc" value="Teste"/>
+=======
+                                   <input type="text" class="span11" placeholder="Descrição" name="e_descricao" id="e_desc" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->descricao}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="Casa" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_cep">CEP:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text" class="span11" placeholder="CEP" name="e_cep" id="e_cep" value="000"/>
+=======
+                                   <input type="text" class="span11" placeholder="CEP" name="e_cep" id="e_cep" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->cep}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="76808209" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_estado">Estado:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text"  class="span11" placeholder="Estado"  name="e_estado" id="e_estado" value="RO"/>
+=======
+                                   <input type="text"  class="span11" placeholder="Estado"  name="e_uf" id="e_estado" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->uf}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="RO" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_cidade">Cidade:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text"  class="span11" placeholder="Cidade"  name="e_cidade" id="e_cidade" value="Porto Velho"/>
+=======
+                                   <input type="text"  class="span11" placeholder="Cidade"  name="e_cidade" id="e_cidade" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->cidade}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="Porto Velho" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                            <div class="control-group">
                                <label class="control-label" for="e_bairro">Bairro:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text"  class="span11" placeholder="Bairro"  name="e_bairro" id="e_bairro" value="Conceição"/>
+=======
+                                   <input type="text"  class="span11" placeholder="Bairro"  name="e_bairro" id="e_bairro" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->bairro}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="Conceição" @endif/>
                                </div>
                            </div>
                            <div class="control-group">
-                               <label class="control-label" for="e_desc">Rua:</label>
+                               <label class="control-label" for="e_logr">Loradouro:</label>
                                <div class="controls">
+                                   <input type="text" class="span11" placeholder="Rua, Número" name="e_logradouro" id="e_logr" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->logradouro}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="Magnólia, 3784" @endif/>
+>>>>>>> Pedro
+                               </div>
+                           </div>
+                           <div class="control-group">
+                               <label class="control-label" for="e_comp">Complemento:</label>
+                               <div class="controls">
+<<<<<<< HEAD
                                    <input type="text" class="span11" placeholder="Rua" name="e_rua" id="e_rua" value="120230"/>
+=======
+                                   <input type="text" class="span11" placeholder="Complemento" name="e_complemento" id="e_comp" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->complemento}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="Casa" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                            <div class="control-group">
-                               <label class="control-label" for="e_desc">Nº:</label>
+                               <label class="control-label" for="e_ref">Referência:</label>
                                <div class="controls">
+<<<<<<< HEAD
                                    <input type="text" class="span2" placeholder="Número" name="e_num" id="e_num" value="0021"/>
+=======
+                                   <input type="text" class="span11" placeholder="Referência" name="e_referencia" id="e_ref" @if($tipo=='0' && $pessoa->enderecos <> '[]') value="{{$pessoa->enderecos[0]->referencia}}" @elseif($tipo=='0' && $pessoa->enderecos = '[]') value="" @else value="Perto Do Shopping" @endif/>
+>>>>>>> Pedro
                                </div>
                            </div>
                        </div>

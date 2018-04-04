@@ -37,6 +37,16 @@ class AddUserSeeder extends Seeder {
             'descricao' => 'Financeiro',
         ]);
 
+        DB::table('perfil_user')->insert([
+            'user_id' => 1,
+            'perfil_id' => 1,
+        ]);
+
+        DB::table('perfil_user')->insert([
+            'user_id' => 2,
+            'perfil_id' => 1,
+        ]);
+        
         DB::table('permissions')->insert([
             'nome' => 'User_View',
             'descricao' => 'Visualizar Usuarios',
@@ -64,21 +74,17 @@ class AddUserSeeder extends Seeder {
             'nome' => 'Pessoa_create',
             'descricao' => 'Inserir Pessoa',
         ]);
-
-        DB::table('perfil_user')->insert([
-            'user_id' => 1,
-            'perfil_id' => 1,
-        ]);
-
-        DB::table('perfil_user')->insert([
-            'user_id' => 2,
-            'perfil_id' => 1,
+// Pessoa
+        DB::table('permissions')->insert([
+            'nome' => 'Pessoa_Cadastrar',
+            'descricao' => 'Cadastrar Pessoas',
         ]);
 
         DB::table('perfil_permission')->insert([
             'permission_id' => 1,
             'perfil_id' => 2,
         ]);
+        
     }
 
 }

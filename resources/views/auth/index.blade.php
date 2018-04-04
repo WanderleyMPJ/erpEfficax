@@ -28,7 +28,7 @@
                     
                     <td><input type="checkbox" /></td>
                     <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
+                    <td>{{$user->email}}</td>  
                     <td>{{$user->Perfils->first()->nome}}</td>
                     @if($user->ativo == 1)
                     <td><input type="checkbox"  checked="checked" disabled/></td>

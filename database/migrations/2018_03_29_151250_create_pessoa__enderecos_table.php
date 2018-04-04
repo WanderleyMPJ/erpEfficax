@@ -13,22 +13,24 @@ class CreatePessoaEnderecosTable extends Migration
      */
     public function up()
     {
-        Schema::create('pessoa__enderecos', function (Blueprint $table) {
+        Schema::create('pessoa_enderecos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pessoa_id')->unsigned();
-            $table->string('descricao', 60);
-            $table->string('cep', 10);
-            $table->string('rua', 50);
-            $table->string('num', 6);
-            $table->string('bairro', 50);
-            $table->string('cidade', 25);
-            $table->string('estado', 4);
+
+            $table->string('descricao', 60)->nullable();
+            $table->string('cep', 10)->nullable();
+            $table->string('logradouro', 120)->nullable();
+            $table->string('bairro', 50)->nullable();
+            $table->string('cidade', 25)->nullable();
+            $table->string('uf', 2)->nullable();
+            $table->string('complemento', 120)->nullable();
+            $table->string('referencia', 160)->nullable();
             $table->timestamps();
 
             $table->index('descricao');
             $table->index('cep');
 
-            $table->foreign('pessoa_id')->references('id')->on('pessoas');
+            $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
         });
     }
 
@@ -39,6 +41,6 @@ class CreatePessoaEnderecosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoa__enderecos');
+        Schema::dropIfExists('pessoa_enderecos');
     }
 }

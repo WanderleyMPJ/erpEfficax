@@ -18,7 +18,23 @@ class UserController extends Controller
         if ( Gate::denies('user_view', $users) )
             abort(403, 'Usuário não autorizado');
 
-        return view('auth.index',compact('users'));
+        return view('auth.index', compact('users'));
     }
+    
+        public function userpermissions() {
+        $nameuser = auth()->user()->name;
+     //   var_dump("<h1>{$nameuser}</h1>");
+        foreach (auth()->user()->perfils as $perfil) {
+            echo "<b> $perfil->nome </b>";
+
+            $permissions = $perfil->permissions;
+            foreach ($permissions as $permission) {
+                echo "- $permission->nome";
+            }
+
+            echo '<hr>';
+        }
+    }
+
 
 }

@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class PessoaRequest extends FormRequest
+class PessoaRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,6 +14,7 @@ class PessoaRequest extends FormRequest
     public function authorize()
     {
         return true;
+
     }
 
     /**
@@ -21,7 +22,7 @@ class PessoaRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+  /*  public function messages()
     {
         return [
             'nome.required'=>'Preencha um nome',
@@ -37,30 +38,36 @@ class PessoaRequest extends FormRequest
             'fantasia.required'=>'Preencha o Nome Fantasia',
             'c_descricao.required'=>'Preencha um Título',
             'c_descricao.max'=>'Título deve ter até 255 caracteres',
-            'c_telefone.required'=>'Preencha um Número de Telefone'
+            'c_telefone.required'=>'Preencha um Número de Telefone',
 
         ];
-    }
+    }*/
     public function rules()
     {
         return [
-            'nome'=>'required|min:2|max:255',
-            'rg_inscest'=>'required|min:5|max:20',
-            'cnpj_cpf'=>'required|min:5|max:30',
-            'tipo_pessoa'=>'required',
-            'fantasia'=>'required',
+            'nome',
+            'rg_inscest',
+            'cnpj_cpf',
+            'tipo_pessoa',
+            'fantasia',
             'ativo',
             'grupo',
+<<<<<<< HEAD
             'c_descricao'=>'required|max:255',
             'c_telefone'=>'required',
+=======
+            'c_descricao',
+            'c_telefone',
+>>>>>>> Pedro
             'c_email',
-            'e_desc',
+            'e_descricao',
             'e_cep',
-            'e_estado',
+            'e_uf',
             'e_cidade',
             'e_bairro',
-            'e_rua',
-            'e_num',
+            'e_logradouro',
+            'e_complemento',
+            'e_referencia',
 
         ];
 

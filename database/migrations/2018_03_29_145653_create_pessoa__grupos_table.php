@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateGruposTable extends Migration
+class CreatePessoaGruposTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,23 +13,27 @@ class CreateGruposTable extends Migration
      */
     public function up()
     {
-        Schema::create('grupos', function (Blueprint $table) {
+        Schema::create('pessoa_grupos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('descricao', 60)->nullable();
-            $table->string('nome', 20);
+            $table->string('Descricao', 50);
             $table->timestamps();
-
         });
-        Schema::create('pessoa__grupos', function (Blueprint $table) {
+        
+        Schema::create('pessoa_x_grupos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pessoa_id')->unsigned();
-            $table->integer('grupo_id')->unsigned();
+            $table->integer('pessoagrupo_id')->unsigned();
             $table->timestamps();
 
+           
             $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
-
-            $table->foreign('grupo_id')->references('id')->on('gupos')->onDelete('cascade');
+            $table->foreign('pessoagrupo_id')->references('id')->on('pessoa_grupos')->onDelete('cascade');
+            
+          //  $table->foreign('pessoa_grupo_id')->references('id')->on('pessoa_grupos')->onDelete('cascade');    
+    
+            
         });
+        
     }
 
     /**
@@ -39,7 +43,7 @@ class CreateGruposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('grupos');
+        Schema::dropIfExists('pessoa_x_grupos');
         Schema::dropIfExists('pessoa_grupos');
     }
 }

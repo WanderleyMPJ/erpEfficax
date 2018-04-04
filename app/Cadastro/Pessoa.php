@@ -4,30 +4,30 @@ namespace App\Cadastro;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Pessoa extends Model
-{
-    protected $fillable = ['nome','rg_inscest','cnpj_cpf','tipo_pessoa','fantasia','ativo','user_id'];
 
+class Pessoa extends Model {
 
-    public function contatos()
-    {
-        return $this->hasMany('App\Cadastro\Pessoa_Contato');
+    protected $fillable = ['nome',  'rg_inscest','cnpj_cpf', 'tipo_pessoa', 'fantasia', 'ativo','user_id'];
+
+    public function contatos() {
+        return $this->hasMany('App\Cadastro\PessoaContato');
     }
+
+    public function enderecos() {
+        return $this->hasMany('App\Cadastro\PessoaEndereco');
+    }
+    
     public function grupos()
     {
-        return $this->belongsToMany('App\Cadastro\Grupos');
-    }
-    public function enderecos()
-    {
-        return $this->hasMany('App\Cadastro\Pessoa_Endereco');
+        return $this->hasMany('App\Cadastro\PessoaXGrupo');
     }
 
-    public function addContatos(Pessoa_Contato $cont)
+    public function addContatos(PessoaContato $cont)
     {
         return $this->contatos()->save($cont);
     }
 
-    public function deletarTelefones()
+    public function deletarContato()
     {
         foreach ($this->contatos() as $cont) {
             $cont->delete();
@@ -35,7 +35,7 @@ class Pessoa extends Model
 
         return true;
     }
-    public function addEnderecos(Pessoa_Endereco $end)
+    public function addEnderecos(PessoaEndereco $end)
     {
         return $this->enderecos()->save($end);
     }
