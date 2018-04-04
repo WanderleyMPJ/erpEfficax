@@ -124,6 +124,7 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
+        zServices\Laravel\ServicesProvider::class,
         Illuminate\Auth\AuthServiceProvider::class,
         Illuminate\Broadcasting\BroadcastServiceProvider::class,
         Illuminate\Bus\BusServiceProvider::class,
@@ -174,7 +175,8 @@ return [
     */
 
     'aliases' => [
-
+        'Sintegra' => zServices\Laravel\SintegraFacade::class,
+        'ReceitaFederal' => zServices\Laravel\ReceitaFederalFacade::class,
         'App' => Illuminate\Support\Facades\App::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
