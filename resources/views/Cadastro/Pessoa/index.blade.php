@@ -23,7 +23,7 @@
                 <th>Nome</th>
                 <th>CNPJ ou CPF</th>
                 <th>RG ou Insc Estadual</th>
-                <th>Ativo</th>
+                <th>Inativo</th>
                <th></th>
             </tr>
         </thead>
@@ -35,17 +35,15 @@
                 <td>{{$pessoa->nome}}</td>
                 <td>{{$pessoa->cnpj_cpf}}</td>
                 <td>{{$pessoa->rg_inscest}}</td>
-                @if($pessoa->ativo == 1)
+                @if($pessoa->ativo == 0)
                 <td><input type="checkbox"  checked="checked" disabled/></td>
-                @elseif($pessoa->ativo == 0)
+                @elseif($pessoa->ativo == 1)
                 <td><input type="checkbox" disabled/></td>
                 @endif
                 <td>
                     <div class="pull-left">
-                        <a href="#" title="Edit Task"><i class="icon-pencil">Editar</i></a>
-                    {{--    <a class="tip" href="#" title="Delete"><i class="icon-remove"></i></a>--}}
+                        <a href="{{route('pessoa.detalhe',$pessoa->id)}}" title="Edit Task"><i class="icon-pencil">Editar</i></a>
                     </div>
-                {{--<button type="button" class="btn-success">Editar</button> <button class="btn-info">Detalhes</button>--}}</td>
             </tr>
             @empty
             <p>Nenhuma Pessoa Encontrada...</p>

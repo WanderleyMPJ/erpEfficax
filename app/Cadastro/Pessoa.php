@@ -19,7 +19,7 @@ class Pessoa extends Model {
     
     public function grupos()
     {
-        return $this->belongsToMany('App\Cadastro\PessoaGrupo');
+        return $this->hasMany('App\Cadastro\PessoaXGrupo');
     }
 
     public function addContatos(PessoaContato $cont)

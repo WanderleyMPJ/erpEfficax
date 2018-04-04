@@ -8,4 +8,6 @@ class PessoaGrupo extends Model
 {
     protected $fillable = ['id', 'descricao'];
 
+
+
 }

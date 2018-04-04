@@ -59,9 +59,9 @@ class PessoaController extends Controller
      * @param  \App\Model\Cadastro\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function show(Pessoa $pessoa)
+    public function show(\App\Http\Requests\PessoaRequest $request)
     {
-        //
+        dd($request);
     }
 
     /**
@@ -74,7 +74,11 @@ class PessoaController extends Controller
     {
         $tipo = '0';
         $pessoa = \App\Cadastro\Pessoa::find($id);
-        return view('Cadastro.Pessoa.add',compact('pessoa','tipo'));
+        $grupo = \App\Cadastro\PessoaGrupo::all();
+
+
+
+        return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));
     }
 
     /**
@@ -84,9 +88,63 @@ class PessoaController extends Controller
      * @param  \App\Model\Cadastro\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Pessoa $pessoa)
+    public function atualizarPessoa(\App\Http\Requests\PessoaRequest $request,$id)
     {
-        //
+     try{
+            \DB::transaction(function() use($request, $id){
+
+                $campos = $request->only([
+                    'nome',
+                    'rg_inscest',
+                    'cnpj_cpf',
+                    'tipo_pessoa',
+                    'fantasia',
+                ]);
+                if($request->input('ativo')== ''){
+                    $campos['ativo']=1;
+                }else{
+                    $campos['ativo']=$request->input('ativo');
+                };
+                \App\Cadastro\Pessoa::find($id)->update($campos);
+
+                $contato['pessoa_id'] =  $id;
+                $contato['descricao'] = $request->input('c_descricao');
+                $contato['telefone'] = $request->input('c_telefone');
+                $contato['email'] = $request->input( 'c_email');
+
+             /*   \App\Cadastro\PessoaContato::create($contato);
+
+                $endereco['pessoa_id'] = $pessoa->id;
+                $endereco['descricao'] = $request->input('e_descricao');
+                $endereco['cep'] = $request->input('e_cep');
+                $endereco['logradouro'] = $request->input('e_logradouro');
+                $endereco['bairro'] = $request->input('e_bairro');
+                $endereco['cidade'] = $request->input('e_cidade');
+                $endereco['uf'] = $request->input('e_uf');
+                $endereco['complemento'] = $request->input('e_complemento');
+                $endereco['referencia'] = $request->input('e_referencia');
+
+                \App\Cadastro\PessoaEndereco::create($endereco);
+
+                foreach($request->get('grupo') as $grupoid) {
+
+                    $grupo['pessoa_id'] = $pessoa->id;
+                    $grupo['pessoagrupo_id'] = $grupoid;
+
+                    \App\Cadastro\PessoaXGrupo::create($grupo);
+                }*/
+
+            });
+            return redirect()->route('pessoa.index');
+
+        } catch (\Exception $e) {
+            return $e->getMessage();
+        }
+
+
+
+
+
     }
 
     /**
@@ -122,7 +180,7 @@ class PessoaController extends Controller
                 \App\Cadastro\PessoaContato::create($contato);
 
                $endereco['pessoa_id'] = $pessoa->id;
-               $endereco['descricao'] = $request->input('e_desc');
+               $endereco['descricao'] = $request->input('e_descricao');
                $endereco['cep'] = $request->input('e_cep');
                $endereco['logradouro'] = $request->input('e_logradouro');
                $endereco['bairro'] = $request->input('e_bairro');
@@ -133,10 +191,13 @@ class PessoaController extends Controller
 
                 \App\Cadastro\PessoaEndereco::create($endereco);
 
-                $grupo['pessoa_id'] = $pessoa->id;
-                $grupo['pessoagrupo_id'] = $request->input('grupo');
+               foreach($request->get('grupo') as $grupoid) {
 
-                \App\Cadastro\PessoaXGrupo::create($grupo);
+                   $grupo['pessoa_id'] = $pessoa->id;
+                   $grupo['pessoagrupo_id'] = $grupoid;
+
+                   \App\Cadastro\PessoaXGrupo::create($grupo);
+               }
 
             });
             return redirect()->route('pessoa.index');

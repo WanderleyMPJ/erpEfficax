@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Request;
 
-class PessoaRequest extends FormRequest
+class PessoaRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -14,6 +14,7 @@ class PessoaRequest extends FormRequest
     public function authorize()
     {
         return true;
+
     }
 
     /**
@@ -21,7 +22,7 @@ class PessoaRequest extends FormRequest
      *
      * @return array
      */
-    public function messages()
+  /*  public function messages()
     {
         return [
             'nome.required'=>'Preencha um nome',
@@ -40,19 +41,19 @@ class PessoaRequest extends FormRequest
             'c_telefone.required'=>'Preencha um Número de Telefone',
 
         ];
-    }
+    }*/
     public function rules()
     {
         return [
-            'nome'=>'required|min:2|max:255',
-            'rg_inscest'=>'required|min:5|max:20',
-            'cnpj_cpf'=>'required|min:5|max:30',
-            'tipo_pessoa'=>'required',
-            'fantasia'=>'required',
+            'nome',
+            'rg_inscest',
+            'cnpj_cpf',
+            'tipo_pessoa',
+            'fantasia',
             'ativo',
             'grupo',
-            'c_descricao'=>'required|max:255',
-            'c_telefone'=>'required',
+            'c_descricao',
+            'c_telefone',
             'c_email',
             'e_descricao',
             'e_cep',
