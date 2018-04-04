@@ -7,10 +7,15 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Cadastro\Pessoa;
 use Gate;
-
+use zServices\ReceitaFederal\Search as ReceitaFederal;
 
 class PessoaController extends Controller
 {
+    public function getCnpj() {
+        return view('cadastro.pessoa.cnpj');
+    }
+    
+    
     public function index(Pessoa $pessoa)
     {
         $pessoas =$pessoa->all();
