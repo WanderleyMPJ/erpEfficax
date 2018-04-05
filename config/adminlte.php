@@ -30,7 +30,6 @@ return [
     |
     */
 
-   
     'logo' => '<b>Efficax </b>ERP',
 
     'logo_mini' => '<b>ERP</b>LT',
@@ -45,13 +44,7 @@ return [
     | ligth variant: blue-light, purple-light, purple-light, etc.
     |
     */
-
-<<<<<<< HEAD
     'skin' => 'blue-light',
-   
-=======
-    'skin' => 'red',
->>>>>>> Pedro
 
     /*
     |--------------------------------------------------------------------------
