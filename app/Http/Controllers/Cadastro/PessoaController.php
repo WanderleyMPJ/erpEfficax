@@ -18,7 +18,7 @@ class PessoaController extends Controller
     
     public function index(Pessoa $pessoa)
     {
-        $pessoas =$pessoa->all();
+        $pessoas =$pessoa->paginate(10);
         //  $pessoas = $pessoa->where('user_id', auth()->user()->id)->get();
 
 
