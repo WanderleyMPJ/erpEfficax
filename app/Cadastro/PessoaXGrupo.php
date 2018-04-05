@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class PessoaXGrupo extends Model
 {
+
 protected $fillable = ['pessoa_id', 'pessoagrupo_id'];
 
     public function Pessoas() {
