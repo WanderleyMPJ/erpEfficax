@@ -104,7 +104,12 @@
                            <div class="control-group">
                                <label class="control-label" for="c_telefone">Telefone:</label>
                                <div class="controls">
-                                   <input type="text" class="span8 mask text" placeholder="Telefone" name="c_telefone" id="mask-phone" @if($tipo=='0' && $pessoa->contatos <> '[]') value="{{$pessoa->contatos[0]->telefone}}" @elseif($tipo=='0' && $pessoa->contatos = '[]') value="" @else value="69993836480" @endif/>
+                                   <input type="text" class="span8" placeholder="Telefone" name="c_telefone" id="telefone"
+                                          @if($tipo=='0' && $pessoa->contatos <> '[]')
+                                          value="{{$pessoa->contatos[0]->telefone}}"
+                                          @elseif($tipo=='0' && $pessoa->contatos = '[]')
+                                          value=""
+                                          @else  @endif/>
                                </div>
                            </div>
                            <div class="control-group">
