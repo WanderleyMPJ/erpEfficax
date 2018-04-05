@@ -44,13 +44,7 @@ return [
     | ligth variant: blue-light, purple-light, purple-light, etc.
     |
     */
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 
->>>>>>> Pedro
-=======
->>>>>>> Pedro
     'skin' => 'blue-light',
 
     /*
