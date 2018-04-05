@@ -116,7 +116,7 @@ return [
     */
 
     'menu' => [
-        'MAIN NAVIGATION',
+        
     /*       'MENU PRINCIPAL',
         [
             'text' => 'Blog',
