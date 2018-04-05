@@ -33,9 +33,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
-
-    'logo_mini' => '<b>A</b>LT',
+   
     'logo' => '<b>Efficax </b>ERP',
 
     'logo_mini' => '<b>ERP</b>LT',
@@ -51,8 +49,8 @@ return [
     |
     */
 
-    'skin' => 'blue',
-    'skin' => 'red',
+    'skin' => 'blue-light',
+   
 
     /*
     |--------------------------------------------------------------------------
