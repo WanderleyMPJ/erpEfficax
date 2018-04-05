@@ -13,9 +13,6 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 2',
-
-    'title_prefix' => '',
     'title' =>  'ERP Gestão Empresarial' ,
 
     'title_prefix' => 'Efficax - ',
@@ -49,8 +46,12 @@ return [
     |
     */
 
+<<<<<<< HEAD
     'skin' => 'blue-light',
    
+=======
+    'skin' => 'red',
+>>>>>>> Pedro
 
     /*
     |--------------------------------------------------------------------------
@@ -76,7 +77,6 @@ return [
     |
     */
 
-    'collapse_sidebar' => false,
     'collapse_sidebar' => False,
 
     /*
@@ -114,7 +114,7 @@ return [
     */
 
     'menu' => [
-        
+
     /*       'MENU PRINCIPAL',
         [
             'text' => 'Blog',
@@ -128,9 +128,6 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        'ACCOUNT SETTINGS',
-        [
-            'text' => 'Profile',
       */
         'CADASTROS PRINCIPAIS',
         
@@ -144,16 +141,6 @@ return [
             'url'  => 'admin/settings',
             'icon' => 'lock',
         ],
-        [
-            'text'    => 'Multilevel',
-            'icon'    => 'share',
-            'submenu' => [
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-                [
-                    'text'    => 'Level One',
      */
         [
             'text'    => 'Pessoas',
@@ -192,16 +179,6 @@ return [
                                     'url'  => '#',
                                 ],
                             ],
-                        ],
-                    ],
-                ],
-                [
-                    'text' => 'Level One',
-                    'url'  => '#',
-                ],
-            ],
-        ],
-        'LABELS',
                         ], 
                     ],
                 ], */

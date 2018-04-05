@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class PessoaXGrupo extends Model
 {
     protected $table = 'PessoaXGrupos';
-    
-protected $fillable = ['pessoa_id', 'pessoagrupo_id'];
+
+    protected $fillable = ['pessoa_id', 'pessoagrupo_id'];
 
     public function Pessoas() {
         return $this->belongsToMany(\App\Cadastro\Pessoa::class);
