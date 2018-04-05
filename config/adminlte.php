@@ -32,7 +32,7 @@ return [
 
     'logo' => '<b>Efficax </b>ERP',
 
-    'logo_mini' => '<b>ERP</b>',
+    'logo_mini' => '<b>ERP</b>LT',
 
     /*
     |--------------------------------------------------------------------------
@@ -44,7 +44,6 @@ return [
     | ligth variant: blue-light, purple-light, purple-light, etc.
     |
     */
-
     'skin' => 'blue-light',
 
     /*
