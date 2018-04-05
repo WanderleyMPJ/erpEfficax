@@ -22,7 +22,7 @@ class PessoaController extends Controller
         //  $pessoas = $pessoa->where('user_id', auth()->user()->id)->get();
 
 
-        if ( Gate::denies('pessoa_view', $pessoas) )
+        if ( Gate::denies('Pessoa_View', $pessoas) )
             abort(403, 'Usuário não autorizado');
 
         return view('cadastro.pessoa.index',compact('pessoas'));

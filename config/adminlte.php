@@ -16,6 +16,9 @@ return [
     'title' => 'AdminLTE 2',
 
     'title_prefix' => '',
+    'title' =>  'ERP Gestão Empresarial' ,
+
+    'title_prefix' => 'Efficax - ',
 
     'title_postfix' => '',
 
@@ -33,6 +36,9 @@ return [
     'logo' => '<b>Admin</b>LTE',
 
     'logo_mini' => '<b>A</b>LT',
+    'logo' => '<b>Efficax </b>ERP',
+
+    'logo_mini' => '<b>ERP</b>LT',
 
     /*
     |--------------------------------------------------------------------------
@@ -46,6 +52,7 @@ return [
     */
 
     'skin' => 'blue',
+    'skin' => 'red',
 
     /*
     |--------------------------------------------------------------------------
@@ -72,6 +79,7 @@ return [
     */
 
     'collapse_sidebar' => false,
+    'collapse_sidebar' => False,
 
     /*
     |--------------------------------------------------------------------------
@@ -109,6 +117,7 @@ return [
 
     'menu' => [
         'MAIN NAVIGATION',
+    /*       'MENU PRINCIPAL',
         [
             'text' => 'Blog',
             'url'  => 'admin/blog',
@@ -124,6 +133,11 @@ return [
         'ACCOUNT SETTINGS',
         [
             'text' => 'Profile',
+      */
+        'CADASTROS PRINCIPAIS',
+        
+     /*   [
+            'text' => 'Usuários',
             'url'  => 'admin/settings',
             'icon' => 'user',
         ],
@@ -142,6 +156,25 @@ return [
                 ],
                 [
                     'text'    => 'Level One',
+     */
+        [
+            'text'    => 'Pessoas',
+            'icon'    => 'building',
+            'submenu' => [
+                [
+                    'text' => 'Grupo de Pessoas',
+                    'url'  => '#',
+                    'icon'    => 'cogs',
+              //      'can'  => 'PessoaGrupo_View',
+                ],
+                [
+                    'text' => 'Pessoas',
+                    'url'  => 'pessoa',
+                    'icon'    => 'building',
+                //    'can'  => 'Pessoa_View',
+                ],
+             /*   [
+                    'text'    => 'Grupo de Pessoas',
                     'url'     => '#',
                     'submenu' => [
                         [
@@ -171,6 +204,13 @@ return [
             ],
         ],
         'LABELS',
+                        ], 
+                    ],
+                ], */
+                
+            ],
+        ],
+   /*     'LABELS',
         [
             'text'       => 'Important',
             'icon_color' => 'red',
@@ -183,6 +223,8 @@ return [
             'text'       => 'Information',
             'icon_color' => 'aqua',
         ],
+        
+     */  
     ],
 
     /*
