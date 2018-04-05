@@ -19,7 +19,7 @@ class CreatePessoaGruposTable extends Migration
             $table->timestamps();
         });
         
-        Schema::create('pessoa_x_grupos', function (Blueprint $table) {
+        Schema::create('pessoaxgrupos', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('pessoa_id')->unsigned();
             $table->integer('pessoagrupo_id')->unsigned();
@@ -43,7 +43,7 @@ class CreatePessoaGruposTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pessoa_x_grupos');
+        Schema::dropIfExists('pessoaxgrupos');
         Schema::dropIfExists('pessoa_grupos');
     }
 }
