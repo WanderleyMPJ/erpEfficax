@@ -18,15 +18,16 @@ class PessoaController extends Controller
     
     public function index(Pessoa $pessoa)
     {
-        $pessoas =$pessoa->all();
-        $tabela = array('Nome','CNPJ ou CPF','RG ou Insc Estadual','Inativo', '');
+        $models =$pessoa->all();
+        $headertable = array('Nome','CNPJ ou CPF','RG ou Insc Estadual', '');
         $rota ='pessoa.detalhe';
         $tela = 'Pessoas';
+        $modelfields = array('nome','cnpj_cpf','rg_inscest');
 
-        if ( Gate::denies('Pessoa_View', $pessoas) )
+        if ( Gate::denies('Pessoa_View', $models) )
             abort(403, 'Usuário não autorizado');
 
-        return view('cadastro.pessoa.index',compact('pessoas','tabela','rota','tela'));
+        return view('padrao.indexmodel',compact('modelfields','headertable','rota','tela', 'models'));
     }
 
     /**

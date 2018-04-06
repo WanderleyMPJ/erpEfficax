@@ -26,6 +26,8 @@ Route::get('naoautorizado', function(){
 Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil');
 /*Pessoas*/
 Route::get('/pessoa', 'Cadastro\PessoaController@index')->name('pessoa.index');
+Route::get('/pessoagrupo', 'Cadastro\PessoaGrupoController@index')->name('pessoagrupo.index');
+Route::get('/pessoagrupo/detalhe/{id}', 'Cadastro\PessoaGrupoController@detalhe')->name('pessoagrupo.detalhe');
 
 Route::get('/pessoa/detalhe/{id}', 'Cadastro\PessoaController@detalhe')->name('pessoa.detalhe');
 Route::get('/pessoa/cadastro', 'Cadastro\PessoaController@create')->name('pessoa.cadastro');

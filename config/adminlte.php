@@ -142,7 +142,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Grupo de Pessoas',
-                    'url'  => '#',
+                    'url'  => 'pessoagrupo',
                     'icon'    => 'cogs',
               //      'can'  => 'PessoaGrupo_View',
                 ],
