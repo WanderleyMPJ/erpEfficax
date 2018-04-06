@@ -18,14 +18,15 @@ class PessoaController extends Controller
     
     public function index(Pessoa $pessoa)
     {
-        $pessoas =$pessoa->paginate(10);
-        //  $pessoas = $pessoa->where('user_id', auth()->user()->id)->get();
-
+        $pessoas =$pessoa->all();
+        $tabela = array('Nome','CNPJ ou CPF','RG ou Insc Estadual','Inativo', '');
+        $rota ='pessoa.detalhe';
+        $tela = 'Pessoas';
 
         if ( Gate::denies('Pessoa_View', $pessoas) )
             abort(403, 'Usuário não autorizado');
 
-        return view('cadastro.pessoa.index',compact('pessoas'));
+        return view('cadastro.pessoa.index',compact('pessoas','tabela','rota','tela'));
     }
 
     /**
