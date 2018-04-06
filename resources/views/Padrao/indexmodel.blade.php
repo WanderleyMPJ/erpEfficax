@@ -38,38 +38,43 @@
                         <thead>
                         <tr>
                            {{-- <th><i class="icon-resize-vertical"></i></th>--}}
-                            @forelse($tabela as $tb)
-                                <th>{{$tb}}</th>
+                            @forelse($headertable as $header)
+                                <th>{{$header}}</th>
                                 @empty
                                 <p>Informe os Campos da tabela</p>
                             @endforelse
                         </tr>
                         </thead>
                         <tbody>
-                        @forelse($pessoas as $pessoa)
+                        @forelse($models as $model)
 
                             <tr>
                            {{--     <td><input type="checkbox" /></td>--}}
-                                <td>{{$pessoa->nome}}</td>
-                                <td>{{$pessoa->cnpj_cpf}}</td>
-                                <td>{{$pessoa->rg_inscest}}</td>
-                                @if($pessoa->ativo == 0)
+                                @forelse($modelfields as $modelfield)
+                                <td>{{$model->$modelfield}}</td>
+                                @empty
+                                    <p>Informe os Campos da tabela</p>
+                                @endforelse
+                              {{--  <td>{{$model->cnpj_cpf}}</td>
+                                <td>{{$model->rg_inscest}}</td>--}}
+
+                              {{--  @if($model->ativo == 0)
                                     <td><input type="checkbox"  checked="checked" disabled/></td>
-                                @elseif($pessoa->ativo == 1)
+                                @elseif($model->ativo == 1)
                                     <td><input type="checkbox" disabled/></td>
-                                @endif
+                                @endif--}}
                                 <td>
                                     <div class="pull-left">
 
-                                        <a href="{{route($rota,$pessoa->id)}}" class="btn" title="Edit Task"><i class="fa fa-edit">Editar</i></a>
+                                        <a href="{{route($rota,$model->id)}}" class="btn" title="Edit Task"><i class="fa fa-edit">Editar</i></a>
                                     </div>
                             </tr>
                         @empty
-                            <p>Nenhuma Pessoa Encontrada...</p>
+                            <p>Nenhuma {{$tela}} Encontrada...</p>
                         @endforelse
                         </tbody>
                     </table>
- {{--           <div class="box-footer">{!! $pessoas->links() !!}</div>--}}
+ {{--           <div class="box-footer">{!! $models->links() !!}</div>--}}
         </div>
     </div>
 </div>
