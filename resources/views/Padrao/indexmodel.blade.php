@@ -2,7 +2,7 @@
 
 @section('content_header')
     <section class="content-header">
-        <h1>
+        <h1 class="text-red">
            <i class="fa fa-user"></i>{{$tela}}
             {{--<small>it all starts here</small>--}}
         </h1>
@@ -28,7 +28,7 @@
        --}}{{-- <a class="btn btn-success"><i class="fa fa-plus"></i> Adicionar</a>--}}{{--
         </form>--}}
         <div class="box-tools">
-            <a  class="btn btn-box-tool" href="{{ route('pessoa.cadastro') }}"> <i class="fa fa-plus"></i> Adicionar </a>
+            <a  class="btn btn-info" href="{{ route($add) }}"> <i class="fa fa-plus"></i> Adicionar </a>
         </div>
     </div>
 

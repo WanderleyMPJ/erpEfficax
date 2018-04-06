@@ -28,9 +28,10 @@ Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil
 Route::get('/pessoa', 'Cadastro\PessoaController@index')->name('pessoa.index');
 Route::get('/pessoagrupo', 'Cadastro\PessoaGrupoController@index')->name('pessoagrupo.index');
 Route::get('/pessoagrupo/detalhe/{id}', 'Cadastro\PessoaGrupoController@detalhe')->name('pessoagrupo.detalhe');
+Route::get('/pessoagrupo/detalhe', 'Cadastro\PessoaGrupoController@detalhe')->name('pessoagrupo.cadastro');
 
 Route::get('/pessoa/detalhe/{id}', 'Cadastro\PessoaController@detalhe')->name('pessoa.detalhe');
-Route::get('/pessoa/cadastro', 'Cadastro\PessoaController@create')->name('pessoa.cadastro');
+Route::get('/pessoa/cadastar', 'Cadastro\PessoaController@create')->name('pessoa.cadastrar');
 Route::get('/pessoa/salvar', 'Cadastro\PessoaController@novaPessoa')->name('pessoa.salvar');
 Route::get('/pessoa/atualizar/{id}', 'Cadastro\PessoaController@atualizarPessoa')->name('pessoa.atualizar');
 /*End Pessoas*/

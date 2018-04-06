@@ -23,11 +23,12 @@ class PessoaController extends Controller
         $rota ='pessoa.detalhe';
         $tela = 'Pessoas';
         $modelfields = array('nome','cnpj_cpf','rg_inscest');
+        $add = 'pessoa.cadastrar';
 
         if ( Gate::denies('Pessoa_View', $models) )
             abort(403, 'Usuário não autorizado');
 
-        return view('padrao.indexmodel',compact('modelfields','headertable','rota','tela', 'models'));
+        return view('padrao.indexmodel',compact('modelfields','headertable','rota','tela', 'models', 'add'));
     }
 
     /**

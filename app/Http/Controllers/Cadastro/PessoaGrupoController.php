@@ -16,11 +16,12 @@ class PessoaGrupoController extends Controller
         $rota ='pessoagrupo.detalhe';
         $tela = 'Grupo de Pessoas';
         $modelfields = array('id','Descricao');
+        $add = 'pessoagrupo.cadastro';
 
         if ( Gate::denies('PessoaGrupo_View', $models) )
             abort(403, 'Usuário não autorizado');
 
-        return view('padrao.indexmodel',compact('models','headertable','rota','tela', 'modelfields'));
+        return view('padrao.indexmodel',compact('models','headertable','rota','tela', 'modelfields', 'add'));
     }
     public function detalhe($id)
     {
