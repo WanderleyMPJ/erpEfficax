@@ -152,11 +152,7 @@ return [
          * Package Service Providers...
          */
         JeroenNoten\LaravelAdminLte\ServiceProvider::class,
-<<<<<<< HEAD
-     
-=======
-        
->>>>>>> Pedro
+
         /*
          * Application Service Providers...
          */
