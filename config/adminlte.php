@@ -143,13 +143,13 @@ return [
                 [
                     'text' => 'Grupo de Pessoas',
                     'url'  => 'pessoagrupo',
-                    'icon'    => 'cogs',
+                    'icon'    => 'users',
               //      'can'  => 'PessoaGrupo_View',
                 ],
                 [
                     'text' => 'Pessoas',
                     'url'  => 'pessoa',
-                    'icon'    => 'building',
+                    'icon'    => 'user',
                 //    'can'  => 'Pessoa_View',
                 ],
              /*   [

@@ -28,7 +28,7 @@
        --}}{{-- <a class="btn btn-success"><i class="fa fa-plus"></i> Adicionar</a>--}}{{--
         </form>--}}
         <div class="box-tools">
-            <a  class="btn btn-info" href="{{ route($add) }}"> <i class="fa fa-plus"></i> Adicionar </a>
+            <a  class="btn btn-success" href="{{ route($add) }}"> <i class="fa fa-plus"></i> Adicionar </a>
         </div>
     </div>
 
@@ -65,8 +65,7 @@
                                 @endif--}}
                                 <td>
                                     <div class="pull-left">
-
-                                        <a href="{{route($rota,$model->id)}}" class="btn" title="Edit Task"><i class="fa fa-edit">Editar</i></a>
+                                        <a  class="btn btn-info" href="{{route($rota,$model->id)}}"> <i class="fa fa-edit"></i> Editar </a>
                                     </div>
                             </tr>
                         @empty
