@@ -11,12 +11,7 @@ use zServices\ReceitaFederal\Search as ReceitaFederal;
 
 class PessoaController extends Controller
 {
-    public function getCnpj() {
-        return view('cadastro.pessoa.cnpj');
-    }
-    
-    
-    public function index(Pessoa $pessoa)
+  public function index(Pessoa $pessoa)
     {
         $models =$pessoa->all();
         $headertable = array('Nome','CNPJ ou CPF','RG ou Insc Estadual', '');
@@ -24,11 +19,12 @@ class PessoaController extends Controller
         $tela = 'Pessoas';
         $modelfields = array('nome','cnpj_cpf','rg_inscest');
         $add = 'pessoa.cadastrar';
+        $ico = 'fa-user';
 
         if ( Gate::denies('Pessoa_View', $models) )
             abort(403, 'Usuário não autorizado');
 
-        return view('padrao.indexmodel',compact('modelfields','headertable','rota','tela', 'models', 'add'));
+        return view('padrao.indexmodel',compact('modelfields','headertable','rota','tela', 'models', 'add', 'ico'));
     }
 
     /**
@@ -36,7 +32,7 @@ class PessoaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Pessoa $pessoa)
+    public function cadastrar(Pessoa $pessoa)
     {
         $tipo = '1';
         $pessoas =$pessoa->find($pessoa->id);
@@ -50,34 +46,6 @@ class PessoaController extends Controller
         return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Model\Cadastro\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function show(\App\Http\Requests\PessoaRequest $request)
-    {
-        dd($request);
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Model\Cadastro\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
     public function detalhe($id)
     {
         $tipo = '0';
@@ -96,7 +64,7 @@ class PessoaController extends Controller
      * @param  \App\Model\Cadastro\Pessoa  $pessoa
      * @return \Illuminate\Http\Response
      */
-    public function atualizarPessoa(\App\Http\Requests\PessoaRequest $request,$id)
+    public function atualizar(\App\Http\Requests\PessoaRequest $request,$id)
     {
      try{
             \DB::transaction(function() use($request, $id){
@@ -148,25 +116,8 @@ class PessoaController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
-
-
-
-
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Model\Cadastro\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Pessoa $pessoa)
-    {
-        //
-    }
-
-    public function novaPessoa(\App\Http\Requests\PessoaRequest $request){
+    public function salvar(\App\Http\Requests\PessoaRequest $request){
         try{
             \DB::transaction(function() use($request){
 
@@ -213,6 +164,5 @@ class PessoaController extends Controller
         } catch (\Exception $e) {
             return $e->getMessage();
         }
-
     }
 }

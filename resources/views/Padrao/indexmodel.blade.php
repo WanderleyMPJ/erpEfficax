@@ -3,7 +3,7 @@
 @section('content_header')
     <section class="content-header">
         <h1 class="text-red">
-           <i class="fa fa-user"></i>{{$tela}}
+           <i class="fa {{$ico}}"></i> {{$tela}}
             {{--<small>it all starts here</small>--}}
         </h1>
         <ol class="breadcrumb">
