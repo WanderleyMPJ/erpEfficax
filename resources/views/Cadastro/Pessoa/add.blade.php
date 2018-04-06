@@ -188,7 +188,7 @@
        </div>
    </div>
    <div class="form-actions">
-       <button type="submit" class="btn btn-primary"> <i class="icon-remove"></i> Cancelar</button>
+       <button type="reset" class="btn btn-primary"> <i class="icon-remove"></i> Cancelar</button>
        <button type="submit" class="btn btn-primary"> <i class="icon-save"></i> Salvar</button>
        <div id="status"></div>
    </div>

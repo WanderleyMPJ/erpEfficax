@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Cadastro;
 
 use Illuminate\Http\Request;
+use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Cadastro\PessoaGrupo;
 use Gate;
@@ -26,13 +27,10 @@ class PessoaGrupoController extends Controller
     }
     public function detalhe($id)
     {
-      /*  $tipo = '0';
-        $pessoa = \App\Cadastro\Pessoa::find($id);
-        $grupo = \App\Cadastro\PessoaGrupo::all();
+        $tipo = '0';
+        $pessoagrupo = \App\Cadastro\PessoaGrupo::find($id);
 
-
-
-        return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));*/
+        return view('cadastro.pessoagrupo', compact('pessoagrupo','tipo'));
     }
     public function cadastrar(PessoaGrupo $pessoagrupo){
 
@@ -46,26 +44,24 @@ class PessoaGrupoController extends Controller
         return view('cadastro.pessoagrupo', compact('pessoagrupo','tipo'));
     }
     public function salvar(\App\Http\Requests\PessoaGrupoRequest $request){
+
         try{
             \DB::transaction(function() use($request){
-
-
-                \App\Cadastro\PessoaGrupo::create($request);
-
-
-
+                \App\Cadastro\PessoaGrupo::create($request->all());
             });
-            return route('pessoagrupo.index');
+            return redirect()->route('pessoagrupo.index');
 
-        } catch (\Exception $e) {
+
+        } catch (\Exception $e)
+        {
             return $e->getMessage();
         }
     }
     public function atualizar(\App\Http\Requests\PessoaGrupoRequest $request, $id){
-        $pessoagrupo = \App\Cadastro\PessoaGrupo::find($id);
-        $pessoagrupo::update($request);
+        \App\Cadastro\PessoaGrupo::find($id)->update($request->all());
 
-        return $this->index();
+
+        return redirect()->route('pessoagrupo.index');
     }
 
 }

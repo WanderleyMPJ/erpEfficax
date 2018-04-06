@@ -33,9 +33,9 @@ Route::get('/pessoa/atualizar/{id}', 'Cadastro\PessoaController@atualizar')->nam
 /*Pessoas Gupo*/
 Route::get('/pessoagrupo', 'Cadastro\PessoaGrupoController@index')->name('pessoagrupo.index');
 Route::get('/pessoagrupo/detalhe/{id}', 'Cadastro\PessoaGrupoController@detalhe')->name('pessoagrupo.detalhe');
-Route::get('/pessoagrupo/detalhe', 'Cadastro\PessoaGrupoController@cadastrar')->name('pessoagrupo.cadastrar');
-Route::get('/pessoagrupo/detalhe', 'Cadastro\PessoaGrupoController@salvar')->name('pessoagrupo.salvar');
-Route::get('/pessoagrupo/detalhe/{id}', 'Cadastro\PessoaGrupoController@atualizar')->name('pessoagrupo.atualizar');
+Route::get('/pessoagrupo/cadastrar', 'Cadastro\PessoaGrupoController@cadastrar')->name('pessoagrupo.cadastrar');
+Route::get('/pessoagrupo/salvar', 'Cadastro\PessoaGrupoController@salvar')->name('pessoagrupo.salvar');
+Route::get('/pessoagrupo/atualizar/{id}', 'Cadastro\PessoaGrupoController@atualizar')->name('pessoagrupo.atualizar');
 /*End Pessoas Grupo*/
 /*End Pessoas*/
 
