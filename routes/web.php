@@ -39,5 +39,14 @@ Route::get('/pessoagrupo/atualizar/{id}', 'Cadastro\PessoaGrupoController@atuali
 /*End Pessoas Grupo*/
 /*End Pessoas*/
 
+/* Atendimento */
+Route::get('/atendimentoorigem', 'Atendimento\AtendimentoOrigemController@index')->name('atendimentoorigem.index');
+Route::get('/atendimentoorigem/detalhe/{id}', 'Atendimento\AtendimentoOrigemController@detalhe')->name('atendimentoorigem.detalhe');
+Route::get('/atendimentoorigem/cadastrar', 'Atendimento\AtendimentoOrigemController@cadastrar')->name('atendimentoorigem.cadastrar');
+Route::get('/atendimentoorigem/salvar', 'Atendimento\AtendimentoOrigemController@salvar')->name('atendimentoorigem.salvar');
+Route::get('/atendimentoorigem/atualizar/{id}', 'Atendimento\AtendimentoOrigemController@atualizar')->name('atendimentoorigem.atualizar');
+
+
+
 
 Route::get('/home', 'HomeController@index')->name('home');
