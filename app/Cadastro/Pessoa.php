@@ -9,12 +9,15 @@ use Illuminate\Database\Eloquent\Model;
 class Pessoa extends Model {
 
 
-    protected $fillable = ['id','nome',  'rg_inscest','cnpj_cpf', 'tipo_pessoa', 'fantasia', 'ativo','user_id'];
-
+    protected $fillable = ['id','nome', 'rg_inscest','cnpj_cpf', 'tipo_pessoa', 'fantasia', 'ativo','user_id'];
 
     public function Contatos() {
 
         return $this->hasMany('App\Cadastro\PessoaContato');
+    }
+    public function empresa() {
+
+        return $this->hasMany('App\Cadastro\Empresa');
     }
 
     public function enderecos() {

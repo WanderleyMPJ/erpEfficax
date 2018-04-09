@@ -55,6 +55,12 @@
                                 @empty
                                     <p>Informe os Campos da tabela</p>
                                 @endforelse
+                                @if($relacao <> '')
+
+                                    <td>{{$model->$relacao->$campo}}</td>
+                                    @else
+                                    @endif
+
                               {{--  <td>{{$model->cnpj_cpf}}</td>
                                 <td>{{$model->rg_inscest}}</td>--}}
 

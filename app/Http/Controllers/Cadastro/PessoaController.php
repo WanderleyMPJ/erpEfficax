@@ -20,11 +20,13 @@ class PessoaController extends Controller
         $modelfields = array('nome','cnpj_cpf','rg_inscest');
         $add = 'pessoa.cadastrar';
         $ico = 'fa-user';
+        $relacao = '';
+        $campo = '';
 
         if ( Gate::denies('Pessoa_View', $models) )
             abort(403, 'Usuário não autorizado');
 
-        return view('padrao.indexmodel',compact('modelfields','headertable','rota','tela', 'models', 'add', 'ico'));
+        return view('padrao.indexmodel',compact('modelfields','headertable','rota','tela', 'models', 'add', 'ico', 'relacao', 'campo'));
     }
 
     /**
@@ -43,7 +45,7 @@ class PessoaController extends Controller
 
             abort(403,'Usuário Não autotizado');
 
-        return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));
+        return view('cadastro.pessoa', compact('pessoa','grupo','tipo'));
     }
 
     public function detalhe($id)
@@ -54,7 +56,7 @@ class PessoaController extends Controller
 
 
 
-        return view('cadastro.pessoa.add', compact('pessoa','grupo','tipo'));
+        return view('cadastro.pessoa', compact('pessoa','grupo','tipo'));
     }
 
     /**

@@ -38,6 +38,13 @@ Route::get('/pessoagrupo/salvar', 'Cadastro\PessoaGrupoController@salvar')->name
 Route::get('/pessoagrupo/atualizar/{id}', 'Cadastro\PessoaGrupoController@atualizar')->name('pessoagrupo.atualizar');
 /*End Pessoas Grupo*/
 /*End Pessoas*/
+/*Empresas*/
+Route::get('/empresa', 'Cadastro\EmpresaController@index')->name('empresa.index');
+Route::get('/empresa/cadastrar', 'Cadastro\EmpresaController@cadastrar')->name('empresa.cadastrar');
+Route::get('/empresa/detalhe/{id}', 'Cadastro\EmpresaController@detalhe')->name('empresa.detalhe');
+Route::get('/empresa/salvar', 'Cadastro\EmpresaController@salvar')->name('empresa.salvar');
+Route::get('/empresa/atualizar/{id}', 'Cadastro\EmpresaController@atualizar')->name('empresa.atualizar');
+/*End Empresa*/
 
 
 Route::get('/home', 'HomeController@index')->name('home');

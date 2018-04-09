@@ -19,11 +19,13 @@ class PessoaGrupoController extends Controller
         $modelfields = array('id','Descricao');
         $add = 'pessoagrupo.cadastrar';
         $ico = 'fa-users';
+        $relacao = '';
+        $campo = '';
 
         if ( Gate::denies('PessoaGrupo_View', $models) )
             abort(403, 'Usuário não autorizado');
 
-        return view('padrao.indexmodel',compact('models','headertable','rota','tela', 'modelfields', 'add', 'ico'));
+        return view('padrao.indexmodel',compact('models','headertable','rota','tela', 'modelfields', 'add', 'ico', 'relacao', 'campo'));
     }
     public function detalhe($id)
     {
