@@ -32,6 +32,8 @@ class CreatePessoaContatosTable extends Migration
             $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
 
         });
+        
+        
     }
 
     /**

@@ -106,40 +106,93 @@ return [
     | layout. The 'can' is a filter on Laravel's built in Gate functionality.
     |
     */
-
+    
     'menu' => [
-
-    /*       'MENU PRINCIPAL',
-        [
-            'text' => 'Blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
+        'CADASTROS GERAIS',
+    [
+        'text'    => 'Pessoas',
+       // 'icon'    => 'building',
+        'submenu' => [
+            [
+                'text'    => 'Grupo de Pessoas',
+                'url'     => 'pessoagrupo',
+                'icon'    => 'users',
+              //      'can'  => 'PessoaGrupo_View',
+            ],
+            [
+                      'text' => 'Pessoas',
+                    'url'  => 'pessoa',
+                    'icon'    => 'user',
+                //    'can'  => 'Pessoa_View',
+            ],
         ],
-        [
-            'text'        => 'Pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'file',
-            'label'       => 4,
-            'label_color' => 'success',
+    ],
+    [
+        'text' => 'Atendimento',
+        'submenu' => [
+            [
+                'text' => 'Origens do Atendimento',
+                'url'  => 'atendimento/origem',
+            ],
+            [
+                'text' => 'Status do Atendimento',
+                'url'  => 'atendimento/status',
+            ],
         ],
-      */
-        'CADASTROS PRINCIPAIS',
+    ],
+    [
+        'text' => 'Produtos e Serviços',
+        'submenu' => [
+            [
+                'text' => 'Produtos',
+                'url'  => 'produtos',
+            ],
+            [
+                'text' => 'Serviços',
+                'url'  => 'produtos/create',
+            ],
+        ],
+    ],
+    [
+        'text' => 'Financeiro',
+        'submenu' => [
+            [
+                'text' => 'Plano de Contas',
+                'url'  => 'fornecedores',
+            ],
+            [
+                'text' => 'Contas Caixa / Banco',
+                'url'  => 'fornecedores/create',
+            ],
+        ],
+    ],
+    'PAINEL DO USUÁRIO',
+    [
+        'text' => 'Editar dados',
+        'url'  => 'personals',
+        'icon' => 'user',
+    ],
+    'PAINEL ADMINISTRATIVO',
+    [
+        'text'       => 'Usuários',
+        'url'  => 'user',
+        'icon' => 'user',
+    ],
+    [
+        'text'       => 'Cadastrar Novo Usuário',
+        'url'  => 'users/create',
+        'icon' => 'user',
+    ],
+],
         
-     /*   [
-            'text' => 'Usuários',
-            'url'  => 'admin/settings',
-            'icon' => 'user',
-        ],
-        [
-            'text' => 'Change Password',
-            'url'  => 'admin/settings',
-            'icon' => 'lock',
-        ],
-     */
+        
+        
+/*        'CADASTROS',
         [
             'text'    => 'Pessoas',
             'icon'    => 'building',
-            'submenu' => [
+            'submenu' => 
+            [
                 [
                     'text' => 'Grupo de Pessoas',
                     'url'  => 'pessoagrupo',
@@ -152,33 +205,93 @@ return [
                     'icon'    => 'user',
                 //    'can'  => 'Pessoa_View',
                 ],
-             /*   [
-                    'text'    => 'Grupo de Pessoas',
-                    'url'     => '#',
-                    'submenu' => [
-                        [
-                            'text' => 'Level Two',
-                            'url'  => '#',
-                        ],
-                        [
-                            'text'    => 'Level Two',
-                            'url'     => '#',
-                            'submenu' => [
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                                [
-                                    'text' => 'Level Three',
-                                    'url'  => '#',
-                                ],
-                            ],
-                        ], 
-                    ],
-                ], */
-                
             ],
+                
+            
+                  
+            'text'    => 'Atendimentos',
+            'icon'    => 'building',
+            'submenu' => 
+            [
+                [
+                    'text' => 'Grupo de Pessoas',
+                    'url'  => 'pessoagrupo',
+                    'icon'    => 'users',
+              //      'can'  => 'PessoaGrupo_View',
+                ],
+                [
+                    'text' => 'Pessoas',
+                    'url'  => 'pessoa',
+                    'icon'    => 'user',
+                //    'can'  => 'Pessoa_View',
+                ],
+            ],
+                
+            
         ],
+        
+        'ATENDIMENTOS',[
+        
+        'text'    => 'Atender',
+        'icon'    => 'building',
+        ],
+        
+    ],
+
+/*    'menu' => [
+
+        'CADASTROS PRINCIPAIS',
+        [
+            'text'    => 'Pessoas',
+            'icon'    => 'building',
+            'submenu' => 
+            [
+                [
+                    'text' => 'Grupo de Pessoas',
+                    'url'  => 'pessoagrupo',
+                    'icon'    => 'users',
+              //      'can'  => 'PessoaGrupo_View',
+                ],
+                [
+                    'text' => 'Pessoas',
+                    'url'  => 'pessoa',
+                    'icon'    => 'user',
+                //    'can'  => 'Pessoa_View',
+                ],
+            ],
+            
+        
+           'text'    => 'Atendimentos',
+            'icon'    => 'phone',
+            'submenu' => 
+            [
+                [
+                    'text' => 'Origem dos Atendimentos',
+                    'url'  => 'atendimentoorigem',
+                    'icon'    => 'question-circle',
+              //      'can'  => 'PessoaGrupo_View',
+                ],
+                [
+                    'text' => 'Status dos Atendimentos',
+                    'url'  => 'atendimentostatus',
+                    'icon'    => 'envelope',
+                //    'can'  => 'Pessoa_View',
+                ],
+            ],
+                 
+            ],
+            
+            
+        ],
+        
+        'ATENDIMENTOS',[
+           'text' => 'Chamados', 
+        ],
+        
+              
+        
+        
+        
    /*     'LABELS',
         [
             'text'       => 'Important',
@@ -194,7 +307,7 @@ return [
         ],
         
      */  
-    ],
+//    ],
 
     /*
     |--------------------------------------------------------------------------
