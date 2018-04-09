@@ -108,8 +108,87 @@ return [
     */
     
     'menu' => [
-        'CADASTROS',[
-            
+        'CADASTROS GERAIS',
+    [
+        'text'    => 'Pessoas',
+       // 'icon'    => 'building',
+        'submenu' => [
+            [
+                'text'    => 'Grupo de Pessoas',
+                'url'     => 'pessoagrupo',
+                'icon'    => 'users',
+              //      'can'  => 'PessoaGrupo_View',
+            ],
+            [
+                      'text' => 'Pessoas',
+                    'url'  => 'pessoa',
+                    'icon'    => 'user',
+                //    'can'  => 'Pessoa_View',
+            ],
+        ],
+    ],
+    [
+        'text' => 'Atendimento',
+        'submenu' => [
+            [
+                'text' => 'Origens do Atendimento',
+                'url'  => 'atendimento/origem',
+            ],
+            [
+                'text' => 'Status do Atendimento',
+                'url'  => 'atendimento/status',
+            ],
+        ],
+    ],
+    [
+        'text' => 'Produtos e Serviços',
+        'submenu' => [
+            [
+                'text' => 'Produtos',
+                'url'  => 'produtos',
+            ],
+            [
+                'text' => 'Serviços',
+                'url'  => 'produtos/create',
+            ],
+        ],
+    ],
+    [
+        'text' => 'Financeiro',
+        'submenu' => [
+            [
+                'text' => 'Plano de Contas',
+                'url'  => 'fornecedores',
+            ],
+            [
+                'text' => 'Contas Caixa / Banco',
+                'url'  => 'fornecedores/create',
+            ],
+        ],
+    ],
+    'PAINEL DO USUÁRIO',
+    [
+        'text' => 'Editar dados',
+        'url'  => 'personals',
+        'icon' => 'user',
+    ],
+    'PAINEL ADMINISTRATIVO',
+    [
+        'text'       => 'Usuários',
+        'url'  => 'user',
+        'icon' => 'user',
+    ],
+    [
+        'text'       => 'Cadastrar Novo Usuário',
+        'url'  => 'users/create',
+        'icon' => 'user',
+    ],
+],
+        
+        
+        
+/*        'CADASTROS',
+        [
             'text'    => 'Pessoas',
             'icon'    => 'building',
             'submenu' => 

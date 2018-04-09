@@ -15,8 +15,31 @@ class CreateAtendimentoStatusesTable extends Migration
     {
         Schema::create('atendimento_statuses', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('descricao', 100);
             $table->timestamps();
         });
+        
+        DB::table('permissions')->insert([
+            'nome' => 'AtendimentoStatus_View',
+            'descricao' => 'Visualizar Atendimento Status',
+        ]);
+
+        DB::table('permissions')->insert([
+            'nome' => 'AtendimentoStatus_Cadastrar',
+            'descricao' => 'Cadastrar Atendimento Status',
+        ]);
+
+        DB::table('permissions')->insert([
+            'nome' => 'AtendimentoStatus_Editar',
+            'descricao' => 'Editar Atendimento Status',
+        ]);
+
+        DB::table('permissions')->insert([
+            'nome' => 'AtendimentoStatus_Deletar',
+            'descricao' => 'Deletar Atendimento Status',
+        ]);
+        
+        
     }
 
     /**
@@ -26,6 +49,7 @@ class CreateAtendimentoStatusesTable extends Migration
      */
     public function down()
     {
+        DB::table('permissions')->where('nome', 'like', 'AtendimentoStatus%')->delete(); 
         Schema::dropIfExists('atendimento_statuses');
     }
 }

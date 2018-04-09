@@ -2,6 +2,22 @@
 
 $this->group(['middleware' => ['auth'] ], function(){
     Route::get('/home', 'HomeController@index')->name('home');
+
+    
+/* Atendimento Origem */
+Route::get('/atendimento/origem', 'Atendimento\AtendimentoOrigemController@index')->name('atendimentoorigem.index');
+Route::get('/atendimento/origem/detalhe/{id}', 'Atendimento\AtendimentoOrigemController@detalhe')->name('atendimento.origem.detalhe');
+Route::get('/atendimento/origem/cadastrar', 'Atendimento\AtendimentoOrigemController@cadastrar')->name('atendimento.origem.cadastrar');
+Route::get('/atendimento/origem/salvar', 'Atendimento\AtendimentoOrigemController@salvar')->name('atendimento.origem.salvar');
+Route::get('/atendimento/origem/atualizar/{id}', 'Atendimento\AtendimentoOrigemController@atualizar')->name('atendimento.origem.atualizar');
+    
+/* Atendimento status */
+Route::get('/atendimento/status', 'Atendimento\AtendimentoStatusController@index')->name('atendimento.status.index');
+Route::get('/atendimento/status/detalhe/{id}', 'Atendimento\AtendimentoStatusController@detalhe')->name('atendimento.status.detalhe');
+Route::get('/atendimento/status/cadastrar', 'Atendimento\AtendimentoStatusController@cadastrar')->name('atendimento.status.cadastrar');
+Route::get('/atendimento/status/salvar', 'Atendimento\AtendimentoStatusController@salvar')->name('atendimento.status.salvar');
+Route::get('/atendimento/status/atualizar/{id}', 'Atendimento\AtendimentoStatusController@atualizar')->name('atendimento.status.atualizar');
+    
 });
 
 Route::get('/', function () {
@@ -39,12 +55,6 @@ Route::get('/pessoagrupo/atualizar/{id}', 'Cadastro\PessoaGrupoController@atuali
 /*End Pessoas Grupo*/
 /*End Pessoas*/
 
-/* Atendimento */
-Route::get('/atendimentoorigem', 'Atendimento\AtendimentoOrigemController@index')->name('atendimentoorigem.index');
-Route::get('/atendimentoorigem/detalhe/{id}', 'Atendimento\AtendimentoOrigemController@detalhe')->name('atendimentoorigem.detalhe');
-Route::get('/atendimentoorigem/cadastrar', 'Atendimento\AtendimentoOrigemController@cadastrar')->name('atendimentoorigem.cadastrar');
-Route::get('/atendimentoorigem/salvar', 'Atendimento\AtendimentoOrigemController@salvar')->name('atendimentoorigem.salvar');
-Route::get('/atendimentoorigem/atualizar/{id}', 'Atendimento\AtendimentoOrigemController@atualizar')->name('atendimentoorigem.atualizar');
 
 
 

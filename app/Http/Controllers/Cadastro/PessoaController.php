@@ -78,6 +78,7 @@ class PessoaController extends Controller
                 ]);
                 if($request->input('ativo')== ''){
                     $campos['ativo']=1;
+                    $campos['ativo']=1;
                 }else{
                     $campos['ativo']=$request->input('ativo');
                 };

@@ -13,10 +13,11 @@ class AtendimentoOrigemController extends Controller {
     public function index(AtendimentoOrigem $atendimentoorigem) {
         $models = $atendimentoorigem->all();
         $headertable = array('ID', 'Descrição', '');
-        $rota = 'atendimentoorigem.detalhe';
-        $tela = 'Grupo de Pessoas';
-        $modelfields = array('id', 'Descricao');
-        $add = 'atendimentoorigem.cadastrar';
+        $rota = 'atendimento.origem.detalhe';
+                 
+        $tela = 'Origem dos Atendimentos';
+        $modelfields = array('id', 'descricao');
+        $add = 'atendimento.origem.cadastrar';
         $ico = 'fa-users';
 
         if (Gate::denies('AtendimentoOrigem_View', $models))
@@ -27,27 +28,34 @@ class AtendimentoOrigemController extends Controller {
 
     public function detalhe($id) {
         $tipo = '0';
-        $atendimentoorigem = \App\Cadastro\AtendimentoOrigem::find($id);
+        $model = \App\Atendimento\AtendimentoOrigem::find($id);
+        // $grupo = \App\Cadastro\PessoaGrupo::all();
 
-        return view('cadastro.atendimentoorigem', compact('atendimentoorigem', 'tipo'));
-    }
 
-    public function cadastrar(AtendimentoOrigem $atendimentoorigem) {
 
+        return view('cadastro.atendimento.origem.cadastrar', compact('model','tipo'));
+  }
+
+        public function cadastrar(AtendimentoOrigem $atendimentoorigem)
+    {
         $tipo = '1';
-        $pessoas = $atendimentoorigem->find($atendimentoorigem->id);
+        $atendimentoorigens =$atendimentoorigem->find($atendimentoorigem->id);
+        // $grupo = \App\Cadastro\PessoaGrupo::all();
 
-        if (Gate::denies('AtendimentoOrigem_Cadastrar', $pessoas))
-            abort(403, 'Usuário Não autotizado');
 
-        return view('cadastro.atendimentoorigem', compact('atendimentoorigem', 'tipo'));
+        if (Gate::denies('AtendimentoOrigem_Cadastrar', $atendimentoorigens) )
+
+            abort(403,'Usuário Não autotizado');
+
+        return view('cadastro.atendimento.origem.cadastrar', compact('atendimentoorigem','tipo'));
     }
+
 
     public function salvar(\App\Http\Requests\AtendimentoOrigemRequest $request) {
 
         try {
             \DB::transaction(function() use($request) {
-                \App\Cadastro\AtendimentoOrigem::create($request->all());
+                \App\Atendimento\AtendimentoOrigem::create($request->all());
             });
             return redirect()->route('atendimentoorigem.index');
         } catch (\Exception $e) {
@@ -56,7 +64,7 @@ class AtendimentoOrigemController extends Controller {
     }
 
     public function atualizar(\App\Http\Requests\AtendimentoOrigemRequest $request, $id) {
-        \App\Cadastro\AtendimentoOrigem::find($id)->update($request->all());
+        \App\Atendimento\AtendimentoOrigem::find($id)->update($request->all());
 
 
         return redirect()->route('atendimentoorigem.index');
