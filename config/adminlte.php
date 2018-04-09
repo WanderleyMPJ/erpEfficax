@@ -183,6 +183,11 @@ return [
         'url'  => 'users/create',
         'icon' => 'user',
     ],
+    [
+        'text' => 'Empresa',
+        'url' => 'empresa',
+        'icon' => 'building',
+    ],
 ],
         
         
