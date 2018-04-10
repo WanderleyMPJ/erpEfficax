@@ -6,6 +6,11 @@ function pessoa(qual) {
             document.getElementById('ap_nf').placeholder = ap_nf;
             document.getElementById('cp_cn').placeholder = cp_cn;
             document.getElementById('rg_inscest').placeholder = rg_inscest;
+            document.getElementById('l_nm_rs').textContent = nm_rs;
+            document.getElementById('l_ap_nf').textContent = ap_nf;
+            document.getElementById('l_cp_cn').textContent = cp_cn;
+            document.getElementById('l_rg_inscest').textContent = rg_inscest;
+
         }
         else {
             if (qual == "1") {
@@ -15,6 +20,10 @@ function pessoa(qual) {
                 document.getElementById('ap_nf').placeholder = ap_nf;
                 document.getElementById('cp_cn').placeholder = cp_cn;
                 document.getElementById('rg_inscest').placeholder = rg_inscest;
+                document.getElementById('l_nm_rs').textContent = nm_rs;
+                document.getElementById('l_ap_nf').textContent = ap_nf;
+                document.getElementById('l_cp_cn').textContent = cp_cn;
+                document.getElementById('l_rg_inscest').textContent = rg_inscest;
 
             }
         }

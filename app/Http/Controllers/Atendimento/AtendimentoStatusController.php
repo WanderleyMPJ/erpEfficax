@@ -14,7 +14,7 @@ class AtendimentoStatusController extends Controller {
         $models = $atendimentostatus->all();
         $headertable = array('ID', 'Descrição', '');
         $rota = 'atendimento.status.detalhe';
-                 
+        $relacao = '';
         $tela = 'Status dos Atendimentos';
         $modelfields = array('id', 'descricao');
         $add = 'atendimento.status.cadastrar';
@@ -23,7 +23,7 @@ class AtendimentoStatusController extends Controller {
         if (Gate::denies('AtendimentoStatus_View', $models))
             abort(403, 'Usuário não autorizado');
 
-        return view('padrao.indexmodel', compact('models', 'headertable', 'rota', 'tela', 'modelfields', 'add', 'ico'));
+        return view('padrao.indexmodel', compact('models', 'headertable', 'rota', 'tela', 'modelfields', 'add', 'ico', 'relacao'));
     }
 
     public function detalhe($id) {

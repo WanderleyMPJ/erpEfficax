@@ -111,7 +111,7 @@ return [
         'CADASTROS GERAIS',
     [
         'text'    => 'Pessoas',
-       // 'icon'    => 'building',
+        'icon'    => 'child',
         'submenu' => [
             [
                 'text'    => 'Grupo de Pessoas',
@@ -129,40 +129,54 @@ return [
     ],
     [
         'text' => 'Atendimento',
+        'icon' => 'support',
         'submenu' => [
             [
                 'text' => 'Origens do Atendimento',
+                'icon' => 'bullseye',
                 'url'  => 'atendimento/origem',
+
             ],
             [
                 'text' => 'Status do Atendimento',
+                'icon' => 'info',
                 'url'  => 'atendimento/status',
+
             ],
         ],
     ],
     [
         'text' => 'Produtos e Serviços',
+        'icon' => 'cubes',
         'submenu' => [
             [
                 'text' => 'Produtos',
+                'icon' => 'shopping-cart',
                 'url'  => 'produtos',
+
             ],
             [
                 'text' => 'Serviços',
+                'icon' => 'magic',
                 'url'  => 'produtos/create',
+
             ],
         ],
     ],
     [
         'text' => 'Financeiro',
+        'icon' => 'money',
         'submenu' => [
             [
                 'text' => 'Plano de Contas',
+                'icon' => 'sitemap',
                 'url'  => 'fornecedores',
             ],
             [
                 'text' => 'Contas Caixa / Banco',
+                'icon' => 'bank',
                 'url'  => 'fornecedores/create',
+
             ],
         ],
     ],

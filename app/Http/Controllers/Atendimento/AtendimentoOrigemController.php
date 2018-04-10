@@ -19,11 +19,11 @@ class AtendimentoOrigemController extends Controller {
         $modelfields = array('id', 'descricao');
         $add = 'atendimento.origem.cadastrar';
         $ico = 'fa-users';
-
+        $relacao = '';
         if (Gate::denies('AtendimentoOrigem_View', $models))
             abort(403, 'Usuário não autorizado');
 
-        return view('padrao.indexmodel', compact('models', 'headertable', 'rota', 'tela', 'modelfields', 'add', 'ico'));
+        return view('padrao.indexmodel', compact('models', 'headertable', 'rota', 'tela', 'modelfields', 'add', 'ico', 'relacao'));
     }
 
     public function detalhe($id) {

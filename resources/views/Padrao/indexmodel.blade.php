@@ -60,15 +60,6 @@
                                     <td>{{$model->$relacao->$campo}}</td>
                                     @else
                                     @endif
-
-                              {{--  <td>{{$model->cnpj_cpf}}</td>
-                                <td>{{$model->rg_inscest}}</td>--}}
-
-                              {{--  @if($model->ativo == 0)
-                                    <td><input type="checkbox"  checked="checked" disabled/></td>
-                                @elseif($model->ativo == 1)
-                                    <td><input type="checkbox" disabled/></td>
-                                @endif--}}
                                 <td>
                                     <div class="pull-left">
                                         <a  class="btn btn-info" href="{{route($rota,$model->id)}}"> <i class="fa fa-edit"></i> Editar </a>
