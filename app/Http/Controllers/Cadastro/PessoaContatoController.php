@@ -7,20 +7,21 @@ use App\Http\Controllers\Controller;
 
 class PessoaContatoController extends Controller
 {
-    public function salvar(\App\Http\Requests\PessoaRequest $request, $id)
+    public function atualizar(\App\Http\Requests\PessoaRequest $request, $id)
     {
-        $contato = \App\Cadastro\PessoaContato::find($id);
-        $contato->descricao = $request->input('c_descricao');
-        $contato->telefone = $request->input('c_telefone');
-        $contato->email = $request->input('c_email');
 
-        \App\Cadastro\Pessoacontato::update($contato);
+        $contato['descricao'] = $request->input('c_descricao');
+        $contato['telefone'] = $request->input('c_telefone');
+        $contato['email'] = $request->input('c_email');
+        \App\Cadastro\PessoaContato::find($id)->update($contato);
 
-        $pessoa = \App\Cadastro\Pessoa::find($contato->id);
+        $contato = \App\Cadastro\Pessoacontato::find($id);
+
+        $pessoa = \App\Cadastro\Pessoa::find($contato->pessoa_id);
 
         return redirect()->route('pessoa.detalhe', $pessoa->id);
     }
-    public function atualizar(\App\Http\Requests\PessoaRequest $request, $id)
+    public function salvar(\App\Http\Requests\PessoaRequest $request, $id)
     {
         $contato = new \App\Cadastro\PessoaContato;
         $contato->descricao = $request->input('c_descricao');

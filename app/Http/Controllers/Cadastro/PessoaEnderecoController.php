@@ -43,6 +43,24 @@ class PessoaEnderecoController extends Controller
 
 
         return redirect()->route('pessoa.detalhe', $pessoa->id);
+    }
+    public function atualizar(\App\Http\Requests\PessoaRequest $request, $id)
+    {
+        $endereco['descricao'] = $request->input('e_descricao');
+        $endereco['cep'] = $request->input('e_cep');
+        $endereco['logradouro'] = $request->input('e_logradouro');
+        $endereco['bairro'] = $request->input('e_bairro');
+        $endereco['cidade'] = $request->input('e_cidade');
+        $endereco['uf'] = $request->input('e_uf');
+        $endereco['complemento'] = $request->input('e_complemento');
+        $endereco['referencia'] = $request->input('e_referencia');
 
+        \App\Cadastro\PessoaEndereco::find($id)->update($endereco);
+
+        $endereco = \App\Cadastro\PessoaEndereco::find($id);
+
+        $pessoa = \App\Cadastro\Pessoa::find($endereco->pessoa_id);
+
+        return redirect()->route('pessoa.detalhe', $pessoa->id);
     }
 }

@@ -223,7 +223,7 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
-                            <a class="btn btn-info"><i class="fa fa-plus"></i> Novo Contato</a>
+                            <a href="{{route('pessoa.detalhe', $pessoa->id)}}" class="btn btn-info"><i class="fa fa-plus"></i> Novo Contato</a>
                         </div>
                     </div>
                 </div>
@@ -269,7 +269,7 @@
                                         <label for="e_estado">Estado</label>
                                         <input type="text"  class="form-control" placeholder="Estado"  name="e_uf" id="e_estado"
                                                @if($pessoa->id <> '' && $endereco <> '')
-                                               value="{{$endereco->estado}}"
+                                               value="{{$endereco->uf}}"
                                                @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
                                         @else
@@ -332,6 +332,7 @@
                                         <tr>
                                             <th>Descrição</th>
                                             <th>CEP</th>
+                                            <th>Ações</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -351,7 +352,7 @@
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
-                                <a class="btn btn-info"><i class="fa fa-plus"></i> Novo Endereço</a>
+                                <a href="{{route('pessoa.detalhe', $pessoa->id)}}" class="btn btn-info"><i class="fa fa-plus"></i> Novo Endereço</a>
                             </div>
                         </div>
                     </div>
