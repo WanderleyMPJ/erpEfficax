@@ -58,10 +58,16 @@ Route::get('/pessoagrupo/atualizar/{id}', 'Cadastro\PessoaGrupoController@atuali
 
 /*Contato*/
 Route::get('/pessoa/contato/salvar/{id}', 'Cadastro\PessoaContatoController@salvar')->name('pessoa.contato.salvar');
+Route::get('/pessoa/contato/excluir/{id}', 'Cadastro\PessoaContatoController@excluir')->name('pessoa.contato.excluir');
+Route::get('/pessoa/contato/editar/{id}', 'Cadastro\PessoaContatoController@editar')->name('pessoa.contato.editar');
+Route::get('/pessoa/contato/atualizar/{id}', 'Cadastro\PessoaContatoController@atualizar')->name('pessoa.contato.atualizar');
 /*End Contato*/
 
 /*Endereco*/
 Route::get('/pessoa/endereco/salvar/{id}', 'Cadastro\PessoaEnderecoController@salvar')->name('pessoa.endereco.salvar');
+Route::get('/pessoa/endereco/excluir/{id}', 'Cadastro\PessoaEnderecoController@excluir')->name('pessoa.endereco.excluir');
+Route::get('/pessoa/endereco/editar/{id}', 'Cadastro\PessoaEnderecoController@editar')->name('pessoa.endereco.editar');
+Route::get('/pessoa/endereco/atualizar/{id}', 'Cadastro\PessoaEnderecoController@atualizar')->name('pessoa.endereco.atualizar');
 /*End  Endereco*/
 /*End Pessoas*/
 

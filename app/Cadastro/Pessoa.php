@@ -34,11 +34,11 @@ class Pessoa extends Model {
         return $this->contatos()->save($cont);
     }
 
-    public function deletarContato()
+    public function deletarContato(PessoaContato $cont)
     {
-        foreach ($this->contatos() as $cont) {
+
             $cont->delete();
-        }
+
 
         return true;
     }

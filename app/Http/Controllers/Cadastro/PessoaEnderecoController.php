@@ -26,4 +26,23 @@ class PessoaEnderecoController extends Controller
 
         return redirect()->route('pessoa.detalhe', $pessoa->id);
     }
+    public function editar($id)
+    {
+        $endereco = \App\Cadastro\PessoaEndereco::find($id);
+        $pessoa = \App\Cadastro\Pessoa::find($endereco->pessoa_id);
+        $grupo = \App\Cadastro\PessoaGrupo::all();
+        $contato = '';
+
+        return view('cadastro.pessoa',compact('contato', 'pessoa', 'grupo', 'endereco'));
+    }
+    public function excluir($id)
+    {
+        $endereco = \App\Cadastro\PessoaEndereco::find($id);
+        $pessoa = \App\Cadastro\Pessoa::find($endereco->pessoa_id);
+        $endereco->delete();
+
+
+        return redirect()->route('pessoa.detalhe', $pessoa->id);
+
+    }
 }

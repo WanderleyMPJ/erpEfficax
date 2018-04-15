@@ -148,7 +148,15 @@
                         <button class="btn btn-box-tool" type="button" data-widget="collapse"><i class="fa @if($pessoa->id == '') fa-plus @else  fa-minus @endif"></i></button>
                     </div>
             </div>
-            <form role="form" @if($pessoa->id <> '') action="{{route('pessoa.contato.salvar', $pessoa->id)}}"  @endif   method="get">
+            <form role="form"
+                @if($pessoa->id <> '')
+                    @if($contato <> '')
+                        action="{{route('pessoa.contato.atualizar', $contato->id)}}"
+                    @else
+                        action="{{route('pessoa.contato.salvar', $pessoa->id)}}"
+                    @endif
+                @endif
+                  id="contato" method="get">
             <div class="widget-content nopadding">
                 <div class="box box-warning">
                     <div class="box-header with-border">
@@ -160,33 +168,32 @@
                                 <div class="form-group">
                                     <label for="c_desc">Descrição</label>
                                     <input type="text" class="form-control" placeholder="Descrição" name="c_descricao" id="c_desc"
-                                          {{-- @if($pessoa->id <> '' && $pessoa->contatos <> '[]')
-                                           value="{{$pessoa->contatos[0]->descricao}}"
-                                           @elseif($pessoa->id <> '' && $pessoa->contatos = '[]')
-                                           value=""
-                                           @else value="Pessoal"
-                                            @endif--}}/>
+                                            @if($pessoa->id <> '' && $contato <> '')
+                                            value="{{$contato->descricao}}"
+                                            @elseif($pessoa->id <> '' && $contato = '')
+                                            value=""
+                                            @else
+                                            @endif/>
                                 </div>
                                 <div class="form-group">
                                     <label for="c_mail">E-mail</label>
                                     <input type="text"  class="form-control" placeholder="E-mail"  name="c_email" id="c_mail"
-                                          {{-- @if($pessoa->id <> '' && $pessoa->contatos <> '[]')
-                                           value="{{$pessoa->contatos[0]->email}}"
-                                           @elseif($pessoa->id <> '' && $pessoa->contatos = '[]')
-                                           value=""
-                                           @else
-                                           value="efficax.pedro@gmail.com"
-                                            @endif--}}/>
+                                            @if($pessoa->id <> '' && $contato <> '')
+                                            value="{{$contato->email}}"
+                                            @elseif($pessoa->id <> '' && $contato = '')
+                                            value=""
+                                            @else
+                                            @endif/>
                                 </div>
                                 <div class="form-group">
                                     <label for="c_telefone">Telefone</label>
                                     <input type="text" class="form-control" placeholder="Telefone" name="c_telefone" id="telefone"
-                                          {{-- @if($pessoa->id <> '' && $pessoa->contatos <> '[]')
-                                           value="{{$pessoa->contatos[0]->telefone}}"
-                                           @elseif($pessoa->id <> '' && $pessoa->contatos = '[]')
-                                           value=""
-                                    @else
-                                            @endif--}}/>
+                                            @if($pessoa->id <> '' && $contato <> '')
+                                            value="{{$contato->telefone}}"
+                                            @elseif($pessoa->id <> '' && $contato = '')
+                                            value=""
+                                            @else
+                                            @endif/>
                                 </div>
                             </div>{{--End Form--}}
                             <div class="col-md-6"><!-- /Lista de Endereços -->
@@ -195,17 +202,16 @@
                                     <tr>
                                         <th>Descrição</th>
                                         <th>Telefone</th>
-                                        <th>E-mail</th>
+                                        <th>Ações</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     @if($pessoa->contatos <> '[]')
                                     @forelse($pessoa->contatos as $contato)
                                         <tr>
-                                            <td>{{$contato->descricao}}</td>
+                                            <td >{{$contato->descricao}}</td>
                                             <td>{{$contato->telefone}}</td>
-                                            <td>{{$contato->email}}</td>
-
+                                            <td><a class="btn btn-info" href="{{route('pessoa.contato.editar', $contato->id)}}"><i class="fa fa-edit"></i>Editar</a> <a class="btn btn-danger" href="{{route('pessoa.contato.excluir', $contato->id)}}"><i class="fa fa-trash"></i>Excluir</a></td>
                                         </tr>
                                     @empty
                                     @endforelse
@@ -218,13 +224,19 @@
                         <div class="box-footer">
                             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
                             <a class="btn btn-info"><i class="fa fa-plus"></i> Novo Contato</a>
-                            <a class="btn btn-danger"><i class="fa fa-trash"></i> Excluir</a>
                         </div>
                     </div>
                 </div>
             </div>
             </form>
-            <form role="form" @if($pessoa->id <> '') action="{{route('pessoa.endereco.salvar', $pessoa->id)}}" @endif   method="get">
+            <form role="form"
+                @if($pessoa->id <> '')
+                    @if($endereco <> '')
+                        action="{{route('pessoa.endereco.atualizar', $endereco->id)}}"
+                    @else
+                        action="{{route('pessoa.endereco.salvar', $pessoa->id)}}"
+                    @endif
+                @endif   method="get">
                 <div class="widget-content nopadding">
                     <div class="box box-warning">
                         <div class="box-header with-border">
@@ -236,90 +248,82 @@
                                     <div class="form-group">
                                         <label for="e_desc">Descrição</label>
                                         <input type="text" class="form-control" placeholder="Descrição" name="e_descricao" id="e_desc"
-                                              {{-- @if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->descricao}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->descricao}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="Casa"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                     <div class="form-group">
                                         <label for="e_cep">CEP</label>
                                         <input type="text" class="form-control" placeholder="CEP" name="e_cep" id="e_cep"
-                                               {{--@if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->cep}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->cep}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="76808209"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                     <div class="form-group">
                                         <label for="e_estado">Estado</label>
                                         <input type="text"  class="form-control" placeholder="Estado"  name="e_uf" id="e_estado"
-                                               {{--@if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->uf}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->estado}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="RO"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                     <div class="form-group">
                                         <label for="e_cidade">Cidade</label>
                                         <input type="text"  class="form-control" placeholder="Cidade"  name="e_cidade" id="e_cidade"
-                                               {{--@if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->cidade}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->cidade}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="Porto Velho"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                     <div class="form-group">
                                         <label for="e_bairro">Bairro</label>
                                         <input type="text"  class="form-control" placeholder="Bairro"  name="e_bairro" id="e_bairro"
-                                              {{-- @if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->bairro}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->bairro}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="Conceição"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                     <div class="form-group">
                                         <label for="e_logr">Loradouro</label>
                                         <input type="text" class="form-control" placeholder="Rua, Número" name="e_logradouro" id="e_logr"
-                                              {{-- @if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->logradouro}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->logradouro}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="Magnólia, 3784"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                     <div class="form-group">
                                         <label for="e_comp">Complemento</label>
                                         <input type="text" class="form-control" placeholder="Complemento" name="e_complemento" id="e_comp"
-                                              {{-- @if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->complemento}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->complemento}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="Casa"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                     <div class="form-group">
                                         <label for="e_ref">Referência</label>
                                         <input type="text" class="form-control" placeholder="Referência" name="e_referencia" id="e_ref"
-                                              {{-- @if($pessoa->id <> '' && $pessoa->enderecos <> '[]')
-                                               value="{{$pessoa->enderecos[0]->referencia}}"
-                                               @elseif($pessoa->id <> '' && $pessoa->enderecos = '[]')
+                                               @if($pessoa->id <> '' && $endereco <> '')
+                                               value="{{$endereco->referencia}}"
+                                               @elseif($pessoa->id <> '' && $endereco = '')
                                                value=""
-                                               @else
-                                               value="Perto Do Shopping"
-                                                @endif--}}/>
+                                        @else
+                                                @endif/>
                                     </div>
                                 </div>{{--End Form--}}
                                 <div class="col-md-6"><!-- /Lista de Endereços -->
@@ -328,20 +332,19 @@
                                         <tr>
                                             <th>Descrição</th>
                                             <th>CEP</th>
-                                            <th>Logradouro</th>
                                         </tr>
                                         </thead>
                                         <tbody>
                                         @if($pessoa->enderecos <> '[]')
-                                        @forelse($pessoa->enderecos as $endereco)
-                                            <tr>
-                                                <td>{{$endereco->descricao}}</td>
-                                                <td>{{$endereco->cep}}</td>
-                                                <td>{{$endereco->logradouro}}</td>
-                                            </tr>
-                                        @empty
-                                        @endforelse
-                                            @endif
+                                            @forelse($pessoa->enderecos as $endereco)
+                                                <tr>
+                                                    <td >{{$endereco->descricao}}</td>
+                                                    <td>{{$endereco->cep}}</td>
+                                                    <td><a class="btn btn-info" href="{{route('pessoa.endereco.editar', $endereco->id)}}"><i class="fa fa-edit"></i>Editar</a> <a class="btn btn-danger" href="{{route('pessoa.endereco.excluir', $endereco->id)}}"><i class="fa fa-trash"></i>Excluir</a></td>
+                                                </tr>
+                                            @empty
+                                            @endforelse
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div><!-- End Lista -->
@@ -349,7 +352,6 @@
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
                                 <a class="btn btn-info"><i class="fa fa-plus"></i> Novo Endereço</a>
-                                <a class="btn btn-danger"><i class="fa fa-trash"></i> Excluir</a>
                             </div>
                         </div>
                     </div>
