@@ -166,6 +166,13 @@ return [
             ],
         ],
     ],
+    'ATENDIMENTOS',
+    [
+        'text' => 'Dashboard',
+        'url'  => 'atendimento/dashboard',
+       // 'icon' => '',
+    ],
+        
     'PAINEL DO USUÁRIO',
     [
         'text' => 'Editar dados',
