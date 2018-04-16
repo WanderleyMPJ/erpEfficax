@@ -17,7 +17,11 @@ Route::get('/atendimento/status/detalhe/{id}', 'Atendimento\AtendimentoStatusCon
 Route::get('/atendimento/status/cadastrar', 'Atendimento\AtendimentoStatusController@cadastrar')->name('atendimento.status.cadastrar');
 Route::get('/atendimento/status/salvar', 'Atendimento\AtendimentoStatusController@salvar')->name('atendimento.status.salvar');
 Route::get('/atendimento/status/atualizar/{id}', 'Atendimento\AtendimentoStatusController@atualizar')->name('atendimento.status.atualizar');
-    
+
+/* Atendimentos */
+Route::get('/atendimento/dashboard', 'Atendimento\AtendimentoController@index')->name('atendimento.dashboard');
+Route::get('/atendimento/cadastrar', 'Atendimento\AtendimentoController@cadastrar')->name('atendimento.cadastrar');
+
 });
 
 Route::get('/', function () {
