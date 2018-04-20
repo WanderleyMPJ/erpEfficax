@@ -2,8 +2,8 @@
 
 @section('content_header')
 <section class="content-header">
-    <h1 class="text-red">
-        <i class="fa fa-building"></i> Atendimento
+    <h1 class="text-bold text-green">
+        <i class="fa fa-life-ring"></i> Atendimento
         {{--<small>it all starts here</small>--}}
     </h1>
     <ol class="breadcrumb">
@@ -18,7 +18,7 @@
 <div class="box box-info">
 
     <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-plus"></i> Cadastro</h3>
+        <h3 class="box-title"><i class="fa fa-list"></i>  Dados Principais</h3>
         <br>
         <hr>
 
@@ -27,22 +27,16 @@
         <div class="widget-content nopadding">
             <form class="form-horizontal"
                   @if($tipo == '0')
-                  action="{{route('empresa.atualizar', $atendimento->id)}}"
+                  action="{{route('atendimento.atualizar', $atendimento->id)}}"
                   @else
-                  action="{{route('empresa.salvar')}}"
+                  action="{{route('atendimento.salvar')}}"
                   @endif>
                   <div class="box-body">
 
                     <div class="form-group">
-                        <label>Data Inicio:</label>
+                        <label class="col-sm-2 control-label">Data Inicio:</label>
 
-                        <div class="input-group date">
-
-                            <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </div>
-                            <input type="text" class="form-control pull-right" name="data_inicio" id="datepicker">
-                        </div>
+                        <input type="date" value="{{date('d/m/Y')}}">
                         <!-- /.input group -->
                     </div>
 

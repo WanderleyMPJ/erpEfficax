@@ -21,6 +21,9 @@ Route::get('/atendimento/status/atualizar/{id}', 'Atendimento\AtendimentoStatusC
 /* Atendimentos */
 Route::get('/atendimento/dashboard', 'Atendimento\AtendimentoController@index')->name('atendimento.dashboard');
 Route::get('/atendimento/cadastrar', 'Atendimento\AtendimentoController@cadastrar')->name('atendimento.cadastrar');
+Route::get('/atendimento/editar/{}', 'Atendimento\AtendimentoController@editar')->name('atendimento.editar');
+Route::get('/atendimento/salvar', 'Atendimento\AtendimentoController@salvar')->name('atendimento.salvar');
+Route::get('/atendimento/atualizar/{id}', 'Atendimento\AtendimentoController@atualizar')->name('atendimento.atualizar');
 
 });
 
