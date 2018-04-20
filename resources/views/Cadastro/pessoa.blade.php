@@ -30,7 +30,7 @@
                 </h3>
             </div>
         </div>
-        <div class="box box-default @if($pessoa->id <> '') collapsed-box @endif">
+        <div class="box box-default">
             <div class="widget-content nopadding">
                 <div class="box box-info">
                     <div class="box-header with-border">
@@ -38,7 +38,7 @@
                             <i class="fa fa-sticky-note"></i> Dados Básicos
                         </h3>
                         <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" type="button" data-widget="collapse"><i class="fa @if($pessoa->id <> '') fa-plus @else  fa-minus @endif"></i></button>
+                            <button class="btn btn-box-tool" type="button" data-widget="collapse"><i class="fa fa-minus"></i></button>
                         </div>
                     </div>
                     <div class="box-body">

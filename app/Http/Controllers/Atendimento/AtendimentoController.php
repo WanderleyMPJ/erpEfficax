@@ -41,19 +41,23 @@ class AtendimentoController extends Controller {
         
         
         $models = $atendimento->all();
-        
-        $headertable = array('ID', 'Descrição', '');
+
+        $aberto = count($models->where('atendimentostatus_id', '1'));
+
+        $headertable = array('ID', 'Descrição','Status','');
         $rota = 'atendimento.status.detalhe';
                  
         $tela = 'Listagem dos Atendimentos';
         $modelfields = array('id', 'descricao');
         $add = 'atendimento.cadastrar';
-        $ico = 'fa-users';
-
+        $ico = 'fa-dashboard';
+       // $relacao = $models->atendimentostatus;
+        $relacao = 'atendimentostatus';
+        $campo = 'descricao';
         if (Gate::denies('Atendimento_View', $models))
             abort(403, 'Usuário não autorizado');
 
-        return view('atendimento.dashboard', compact('models', 'headertable', 'rota', 'tela', 'modelfields', 'add', 'ico'));
+        return view('atendimento.dashboard', compact('models', 'relacao', 'headertable', 'rota', 'tela', 'modelfields', 'add', 'ico', 'aberto', 'campo'));
         
         
         

@@ -18,14 +18,15 @@ class Atendimento extends Model {
         return $nome;
     }
 
-    public function AtendimentoStatus() {
+    public function atendimentostatus() {
+
         return $this->belongsTo('App\Atendimento\AtendimentoStatus');
     }
 
-    public function NomeAtendimentoStatus() {
+    public function nomeatendimentostatus() {
         $atendimento = $this;
         $nome = $atendimento->status();
-        return $descricao;
+        return $nome;
     }
     
 }

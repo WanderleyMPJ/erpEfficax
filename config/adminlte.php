@@ -184,7 +184,7 @@ return [
     [
         'text' => 'Dashboard',
         'url'  => 'atendimento/dashboard',
-       // 'icon' => '',
+        'icon' => 'tachometer',
     ],
         
     'PAINEL DO USUÁRIO',
