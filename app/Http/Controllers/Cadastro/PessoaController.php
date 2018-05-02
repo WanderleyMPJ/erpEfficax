@@ -34,6 +34,10 @@ class PessoaController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function cadastrar(Pessoa $pessoa)
     {
         $pessoas =$pessoa->find($pessoa->id);
@@ -91,7 +95,6 @@ class PessoaController extends Controller
                 ]);
                 $pessoa = \App\Cadastro\Pessoa::create($campos);
 
-
             if($request->get('grupo') <> ''){
 
                foreach($request->get('grupo') as $grupoid)
@@ -103,6 +106,22 @@ class PessoaController extends Controller
                }
             }
          return redirect()->route('pessoa.detalhe', $pessoa->id);
+    }
+    public function find(\App\Http\Requests\BuscaRequest $request){
+        $term = trim($request->busca);
+
+        if (empty($term)) {
+            return \Response::json([]);
+        }
+        $tags = Pessoa::search($term)->limit(5)->get();
+
+        $formatted_tags = [];
+
+        foreach ($tags as $tag) {
+            $formatted_tags[] = ['id' => $tag->id, 'text' => $tag->nome];
+        }
+
+        return \Response::json($formatted_tags);
     }
 
 }

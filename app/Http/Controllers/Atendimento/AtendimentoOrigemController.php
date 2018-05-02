@@ -69,5 +69,21 @@ class AtendimentoOrigemController extends Controller {
 
         return redirect()->route('atendimentoorigem.index');
     }
+    public function find(\App\Http\Requests\BuscaRequest $request){
+        $term = trim($request->busca);
+
+        if (empty($term)) {
+            return \Response::json([]);
+        }
+        $tags = AtendimentoOrigem::search($term)->limit(5)->get();
+
+        $formatted_tags = [];
+
+        foreach ($tags as $tag) {
+            $formatted_tags[] = ['id' => $tag->id, 'text' => $tag->descricao];
+        }
+
+        return \Response::json($formatted_tags);
+    }
 
 }

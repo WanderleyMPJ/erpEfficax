@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use App\Http\Requests\Request;
 
-class AtendimentoRequest extends Request
+class BuscaRequest extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,7 @@ class AtendimentoRequest extends Request
     public function rules()
     {
         return [
-            'pessoa_id',
-            'data_hora_inicio',
-            'data_hora_fim',
-            'solicitante',
-            'solicitacao',
-            'solucao',
-            'acao',
-            'atendimentostatus_id',
-            'atendimentoorigem_id',
-            'atendente_id'
+            'busca',
         ];
     }
 }

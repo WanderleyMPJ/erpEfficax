@@ -6,6 +6,7 @@ $this->group(['middleware' => ['auth'] ], function(){
     
 /* Atendimento Origem */
 Route::get('/atendimento/origem', 'Atendimento\AtendimentoOrigemController@index')->name('atendimentoorigem.index');
+Route::get('/atendimento/origem/find', 'Atendimento\AtendimentoOrigemController@find');
 Route::get('/atendimento/origem/detalhe/{id}', 'Atendimento\AtendimentoOrigemController@detalhe')->name('atendimento.origem.detalhe');
 Route::get('/atendimento/origem/cadastrar', 'Atendimento\AtendimentoOrigemController@cadastrar')->name('atendimento.origem.cadastrar');
 Route::get('/atendimento/origem/salvar', 'Atendimento\AtendimentoOrigemController@salvar')->name('atendimento.origem.salvar');
@@ -24,6 +25,7 @@ Route::get('/atendimento/cadastrar', 'Atendimento\AtendimentoController@cadastra
 Route::get('/atendimento/editar/{}', 'Atendimento\AtendimentoController@editar')->name('atendimento.editar');
 Route::get('/atendimento/salvar', 'Atendimento\AtendimentoController@salvar')->name('atendimento.salvar');
 Route::get('/atendimento/atualizar/{id}', 'Atendimento\AtendimentoController@atualizar')->name('atendimento.atualizar');
+Route::get('/atendimento/salvarsolicitacao', 'Atendimento\AtendimentoController@SalvarSolicitacao')->name('atendimento.atualizar');
 
 });
 
@@ -54,6 +56,7 @@ Route::get('/pessoa/detalhe/{id}', 'Cadastro\PessoaController@detalhe')->name('p
 Route::get('/pessoa/cadastar', 'Cadastro\PessoaController@cadastrar')->name('pessoa.cadastrar');
 Route::get('/pessoa/salvar', 'Cadastro\PessoaController@salvar')->name('pessoa.salvar');
 Route::get('/pessoa/atualizar/{id}', 'Cadastro\PessoaController@atualizar')->name('pessoa.atualizar');
+Route::get('/pessoa/find', 'Cadastro\PessoaController@find');
 
 /*Gupo*/
 Route::get('/pessoagrupo', 'Cadastro\PessoaGrupoController@index')->name('pessoagrupo.index');

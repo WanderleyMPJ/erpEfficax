@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Atendimento extends Model {
 
-    protected $fillable = ['id', 'pessoa_id', 'data_inicio', 'data_fim', 'atendimentoorigem_di', 'atendimentostatus_id'];
+    protected $fillable = ['protocolo','solucao','data_inicio','data_termino','pessoa_id','solicitante','atendimentoorigem_id','atendimentostatus_id','solicitacao'];
+    protected $dates = ['data_inicio', 'data_fim'];
 
     public function pessoa() {
         return $this->belongsTo('App\Cadastro\Pessoa');
@@ -18,7 +19,7 @@ class Atendimento extends Model {
         return $nome;
     }
 
-    public function atendimentostatus() {
+    public function status() {
 
         return $this->belongsTo('App\Atendimento\AtendimentoStatus');
     }
@@ -27,6 +28,12 @@ class Atendimento extends Model {
         $atendimento = $this;
         $nome = $atendimento->status();
         return $nome;
+    }
+    public function atendimentodet() {
+        return $this->hasMany('App\Atendimento\AtendimentoDet');
+    }
+    public function addatendimentodet($det){
+        return $this->atendimentodet()->save($det);
     }
     
 }

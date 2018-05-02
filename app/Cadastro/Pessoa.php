@@ -5,10 +5,13 @@ namespace App\Cadastro;
 
 
 use Illuminate\Database\Eloquent\Model;
+use Sofa\Eloquence\Eloquence;
+
 
 class Pessoa extends Model {
 
-
+    use Eloquence;
+    protected $searchableColumns = ['nome', 'cnpj_cpf'];
     protected $fillable = ['id','nome', 'rg_inscest','cnpj_cpf', 'tipo_pessoa', 'fantasia', 'ativo','user_id'];
 
     public function Contatos() {

@@ -106,7 +106,7 @@
                         </div>
                         <div class="form-group">
                             <label>Grupo</label>
-                            <select class="form-control select2multiple" name="grupo[]" multiple>
+                            <select class="form-control select2grupo" name="grupo[]" multiple>
                                 @forelse($grupo as $grupo)
                                     <option @if($pessoa->id <> '')
                                             @foreach($pessoa->grupos as $pgrupos)
@@ -223,7 +223,9 @@
                         </div>
                         <div class="box-footer">
                             <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
+                          @if($pessoa->id <> '' && $pessoa->contatos <> '[]')
                             <a href="{{route('pessoa.detalhe', $pessoa->id)}}" class="btn btn-info"><i class="fa fa-plus"></i> Novo Contato</a>
+                          @endif
                         </div>
                     </div>
                 </div>
@@ -352,7 +354,9 @@
                             </div>
                             <div class="box-footer">
                                 <button type="submit" class="btn btn-success"><i class="fa fa-save"></i> Salvar</button>
+                               @if ($pessoa-> id <> '' && $pessoa->enderecos <> '[]')
                                 <a href="{{route('pessoa.detalhe', $pessoa->id)}}" class="btn btn-info"><i class="fa fa-plus"></i> Novo Endereço</a>
+                                @endif
                             </div>
                         </div>
                     </div>

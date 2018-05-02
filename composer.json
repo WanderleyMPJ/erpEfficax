@@ -12,7 +12,9 @@
         "laravel/framework": "5.6.*",
         "laravel/tinker": "^1.0",
         "yajra/laravel-datatables-oracle": "~8.0",
-        "zservices/query": "1.*"
+        "zservices/query": "1.*",
+        "sofa/eloquence": "^5.5"
+
     },
     "require-dev": {
         "filp/whoops": "^2.0",

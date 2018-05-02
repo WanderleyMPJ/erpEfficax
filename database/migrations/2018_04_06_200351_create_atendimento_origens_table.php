@@ -18,7 +18,28 @@ class CreateAtendimentoOrigensTable extends Migration
             $table->string('descricao', 100);
             $table->timestamps();
         });
-    
+
+
+        DB::table('atendimento_origens')->insert([
+            'id' => '1',
+            'descricao' => 'Ligação',
+        ]);
+
+        DB::table('atendimento_origens')->insert([
+            'id' => '2',
+            'descricao' => 'Mensagem',
+        ]);
+
+        DB::table('atendimento_origens')->insert([
+            'id' => '3',
+            'descricao' => 'E-Mail',
+        ]);
+
+        DB::table('atendimento_origens')->insert([
+            'id' => '4',
+            'descricao' => 'Pessoalmente',
+        ]);
+
 
         DB::table('permissions')->insert([
             'nome' => 'AtendimentoOrigem_View',
