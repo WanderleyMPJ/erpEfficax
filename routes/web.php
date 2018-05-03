@@ -3,51 +3,6 @@
 $this->group(['middleware' => ['auth'] ], function(){
     Route::get('/home', 'HomeController@index')->name('home');
 
-    
-/* Atendimento Origem */
-Route::get('/atendimento/origem', 'Atendimento\AtendimentoOrigemController@index')->name('atendimentoorigem.index');
-Route::get('/atendimento/origem/detalhe/{id}', 'Atendimento\AtendimentoOrigemController@detalhe')->name('atendimento.origem.detalhe');
-Route::get('/atendimento/origem/cadastrar', 'Atendimento\AtendimentoOrigemController@cadastrar')->name('atendimento.origem.cadastrar');
-Route::get('/atendimento/origem/salvar', 'Atendimento\AtendimentoOrigemController@salvar')->name('atendimento.origem.salvar');
-Route::get('/atendimento/origem/atualizar/{id}', 'Atendimento\AtendimentoOrigemController@atualizar')->name('atendimento.origem.atualizar');
-    
-/* Atendimento status */
-Route::get('/atendimento/status', 'Atendimento\AtendimentoStatusController@index')->name('atendimento.status.index');
-Route::get('/atendimento/status/detalhe/{id}', 'Atendimento\AtendimentoStatusController@detalhe')->name('atendimento.status.detalhe');
-Route::get('/atendimento/status/cadastrar', 'Atendimento\AtendimentoStatusController@cadastrar')->name('atendimento.status.cadastrar');
-Route::get('/atendimento/status/salvar', 'Atendimento\AtendimentoStatusController@salvar')->name('atendimento.status.salvar');
-Route::get('/atendimento/status/atualizar/{id}', 'Atendimento\AtendimentoStatusController@atualizar')->name('atendimento.status.atualizar');
-
-/* Atendimentos */
-Route::get('/atendimento/dashboard', 'Atendimento\AtendimentoController@index')->name('atendimento.dashboard');
-Route::get('/atendimento/cadastrar', 'Atendimento\AtendimentoController@cadastrar')->name('atendimento.cadastrar');
-Route::get('/atendimento/editar/{}', 'Atendimento\AtendimentoController@editar')->name('atendimento.editar');
-Route::get('/atendimento/salvar', 'Atendimento\AtendimentoController@salvar')->name('atendimento.salvar');
-Route::get('/atendimento/atualizar/{id}', 'Atendimento\AtendimentoController@atualizar')->name('atendimento.atualizar');
-
-});
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Auth::routes();
-
-Route::get('/teste', function () {return special_ucwords('WANDERLEY MACEDO DE PINHEIRO JÚNIOR');});
-Route::get('/teste2', function () {return verificaTabela('permissions');});
-Route::get('/testecnpj', 'Cadastro\PessoaController@getCnpj')->name('pessoa.cnpj');
-
-
-Route::get('/user', 'Cadastro\UserController@index')->name('user');
-Route::get('/userpermissions', 'Cadastro\UserController@userpermissions')->name('userpermissions');
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
-
-Route::get('naoautorizado', function(){
-    view('error.naoautorizado');
-});
-
-Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil');
-
 /*Pessoas*/
 Route::get('/pessoa', 'Cadastro\PessoaController@index')->name('pessoa.index');
 Route::get('/pessoa/detalhe/{id}', 'Cadastro\PessoaController@detalhe')->name('pessoa.detalhe');
@@ -76,6 +31,56 @@ Route::get('/pessoa/endereco/excluir/{id}', 'Cadastro\PessoaEnderecoController@e
 Route::get('/pessoa/endereco/editar/{id}', 'Cadastro\PessoaEnderecoController@editar')->name('pessoa.endereco.editar');
 Route::get('/pessoa/endereco/atualizar/{id}', 'Cadastro\PessoaEnderecoController@atualizar')->name('pessoa.endereco.atualizar');
 /*End  Endereco*/
+    
+    
+/* Atendimento Origem */
+Route::get('/atendimento/origem', 'Atendimento\AtendimentoOrigemController@index')->name('atendimentoorigem.index');
+Route::get('/atendimento/origem/detalhe/{id}', 'Atendimento\AtendimentoOrigemController@detalhe')->name('atendimento.origem.detalhe');
+Route::get('/atendimento/origem/cadastrar', 'Atendimento\AtendimentoOrigemController@cadastrar')->name('atendimento.origem.cadastrar');
+Route::get('/atendimento/origem/salvar', 'Atendimento\AtendimentoOrigemController@salvar')->name('atendimento.origem.salvar');
+Route::get('/atendimento/origem/atualizar/{id}', 'Atendimento\AtendimentoOrigemController@atualizar')->name('atendimento.origem.atualizar');
+    
+/* Atendimento status */
+Route::get('/atendimento/status', 'Atendimento\AtendimentoStatusController@index')->name('atendimento.status.index');
+Route::get('/atendimento/status/detalhe/{id}', 'Atendimento\AtendimentoStatusController@detalhe')->name('atendimento.status.detalhe');
+Route::get('/atendimento/status/cadastrar', 'Atendimento\AtendimentoStatusController@cadastrar')->name('atendimento.status.cadastrar');
+Route::get('/atendimento/status/salvar', 'Atendimento\AtendimentoStatusController@salvar')->name('atendimento.status.salvar');
+Route::get('/atendimento/status/atualizar/{id}', 'Atendimento\AtendimentoStatusController@atualizar')->name('atendimento.status.atualizar');
+
+/* Atendimentos */
+Route::get('/atendimento/dashboard', 'Atendimento\AtendimentoController@index')->name('atendimento.dashboard');
+Route::get('/atendimento/cadastrar', 'Atendimento\AtendimentoController@cadastrar')->name('atendimento.cadastrar');
+Route::get('/atendimento/editar/{}', 'Atendimento\AtendimentoController@editar')->name('atendimento.editar');
+Route::get('/atendimento/salvar', 'Atendimento\AtendimentoController@salvar')->name('atendimento.salvar');
+Route::get('/atendimento/atualizar/{id}', 'Atendimento\AtendimentoController@atualizar')->name('atendimento.atualizar');
+
+//usuarios
+Route::get('/user', 'Cadastro\UserController@index')->name('user');
+Route::get('/userpermissions', 'Cadastro\UserController@userpermissions')->name('userpermissions');
+
+
+});
+
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/teste', function () {return special_ucwords('WANDERLEY MACEDO DE PINHEIRO JÚNIOR');});
+Route::get('/teste2', function () {return verificaTabela('permissions');});
+Route::get('/testecnpj', 'Cadastro\PessoaController@getCnpj')->name('pessoa.cnpj');
+
+
+
+Route::get('naoautorizado', function(){
+    view('error.naoautorizado');
+});
+
+Route::get('roles-permissions', 'HomeController@rolespermissions')->name('perfil');
+
 /*End Pessoas*/
 
 /*Empresas*/

@@ -7,23 +7,31 @@ use App\Http\Controllers\Controller;
 use App\User;
 use Gate;
 
-class UserController extends Controller
-{
-    public function index(User $user)
-    {
-        $users =$user->all();
+class UserController extends Controller {
+
+    public function index(User $user) {
+        $users = $user->all();
         //  $users = $user->where('user_id', auth()->user()->id)->get();
 
+        $models = $user->all();
+        $headertable = array('Nome', 'E-mail', '');
+        $rota = 'register';
+        $tela = 'Usuarios';
+        $modelfields = array('name', 'email');
+        $add = 'register';
+        $ico = 'fa-user';
+        $relacao = '';
+        $campo = '';
 
-        if ( Gate::denies('user_view', $users) )
+        if (Gate::denies('User_View', $models))
             abort(403, 'Usuário não autorizado');
 
-        return view('auth.index', compact('users'));
+        return view('padrao.indexmodel', compact('modelfields', 'headertable', 'rota', 'tela', 'models', 'add', 'ico', 'relacao', 'campo'));
     }
-    
-        public function userpermissions() {
+
+    public function userpermissions() {
         $nameuser = auth()->user()->name;
-     //   var_dump("<h1>{$nameuser}</h1>");
+        //   var_dump("<h1>{$nameuser}</h1>");
         foreach (auth()->user()->perfils as $perfil) {
             echo "<b> $perfil->nome </b>";
 
@@ -35,6 +43,5 @@ class UserController extends Controller
             echo '<hr>';
         }
     }
-
 
 }
