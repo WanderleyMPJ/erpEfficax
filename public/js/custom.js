@@ -29,5 +29,30 @@ function pessoa(qual) {
         }
     }
 
+function novasolicitacao(){
+
+    document.getElementById('solicitacao').value = '';
+    document.getElementById('solucao').value = '';
+    document.getElementById('solicitacao').focus();
+}
+
+
+function destino(dest){
+    if (dest == '1'){
+        var texto = 'Selecione o USUÁRIO';
+        document.getElementById('textodest').textContent = texto;
+    }else {
+        var texto = 'Selecione o DEPARTAMENTO';
+        document.getElementById('textodest').textContent = texto;
+    }
+}
+function status(status_id){
+    document.getElementById('status').value = status_id;
+        submit("myForm");
+}
+function submit(form){
+    document.getElementById(form).submit();
+}
+
 
 /*Created by Pedro on 31/03/2018.*/

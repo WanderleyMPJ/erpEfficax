@@ -8,188 +8,188 @@
     </h1>
     <ol class="breadcrumb">
         <li><a href="{{ route('home') }}"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="{{route('atendimento.dashboard')}}">Dashboard</a></li>
-        <li class="active">Cadastro</li>
+        <li><a href="{{route('atendimento.dashboard')}}">Atendimentos</a></li>
+        <li class="active">Lançamento</li>
     </ol>
 </section>
 @stop
-
 @section('content')
-<div class="box box-info">
-
-    <div class="box-header">
-        <h3 class="box-title"><i class="fa fa-list"></i>  Dados Principais</h3>
-        <br>
-        <hr>
-
-    </div>
-    <div class="box-body">
-        <div class="widget-content nopadding">
-            <form class="form-horizontal"
-                  @if($tipo == '0')
-                  action="{{route('atendimento.atualizar', $atendimento->id)}}"
-                  @else
-                  action="{{route('atendimento.salvar')}}"
-                  @endif>
-                  <div class="box-body">
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label">Data Inicio:</label>
-
-                        <input type="date" value="{{date('d/m/Y')}}">
-                        <!-- /.input group -->
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="status">Origem:</label>
-                        <div class="col-sm-10">
-                            <select class="form-control select2simples" name="atendimentoorigem_id" id="atendimentoorigem">
-                                @forelse($atendimentoorigens as $origem)
-                                <option
-                                    @if($tipo=='0' && $origem->id == $atendimento->atendimentoorigem_id)
-                                    selected
-                                    @endif
-                                    value="{{$origem->id}}">{{$origem->descricao}}</option>
-                                @empty
-                                <p>Primeiro cadastre uma Origem</p>
-                                @endforelse
-                            </select>
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="status">Status:</label>
-                        <div class="col-sm-10">
-                            <select class="form-control select2simples" name="pessoa_id" id="pessoa">
-                                @forelse($atendimentostatuss as $status)
-                                <option
-                                    @if($tipo=='0' && $status->id == $atendimento->pessoa_id)
-                                    selected
-                                    @endif
-                                    value="{{$status->id}}">{{$status->descricao}}</option>
-                                @empty
-                                <p>Primeiro cadastre um status</p>
-                                @endforelse
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 control-label" for="pessoa">Pessoa:</label>
-                        <div class="col-sm-10">
-                            <select class="form-control select2simples" name="pessoa_id" id="pessoa">
-                                @forelse($pessoas as $pessoa)
-                                <option
-                                    @if($tipo=='0' && $pessoa->id == $atendimento->pessoa_id)
-                                    selected
-                                    @endif
-                                    value="{{$pessoa->id}}">{{$pessoa->nome}}</option>
-                                @empty
-                                <p>Primeiro cadastre uma pessoa</p>
-                                @endforelse
-                            </select>
-                        </div>
-                    </div>
-
-
-
-
-                </div>
-
-                <!-- /.box-body -->
-                <div class="box-footer">
-                    <button class="btn btn-default" type="reset">Cancelar</button>
-                    <button type="submit" class="btn btn-info pull-right">Salvar</button>
-                </div>
-                <!-- /.box-footer -->
-            </form>
+    <div class="invisible">{{date_default_timezone_set('America/Porto_Velho')}}</div>
+    <form rol="form"
+    {{--    @if($tipo == '0')
+            action="{{route('atendimento.atualizar', $atendimento->id)}}"
+        @else--}}
+            action="{{route('atendimento.salvar')}}"
+        {{--@endif--}}
+            method="get" id="myForm">
+        <div class="invisible">
+            <input type="checkbox" value="0"  id="status" name="atendimentostatus_id" checked>
         </div>
-    </div>
-</div>
-
-
-<!-- InputMask -->
-<script src="../../plugins/input-mask/jquery.inputmask.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
-<script src="../../plugins/input-mask/jquery.inputmask.extensions.js"></script>
-<!-- date-range-picker -->
-<script src="../../bower_components/moment/min/moment.min.js"></script>
-<script src="../../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-
-<!-- bootstrap datepicker -->
-<script src="../../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-<!-- Page script -->
-<script>
-                    $(function () {
-                        //Initialize Select2 Elements
-                        $('.select2').select2()
-
-                        //Datemask dd/mm/yyyy
-                        $('#datemask').inputmask('dd/mm/yyyy', {'placeholder': 'dd/mm/yyyy'})
-                        //Datemask2 mm/dd/yyyy
-                        $('#datemask2').inputmask('mm/dd/yyyy', {'placeholder': 'mm/dd/yyyy'})
-                        //Money Euro
-                        $('[data-mask]').inputmask()
-
-                        //Date range picker
-                        $('#reservation').daterangepicker()
-                        //Date range picker with time picker
-                        $('#reservationtime').daterangepicker({timePicker: true, timePickerIncrement: 30, format: 'MM/DD/YYYY h:mm A'})
-                        //Date range as a button
-                        $('#daterange-btn').daterangepicker(
-                                {
-                                    ranges: {
-                                        'Today': [moment(), moment()],
-                                        'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-                                        'Last 7 Days': [moment().subtract(6, 'days'), moment()],
-                                        'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-                                        'This Month': [moment().startOf('month'), moment().endOf('month')],
-                                        'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-                                    },
-                                    startDate: moment().subtract(29, 'days'),
-                                    endDate: moment()
-                                },
-                                function (start, end) {
-                                    $('#daterange-btn span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-                                }
-                        )
-
-                        //Date picker
-                        $('#datepicker').datepicker({
-                            autoclose: true
-                        })
-
-                        //iCheck for checkbox and radio inputs
-                        $('input[type="checkbox"].minimal, input[type="radio"].minimal').iCheck({
-                            checkboxClass: 'icheckbox_minimal-blue',
-                            radioClass: 'iradio_minimal-blue'
-                        })
-                        //Red color scheme for iCheck
-                        $('input[type="checkbox"].minimal-red, input[type="radio"].minimal-red').iCheck({
-                            checkboxClass: 'icheckbox_minimal-red',
-                            radioClass: 'iradio_minimal-red'
-                        })
-                        //Flat red color scheme for iCheck
-                        $('input[type="checkbox"].flat-red, input[type="radio"].flat-red').iCheck({
-                            checkboxClass: 'icheckbox_flat-green',
-                            radioClass: 'iradio_flat-green'
-                        })
-
-                        //Colorpicker
-                        $('.my-colorpicker1').colorpicker()
-                        //color picker with addon
-                        $('.my-colorpicker2').colorpicker()
-
-                        //Timepicker
-                        $('.timepicker').timepicker({
-                            showInputs: false
-                        })
-                    })
-</script>
-
-
+        <div class="invisible">
+            <input type="checkbox" value="{{ Auth::user()->id}}"  id="atendente_id" name="atendente_id" checked>
+        </div>
+        <div class="box box-default">
+            <div class="widget-content nopadding">
+                <div class="box box-success">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            <i class="fa fa-plus"></i> {{$titulo}}
+                        </h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inicio">Data/Hora Início</label>
+                            <div class="row">
+                           <div class="col-xs-3">
+                               <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_hora_inicio" id="data_hora_inicio"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="pessoa">Cliente</label>
+                            <select class="select2pessoa form-control" name="pessoa_id" id="pessoa">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="solicitante">Solicitante</label>
+                            <input type="text" class="form-control" name="solicitante" id="solicitante">
+                        </div>
+                        <div class="form-group">
+                            <label for="solicitante">Origem</label>
+                            <select class="select2 form-control" name="atendimentoorigem_id" id="atendimentoorigem_id">
+                                @foreach($origens as $origem)
+                                    <option value="{{$origem->id}}">{{$origem->descricao}}</option>
+                                    @endforeach
+                            </select>
+                        </div>
+                    </div>
+                        <hr>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="solicitacao">Solicitação</label>
+                            <input type="text" class="form-control" name="solicitacao" id="solicitacao">
+                        </div>
+                        <div class="form-group">
+                            <label for="solicitacao">Solução</label>
+                            <textarea rows="5" class="form-control" id="solucao" name="solucao"></textarea>
+                        </div>
+                    </div>
+                    <div class="box-footer">
+                        <a onclick="status('4')" class="btn btn-success"><i class="fa fa-check-square"></i> Concluído</a>
+                        <a href="#" class="btn btn-info" data-toggle="modal" data-target="#agendamento"><i class="fa fa-calendar-plus-o"></i> Agendar</a>
+                        <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#transferencia"><i class="fa fa-exchange"></i> Transferir</a>
+                      @if($atendimento->id <> '')
+                            <button type="reset" class="btn btn-danger" data-toggle="modal" data-target="#historico"><i class="fa fa-clock-o"></i> Histórico</button>
+                      @endif
+                    </div>
+                    <div class="box-footer"></div>
+                    <div class="box-header with-border">
+                        <h3 class="box-title">
+                            <i class="fa fa-sticky-note"></i> Solicitações
+                        </h3>
+                        <div class="box-tools pull-right">
+                            <a onclick="novasolicitacao()" class="btn bg-olive"><i class="fa fa-plus"></i> Nova Solicitação</a>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <table class="table table-striped table-bordered datatables" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Solicitação</th>
+                                        <th>Ação</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      <div class="modal fade" tabindex="-1" role="dialog" id="agendamento">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Agendamento</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="data">Data</label>
+                        <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_agendamento">
+                    </div>
+                    <div class="form-group">
+                        <label for="acao">Motivo</label>
+                        <input type="text" class="form-control" id="acao">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-calendar-plus-o"></i> Agendar</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="transferencia">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Transferência</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="data">Destino: </label>
+                        <div data-toggle="buttons-radio" class="btn-group">
+                            <button  onclick="destino('2')" class="btn btn-primary active" type="button">
+                                <i class="fa fa-users"></i> Departamento
+                            </button>
+                            <button  onclick="destino('1')" class="btn btn-primary" type="button">
+                                <i class="fa fa-user"></i> Usuário
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label id="textodest" for="acao">Selecione o DEPARTAMENTO</label>
+                        <input type="text" class="form-control" id="acao">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
+                    <button type="button" class="btn btn-primary"><i class="fa fa-exchange"></i> Transferir</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <div class="modal fade" tabindex="-1" role="dialog" id="historico">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Histórico</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <table class="table table-striped table-bordered datatables" style="width:100%">
+                            <thead>
+                            <tr>
+                                <th>Data</th>
+                                <th>Solução</th>
+                                <th>Ação</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Voltar</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
 @stop

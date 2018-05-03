@@ -15,23 +15,26 @@ class CreateAtendimentosTable extends Migration
     {
         Schema::create('atendimentos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('protocolo', 10);
+            $table->string('solucao');
             $table->DateTime('data_inicio');
-            $table->DateTime('data_fim');
+            $table->DateTime('data_termino');
             $table->integer('pessoa_id')->unsigned();
+            $table->string('solicitante', 50);
             $table->integer('atendimentoorigem_id')->unsigned();
-            $table->integer('atendimentostatus_id')->unsigned();  
+            $table->integer('atendimentostatus_id')->unsigned();
+            $table->string('solicitacao');
             $table->timestamps();
             
         });
         
         Schema::table('atendimentos', function (Blueprint $table)
         {
+            $table->foreign('atendimentostatus_id')->references('id')->on('atendimento_statuses')->onDelete('cascade');
             $table->foreign('pessoa_id')->references('id')->on('pessoas')->onDelete('cascade');
             $table->foreign('atendimentoorigem_id')->references('id')->on('Atendimento_Origens')->onDelete('cascade');
-            $table->foreign('atendimentostatus_id')->references('id')->on('Atendimento_statuses')->onDelete('cascade');
-         
+
         });
-            
             
         DB::table('permissions')->insert([
             'nome' => 'Atendimento_View',

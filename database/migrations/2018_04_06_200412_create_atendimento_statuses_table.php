@@ -18,7 +18,28 @@ class CreateAtendimentoStatusesTable extends Migration
             $table->string('descricao', 100);
             $table->timestamps();
         });
-        
+
+
+
+        DB::table('atendimento_statuses')->insert([
+           'id' => '1',
+           'descricao' => 'Pendente',
+        ]);
+        DB::table('atendimento_statuses')->insert([
+           'id' => '2',
+           'descricao' => 'Agendado',
+        ]);
+        DB::table('atendimento_statuses')->insert([
+           'id' => '3',
+           'descricao' => 'Transferido',
+        ]);
+        DB::table('atendimento_statuses')->insert([
+           'id' => '4',
+           'descricao' => 'Concluído',
+        ]);
+
+
+
         DB::table('permissions')->insert([
             'nome' => 'AtendimentoStatus_View',
             'descricao' => 'Visualizar Atendimento Status',
