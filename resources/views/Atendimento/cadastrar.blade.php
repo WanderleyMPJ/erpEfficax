@@ -14,16 +14,12 @@
 </section>
 @stop
 @section('content')
-    <div class="invisible">{{date_default_timezone_set('America/Porto_Velho')}}</div>
-    <form rol="form"
-    {{--    @if($tipo == '0')
-            action="{{route('atendimento.atualizar', $atendimento->id)}}"
-        @else--}}
-            action="{{route('atendimento.salvar')}}"
-        {{--@endif--}}
-            method="get" id="myForm">
-        <div class="invisible">
+    <form rol="form" method="get" id="myForm">
+        <div class="hide">
             <input type="checkbox" value="0"  id="status" name="atendimentostatus_id" checked>
+            <input type="checkbox" value="0"  id="tp_transf" name="tp_transf" checked>
+            {{date_default_timezone_set('America/Porto_Velho')}}
+            <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_acao" id="data_acao">
         </div>
         <div class="invisible">
             <input type="checkbox" value="{{ Auth::user()->id}}"  id="atendente_id" name="atendente_id" checked>
@@ -68,12 +64,12 @@
                             <input type="text" class="form-control" name="solicitacao" id="solicitacao">
                         </div>
                         <div class="form-group">
-                            <label for="solicitacao">Solução</label>
-                            <textarea rows="5" class="form-control" id="solucao" name="solucao"></textarea>
+                            <label for="solicitacao">Ação</label>
+                            <textarea rows="5" class="form-control" id="solucao" name="acao"></textarea>
                         </div>
                     </div>
                     <div class="box-footer">
-                        <a onclick="status('4')" class="btn btn-success"><i class="fa fa-check-square"></i> Concluído</a>
+                        <a onclick="sendform('4')" class="btn btn-success"><i class="fa fa-check-square"></i> Concluído</a>
                         <a href="#" class="btn btn-info" data-toggle="modal" data-target="#agendamento"><i class="fa fa-calendar-plus-o"></i> Agendar</a>
                         <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#transferencia"><i class="fa fa-exchange"></i> Transferir</a>
                       @if($atendimento->id <> '')
@@ -127,7 +123,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
-                    <button type="button" class="btn btn-primary"><i class="fa fa-calendar-plus-o"></i> Agendar</button>
+                    <a onclick="status('2')" type="button" class="btn btn-primary"><i class="fa fa-calendar-plus-o"></i> Agendar</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -153,12 +149,36 @@
                     </div>
                     <div class="form-group">
                         <label id="textodest" for="acao">Selecione o DEPARTAMENTO</label>
-                        <input type="text" class="form-control" id="acao">
+                        <input type="text" class="form-control" id="dep">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
-                    <button type="button" class="btn btn-primary"><i class="fa fa-exchange"></i> Transferir</button>
+                    <a onclick="status('3')" type="button" class="btn btn-primary"><i class="fa fa-exchange"></i> Transferir</a>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+            <div class="modal fade" tabindex="-1" role="dialog" id="concluido">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Finalizar</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="data">Data e Hora Conclusão: </label>
+                        <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_fim" id="data_fim">
+                    </div>
+                    <div class="form-group">
+                        <label id="textodest" for="acao">Solução</label>
+                        <input type="text" class="form-control" name="solucao" id="Solução">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
+                    <a onclick="status('4')" type="button" class="btn btn-primary"><i class="fa fa-exchange"></i> Concluir</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->

@@ -45,8 +45,9 @@ class AtendimentoController extends Controller {
 
         return view('atendimento.cadastrar', compact('titulo', 'atendimento', 'origens'));
     }
-    public function salvar(\App\Http\Requests\AtendimentoRequest $request){
+    public function concluir(\App\Http\Requests\AtendimentoRequest $request){
        $dt_inicio =    $this->databanco($request->input('data_hora_inicio'));
+       $dt_acao =    $this->databanco($request->input('data_acao'));
        $atendimento = $request->only([
             'data_hora_inicio',
             'pessoa_id',
@@ -56,20 +57,18 @@ class AtendimentoController extends Controller {
             'solicitacao',
             'solucao',
             'atendimentostatus_id'
-
         ]);
        $atendimento['data_inicio'] = $dt_inicio;
-        $atendimento_det = $request->only([
-            'acao',
-        ]);
         $atendimento = \App\Atendimento\Atendimento::create($atendimento);
 
-        $atendimento = \App\Atendimento\Atendimento::find($atendimento->id);
+        $atendimento_det = new \App\Atendimento\AtendimentoDet;
+        $atendimento_det->atendente_id = $request->input('atendente_id');
+        $atendimento_det->movimentacao = $request->input('acao');
+        $atendimento_det->data = $dt_acao;
 
-        $atendimento->addAtendimentoDet($atendimento_det);
-        
 
-        \App\Atendimento\AtendimentoSolicitacaoMov::create($solicitacao_mov);
+        \App\Atendimento\Atendimento::find($atendimento->id)->addatendimentodet($atendimento_det);
+
 
 
         return redirect()->route('atendimento.dashboard');

@@ -41,14 +41,34 @@ function destino(dest){
     if (dest == '1'){
         var texto = 'Selecione o USUÁRIO';
         document.getElementById('textodest').textContent = texto;
+        document.getElementById('tp_transf').value = '1';
+
     }else {
         var texto = 'Selecione o DEPARTAMENTO';
         document.getElementById('textodest').textContent = texto;
+        document.getElementById('tp_transf').value = '2';
     }
 }
-function status(status_id){
-    document.getElementById('status').value = status_id;
+function sendform(status_id){
+    if(status_id == '4'){
+        document.getElementById('status').value = status_id;
+        document.getElementById('myForm').action = "/atendimento/salvar";
         submit("myForm");
+    }
+    else  {
+        if(status_id == '2') {
+            document.getElementById('status').value = status_id;
+
+        document.getElementById('myForm').action = "/atendimento/agendar";
+            submit("myForm");
+        }
+        else {
+            document.getElementById('status').value = status_id;
+            document.getElementById('myForm').action = "/atendimento/transferir";
+            submit("myForm");
+        }
+    }
+
 }
 function submit(form){
     document.getElementById(form).submit();

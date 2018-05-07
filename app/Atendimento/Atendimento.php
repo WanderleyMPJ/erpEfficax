@@ -13,26 +13,28 @@ class Atendimento extends Model {
         return $this->belongsTo('App\Cadastro\Pessoa');
     }
 
-    public function nomepessoa() {
+    public function pessoanome() {
         $atendimento = $this;
-        $nome = $atendimento->pessoa();
+        $nome = $atendimento->pessoa()->nome;
         return $nome;
     }
 
     public function status() {
 
-        return $this->belongsTo('App\Atendimento\AtendimentoStatus');
+        return $this->hasMany('App\Atendimento\AtendimentoStatus');
     }
 
-    public function nomeatendimentostatus() {
+    public function statusnome() {
         $atendimento = $this;
-        $nome = $atendimento->status();
+        $nome = $atendimento->status()->descricao;
         return $nome;
     }
     public function atendimentodet() {
+
         return $this->hasMany('App\Atendimento\AtendimentoDet');
     }
     public function addatendimentodet($det){
+
         return $this->atendimentodet()->save($det);
     }
     

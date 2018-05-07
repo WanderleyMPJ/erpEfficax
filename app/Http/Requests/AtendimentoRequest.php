@@ -31,6 +31,7 @@ class AtendimentoRequest extends Request
             'solicitacao',
             'solucao',
             'acao',
+            'data_acao',
             'atendimentostatus_id',
             'atendimentoorigem_id',
             'atendente_id'
