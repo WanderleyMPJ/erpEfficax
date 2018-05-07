@@ -4,18 +4,19 @@ namespace App\Atendimento;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AtendimentoSolicitacaoMov extends Model
+class AtendimentoDet extends Model
 {
     protected $table = 'atendimentos_det';
     protected $fillable = ['atendimento_id', 'atendente_id', 'movimentacao', 'data'];
+    protected $dates = ['data'];
 
     public function atendimento()
     {
-        return $this->hasMany('App\Atendimento\Atendimento');
+        return $this->belongsTo('App\Atendimento\Atendimento');
     }
     public function atendente()
     {
-        return $this->belongsTo('App\User');
+        return $this->hasMany('App\User');
     }
 
 }
