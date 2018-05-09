@@ -1,0 +1,2 @@
+** instalar Collective
+    - composer require "laravelcollective/html":"^5.5.0"

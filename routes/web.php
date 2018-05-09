@@ -61,6 +61,22 @@ Route::get('/atendimento/salvarsolicitacao', 'Atendimento\AtendimentoController@
 Route::get('/user', 'Cadastro\UserController@index')->name('user');
 Route::get('/userpermissions', 'Cadastro\UserController@userpermissions')->name('userpermissions');
 
+//Servicos*/
+Route::get('/servico', 'Cadastro\ServicoController@index')->name('servico.index');
+Route::get('/servico/detalhe/{id}', 'Cadastro\ServicoController@detalhe')->name('servico.detalhe');
+Route::get('/servico/cadastrar', 'Cadastro\ServicoController@cadastrar')->name('servico.cadastrar');
+Route::get('/servico/salvar', 'Cadastro\ServicoController@salvar')->name('servico.salvar');
+Route::get('/servico/atualizar/{id}', 'Cadastro\ServicoController@atualizar')->name('servico.atualizar');
+
+//FINANCEIRO*/
+
+Route::get('/mov/lancamento', 'Financeiro\MovController@lancamento')->name('mov.lancamento');
+Route::get('/mov/salvar', 'Financeiro\MovController@salvar')->name('mov.salvar');
+
+
+//Cadastro plano de contas
+    Route::get('planocontas','Cadastro\Financeiro\PlanoContasController@index')->name('planocontas.index');
+    Route::post('planoconta\salvar','Cadastro\Financeiro\PlanoContasController@salvar')->name('planocontas.salvar');
 
 });
 

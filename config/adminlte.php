@@ -158,7 +158,7 @@ return [
             [
                 'text' => 'Serviços',
                 'icon' => 'magic',
-                'url'  => 'produtos/create',
+                'url'  => 'servico',
 
             ],
         ],
