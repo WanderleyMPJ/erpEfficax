@@ -50,21 +50,23 @@ function destino(dest){
     }
 }
 function sendform(status_id){
+    var atend_id = document.getElementById('id').value;
+    if (atend_id == '') {atend_id = '0'}
     if(status_id == '4'){
         document.getElementById('status').value = status_id;
-        document.getElementById('myForm').action = "/atendimento/salvar";
+        document.getElementById('myForm').action = "/atendimento/concluir/"+atend_id;
         submit("myForm");
     }
     else  {
         if(status_id == '2') {
             document.getElementById('status').value = status_id;
 
-        document.getElementById('myForm').action = "/atendimento/agendar";
+        document.getElementById('myForm').action = "/atendimento/agendar/"+atend_id;
             submit("myForm");
         }
         else {
             document.getElementById('status').value = status_id;
-            document.getElementById('myForm').action = "/atendimento/transferir";
+            document.getElementById('myForm').action = "/atendimento/transferir/"+atend_id;
             submit("myForm");
         }
     }

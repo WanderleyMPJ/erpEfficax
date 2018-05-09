@@ -29,7 +29,6 @@ class AtendimentoRequest extends Request
             'data_hora_fim',
             'solicitante',
             'solicitacao',
-            'solucao',
             'acao',
             'data_acao',
             'atendimentostatus_id',

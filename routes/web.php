@@ -23,7 +23,9 @@ Route::get('/atendimento/status/atualizar/{id}', 'Atendimento\AtendimentoStatusC
 Route::get('/atendimento/dashboard', 'Atendimento\AtendimentoController@index')->name('atendimento.dashboard');
 Route::get('/atendimento/cadastrar', 'Atendimento\AtendimentoController@cadastrar')->name('atendimento.cadastrar');
 Route::get('/atendimento/editar/{id}', 'Atendimento\AtendimentoController@editar')->name('atendimento.editar');
-Route::get('/atendimento/concluir', 'Atendimento\AtendimentoController@salvar')->name('atendimento.salvar');
+Route::get('/atendimento/concluir/{id}', 'Atendimento\AtendimentoController@concluir')->name('atendimento.concluir');
+Route::get('/atendimento/agendar/{id}', 'Atendimento\AtendimentoController@agendar')->name('atendimento.agendar');
+Route::get('/atendimento/transferir/{id}', 'Atendimento\AtendimentoController@transerir')->name('atendimento.transferir');
 Route::get('/atendimento/atualizar/{id}', 'Atendimento\AtendimentoController@atualizar')->name('atendimento.atualizar');
 Route::get('/atendimento/salvarsolicitacao', 'Atendimento\AtendimentoController@SalvarSolicitacao')->name('atendimento.atualizar');
 

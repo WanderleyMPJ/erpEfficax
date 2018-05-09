@@ -45,8 +45,11 @@ class AtendimentoController extends Controller {
 
         return view('atendimento.cadastrar', compact('titulo', 'atendimento', 'origens'));
     }
-    public function concluir(\App\Http\Requests\AtendimentoRequest $request){
+    public function concluir(\App\Http\Requests\AtendimentoRequest $request, $id){
+
+       if($id == '0'){
        $dt_inicio =    $this->databanco($request->input('data_hora_inicio'));
+       $dt_fim =    $this->databanco($request->input('data_hora_fim'));
        $dt_acao =    $this->databanco($request->input('data_acao'));
        $atendimento = $request->only([
             'data_hora_inicio',
@@ -55,11 +58,11 @@ class AtendimentoController extends Controller {
             'solicitante',
             'atendimentoorigem_id',
             'solicitacao',
-            'solucao',
             'atendimentostatus_id'
         ]);
-       $atendimento['data_inicio'] = $dt_inicio;
-        $atendimento = \App\Atendimento\Atendimento::create($atendimento);
+         $atendimento['data_inicio'] = $dt_inicio;
+         $atendimento['data_termino'] = $dt_fim;
+         $atendimento = \App\Atendimento\Atendimento::create($atendimento);
 
         $atendimento_det = new \App\Atendimento\AtendimentoDet;
         $atendimento_det->atendente_id = $request->input('atendente_id');
@@ -68,12 +71,16 @@ class AtendimentoController extends Controller {
 
 
         \App\Atendimento\Atendimento::find($atendimento->id)->addatendimentodet($atendimento_det);
-
-
-
         return redirect()->route('atendimento.dashboard');
+         }
+        else{
+            $dt_fim =    $this->databanco($request->input('data_hora_fim'));
+            $dt_acao =    $this->databanco($request->input('data_acao'));
 
-    }
+            
+            return redirect()->route('atendimento.dashboard');
+        }
+        }
     
     
 }

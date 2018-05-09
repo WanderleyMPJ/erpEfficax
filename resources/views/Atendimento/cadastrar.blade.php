@@ -17,12 +17,11 @@
     <form rol="form" method="get" id="myForm">
         <div class="hide">
             <input type="checkbox" value="0"  id="status" name="atendimentostatus_id" checked>
-            <input type="checkbox" value="0"  id="tp_transf" name="tp_transf" checked>
+            <input type="checkbox" value="2"  id="tp_transf" name="tp_transf" checked>
+            <input type="checkbox" value="{{$atendimento->id}}"  id="id">
             {{date_default_timezone_set('America/Porto_Velho')}}
-            <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_acao" id="data_acao">
-        </div>
-        <div class="invisible">
             <input type="checkbox" value="{{ Auth::user()->id}}"  id="atendente_id" name="atendente_id" checked>
+            <input type="text" class="datetime form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_acao" id="data_acao">
         </div>
         <div class="box box-default">
             <div class="widget-content nopadding">
@@ -37,7 +36,7 @@
                             <label for="inicio">Data/Hora Início</label>
                             <div class="row">
                            <div class="col-xs-3">
-                               <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_hora_inicio" id="data_hora_inicio"></div>
+                               <input type="text" class="datetime form-control" autocomplete="off" value="{{date('d/m/Y H:i:s')}}" name="data_hora_inicio" id="data_hora_inicio"></div>
                         </div>
                         <div class="form-group">
                             <label for="pessoa">Cliente</label>
@@ -69,7 +68,7 @@
                         </div>
                     </div>
                     <div class="box-footer">
-                        <a onclick="sendform('4')" class="btn btn-success"><i class="fa fa-check-square"></i> Concluído</a>
+                        <a href="#" class="btn btn-success" data-toggle="modal" data-target="#concluido"><i class="fa fa-check-square"></i> Concluído</a>
                         <a href="#" class="btn btn-info" data-toggle="modal" data-target="#agendamento"><i class="fa fa-calendar-plus-o"></i> Agendar</a>
                         <a href="#" class="btn btn-warning" data-toggle="modal" data-target="#transferencia"><i class="fa fa-exchange"></i> Transferir</a>
                       @if($atendimento->id <> '')
@@ -114,16 +113,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="data">Data</label>
-                        <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_agendamento">
-                    </div>
-                    <div class="form-group">
-                        <label for="acao">Motivo</label>
-                        <input type="text" class="form-control" id="acao">
+                        <input type="text" class="datetime form-control" autocomplete="off" value="{{date('dd/mm/Y HH:i:s')}}" name="data_agendamento">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
-                    <a onclick="status('2')" type="button" class="btn btn-primary"><i class="fa fa-calendar-plus-o"></i> Agendar</a>
+                    <a onclick="sendform('2')" type="button" class="btn btn-primary"><i class="fa fa-calendar-plus-o"></i> Agendar</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -154,12 +149,12 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
-                    <a onclick="status('3')" type="button" class="btn btn-primary"><i class="fa fa-exchange"></i> Transferir</a>
+                    <a onclick="sendform('3')" type="button" class="btn btn-primary"><i class="fa fa-exchange"></i> Transferir</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
-            <div class="modal fade" tabindex="-1" role="dialog" id="concluido">
+    <div class="modal fade" tabindex="-1" role="dialog" id="concluido">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -169,16 +164,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="data">Data e Hora Conclusão: </label>
-                        <input type="text" class="date form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_fim" id="data_fim">
-                    </div>
-                    <div class="form-group">
-                        <label id="textodest" for="acao">Solução</label>
-                        <input type="text" class="form-control" name="solucao" id="Solução">
+                        <input type="text" class="datetime form-control" autocomplete="off" value="{{date('d/m/Y HH:i:s')}}" name="data_hora_fim" id="data_fim">
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-cancel"></i> Cancelar</button>
-                    <a onclick="status('4')" type="button" class="btn btn-primary"><i class="fa fa-exchange"></i> Concluir</a>
+                    <a onclick="sendform('4')" class="btn btn-success"><i class="fa fa-check-square"></i> Concluir</a>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -212,4 +203,5 @@
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
     </div><!-- /.modal -->
+
 @stop

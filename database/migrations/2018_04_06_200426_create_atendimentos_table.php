@@ -16,9 +16,8 @@ class CreateAtendimentosTable extends Migration
         Schema::create('atendimentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('protocolo', 10);
-            $table->string('solucao');
             $table->DateTime('data_inicio');
-            $table->DateTime('data_termino');
+            $table->DateTime('data_termino')->nullable();
             $table->integer('pessoa_id')->unsigned();
             $table->string('solicitante', 50);
             $table->integer('atendimentoorigem_id')->unsigned();
